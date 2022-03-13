@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02_Emerytura2", "02_Emerytu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03_Emerytura3", "03_Emerytura3\03_Emerytura3.csproj", "{77C8DE12-7447-4C62-AED7-73FCCEBE4BE4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04_ParametryTrojkata", "04_ParametryTrojkata\04_ParametryTrojkata.csproj", "{62256822-93D6-48F0-83F0-B05A47CE9657}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{77C8DE12-7447-4C62-AED7-73FCCEBE4BE4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{77C8DE12-7447-4C62-AED7-73FCCEBE4BE4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{77C8DE12-7447-4C62-AED7-73FCCEBE4BE4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{62256822-93D6-48F0-83F0-B05A47CE9657}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{62256822-93D6-48F0-83F0-B05A47CE9657}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{62256822-93D6-48F0-83F0-B05A47CE9657}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{62256822-93D6-48F0-83F0-B05A47CE9657}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
