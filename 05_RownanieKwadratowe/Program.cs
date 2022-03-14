@@ -8,5 +8,9 @@ namespace _05_RownanieKwadratowe
         {
             Console.WriteLine("Hello World!");
         }
+        public void QuadraticEquation(int a, int b, int c)
+        {
+
+        }
     }
 }
