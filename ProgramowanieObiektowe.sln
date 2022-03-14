@@ -5,13 +5,15 @@ VisualStudioVersion = 17.0.32126.317
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApp1", "ConsoleApp1\ConsoleApp1.csproj", "{3DF81775-971B-4FF9-A66F-5E7131A1E53A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01_Emerytura1", "01_Emerytura1\01_Emerytura1.csproj", "{40653162-CCAF-401D-AFA6-789AEBE274D8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "01_Emerytura1", "01_Emerytura1\01_Emerytura1.csproj", "{40653162-CCAF-401D-AFA6-789AEBE274D8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02_Emerytura2", "02_Emerytura2\02_Emerytura2.csproj", "{4994FC86-553F-4CF1-BE4B-C06847644316}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "02_Emerytura2", "02_Emerytura2\02_Emerytura2.csproj", "{4994FC86-553F-4CF1-BE4B-C06847644316}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03_Emerytura3", "03_Emerytura3\03_Emerytura3.csproj", "{77C8DE12-7447-4C62-AED7-73FCCEBE4BE4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "03_Emerytura3", "03_Emerytura3\03_Emerytura3.csproj", "{77C8DE12-7447-4C62-AED7-73FCCEBE4BE4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04_ParametryTrojkata", "04_ParametryTrojkata\04_ParametryTrojkata.csproj", "{62256822-93D6-48F0-83F0-B05A47CE9657}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "04_ParametryTrojkata", "04_ParametryTrojkata\04_ParametryTrojkata.csproj", "{62256822-93D6-48F0-83F0-B05A47CE9657}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "05_RownanieKwadratowe", "05_RownanieKwadratowe\05_RownanieKwadratowe.csproj", "{F2C0FF44-6609-402A-BCE9-6A99EC190ECA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{62256822-93D6-48F0-83F0-B05A47CE9657}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{62256822-93D6-48F0-83F0-B05A47CE9657}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{62256822-93D6-48F0-83F0-B05A47CE9657}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F2C0FF44-6609-402A-BCE9-6A99EC190ECA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F2C0FF44-6609-402A-BCE9-6A99EC190ECA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F2C0FF44-6609-402A-BCE9-6A99EC190ECA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F2C0FF44-6609-402A-BCE9-6A99EC190ECA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
