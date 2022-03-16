@@ -6,7 +6,7 @@ namespace _10_Wzorek
     {
         static void Main(string[] args)
         {
-            Wzorek(5);    
+            Wzorek(5);
         }
         public static void Wzorek(int n)
         {
@@ -16,13 +16,20 @@ namespace _10_Wzorek
             {
                 n--;
             }
-            for (int i = n; i > 0; i--)
+
+            int globalna = 0;
+            for (int i = n; i > 0; i-=2)
             {
-                Console.WriteLine("*");
-                for (int j = 0; j < n / 2; j++)
+                for(int Z = 0;Z<globalna;Z++)
                 {
                     Console.Write(" ");
                 }
+                    globalna++;
+                for (int j = 0; j < i; j++)
+                {
+                    Console.Write("*");
+                }    
+                Console.WriteLine();
             }
         }
     }
