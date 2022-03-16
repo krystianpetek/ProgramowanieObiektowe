@@ -11,13 +11,14 @@ namespace _08_FlowChart2
             int.TryParse(wejscie[1], out int y);
             int.TryParse(wejscie[2], out int z);
 
+                    for (; x >= 0 || y >= 0; y--, x--)
             if (x > 0)
             {
+
                 if (y > 0)
                 {
-                    x -= 1;
-                    y -= 1;
-                    Console.Write("C");
+
+                        Console.Write("C");                    
                 }
                 else
                 {
@@ -25,13 +26,15 @@ namespace _08_FlowChart2
                     if (z > 0)
                     {
                         Console.WriteLine();
+                            break;
                     }
                     else
                     {
 
                         Console.Write("G");
                         Console.WriteLine();
-                    }
+                            break;
+                        }
                 }
             }
             else
@@ -39,6 +42,7 @@ namespace _08_FlowChart2
                 Console.Write("E");
                 Console.Write("G");
                 Console.WriteLine();
+                    break;
             }
         }
     }

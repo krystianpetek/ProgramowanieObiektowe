@@ -17,9 +17,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "05_RownanieKwadratowe", "05
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "06_ObjetoscStozka", "06_ObjetoscStozka\06_ObjetoscStozka.csproj", "{949B0275-8084-4C05-8B70-D9B5E002941A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "07_FlowChart1", "07_FlowChart1\07_FlowChart1.csproj", "{99ADFC44-5C0E-4C5B-B5BD-03733454A33B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "07_FlowChart1", "07_FlowChart1\07_FlowChart1.csproj", "{99ADFC44-5C0E-4C5B-B5BD-03733454A33B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "08_FlowChart2", "08_FlowChart2\08_FlowChart2.csproj", "{2D4E4B4F-AE23-4BFF-94A7-FC221278B548}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "08_FlowChart2", "08_FlowChart2\08_FlowChart2.csproj", "{2D4E4B4F-AE23-4BFF-94A7-FC221278B548}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "09_FlowChart3", "09_FlowChart3\09_FlowChart3.csproj", "{83CA80C7-9E37-48C7-92D6-E71CCBCEAEBE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "10_Wzorek", "10_Wzorek\10_Wzorek.csproj", "{BC9E940F-C706-4D88-BEEA-CAD3CEAEEBA0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,6 +67,14 @@ Global
 		{2D4E4B4F-AE23-4BFF-94A7-FC221278B548}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2D4E4B4F-AE23-4BFF-94A7-FC221278B548}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2D4E4B4F-AE23-4BFF-94A7-FC221278B548}.Release|Any CPU.Build.0 = Release|Any CPU
+		{83CA80C7-9E37-48C7-92D6-E71CCBCEAEBE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{83CA80C7-9E37-48C7-92D6-E71CCBCEAEBE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{83CA80C7-9E37-48C7-92D6-E71CCBCEAEBE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{83CA80C7-9E37-48C7-92D6-E71CCBCEAEBE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BC9E940F-C706-4D88-BEEA-CAD3CEAEEBA0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC9E940F-C706-4D88-BEEA-CAD3CEAEEBA0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC9E940F-C706-4D88-BEEA-CAD3CEAEEBA0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC9E940F-C706-4D88-BEEA-CAD3CEAEEBA0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
