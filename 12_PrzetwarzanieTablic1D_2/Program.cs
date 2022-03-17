@@ -16,44 +16,7 @@ namespace _12_PrzetwarzanieTablic1D_2
         }
         public static void Print(int[] a, int[] b)
         {
-            string sBuilder = "";
-            for (int i = 0; i < a.Length; i++)
-            {
-                bool foundInt = false;
-                for (int j = 0; j < b.Length; j++)
-                {
-                    if (a[i] == b[j])
-                    {
-                        foundInt = true;
-                        break;
-                    }
-                }
-                if (foundInt && !sBuilder.Contains($"{a[i]}"))
-                {
-                    sBuilder += $"{a[i]} ";
-                }
-            }
-            
-            for (int i = 0; i < b.Length; i++)
-            {
-                bool foundInt = false;
-                for (int j = 0; j < a.Length; j++)
-                {
-                    if (b[i] == a[j])
-                    {
-                        foundInt = true;
-                        break;
-                    }
-                }
-                if (foundInt && !sBuilder.Contains($"{a[i]}"))
-                {
-                    sBuilder += $"{b[i]} ";
-                }
-            }
-            if (sBuilder.Length > 0)
-                Console.WriteLine(sBuilder);
-            else
-                Console.WriteLine("empty");
+
         }
     }
 }
