@@ -16,7 +16,13 @@ namespace _12_PrzetwarzanieTablic1D_2
         }
         public static void Print(int[] a, int[] b)
         {
-            string sBuilder = "";
+            int dlugoscTab;
+            if (a.Length > b.Length)
+                dlugoscTab = a.Length;
+            else
+                dlugoscTab = b.Length;
+            int[] wyjscie = new int[dlugoscTab];
+
             for (int i = 0; i < a.Length; i++)
             {
                 bool foundInt = false;
@@ -28,8 +34,10 @@ namespace _12_PrzetwarzanieTablic1D_2
                         break;
                     }
                 }
-                if (foundInt && !sBuilder.Contains($"{a[i]}"))
+                if (foundInt)
                 {
+                    for(int g = 0;g<wyjscie.Length;g++)
+                        if()
                     sBuilder += $"{a[i]} ";
                 }
             }
