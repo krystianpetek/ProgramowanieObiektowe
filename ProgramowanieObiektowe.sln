@@ -25,9 +25,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "09_FlowChart3", "09_FlowCha
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "10_Wzorek", "10_Wzorek\10_Wzorek.csproj", "{BC9E940F-C706-4D88-BEEA-CAD3CEAEEBA0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "11_PrzetwarzanieTablic1D_1", "11_PrzetwarzanieTablic1D_1\11_PrzetwarzanieTablic1D_1.csproj", "{62B1ADDC-4900-41D6-83ED-6ABCA85DCA32}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "11_PrzetwarzanieTablic1D_1", "11_PrzetwarzanieTablic1D_1\11_PrzetwarzanieTablic1D_1.csproj", "{62B1ADDC-4900-41D6-83ED-6ABCA85DCA32}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "12_PrzetwarzanieTablic1D_2", "12_PrzetwarzanieTablic1D_2\12_PrzetwarzanieTablic1D_2.csproj", "{9B64604E-8490-4776-BAAE-D9E8B45AF479}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "12_PrzetwarzanieTablic1D_2", "12_PrzetwarzanieTablic1D_2\12_PrzetwarzanieTablic1D_2.csproj", "{9B64604E-8490-4776-BAAE-D9E8B45AF479}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "13_PrzetwarzanieTablic1D_3", "13_PrzetwarzanieTablic1D_3\13_PrzetwarzanieTablic1D_3.csproj", "{304478CC-414F-4F04-8A2D-051D09F39925}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -87,6 +89,10 @@ Global
 		{9B64604E-8490-4776-BAAE-D9E8B45AF479}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9B64604E-8490-4776-BAAE-D9E8B45AF479}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9B64604E-8490-4776-BAAE-D9E8B45AF479}.Release|Any CPU.Build.0 = Release|Any CPU
+		{304478CC-414F-4F04-8A2D-051D09F39925}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{304478CC-414F-4F04-8A2D-051D09F39925}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{304478CC-414F-4F04-8A2D-051D09F39925}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{304478CC-414F-4F04-8A2D-051D09F39925}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

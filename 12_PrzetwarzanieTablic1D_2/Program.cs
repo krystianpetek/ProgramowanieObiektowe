@@ -8,7 +8,7 @@ namespace _12_PrzetwarzanieTablic1D_2
         {
             int[] a = new int[] { -2, -1, 0, 1, 4 };
             int[] b = new int[] { -3, -2, -1, 1, 2, 3 };
-            
+
             a = new int[] { -2, -1, 0, 1, 1, 4 };
             b = new int[] { -3, -2, -1, 1, 2, 3 };
 
@@ -49,11 +49,12 @@ namespace _12_PrzetwarzanieTablic1D_2
                     }
                     poprzednik = int.Parse(tab[i]);
                 }
-            }    if (wyjscie.Length > 0)
-                    Console.Write(koniec);
-                else
-                    Console.WriteLine("empty");
-            
+            }
+            if (wyjscie.Length > 0)
+                Console.Write(koniec);
+            else
+                Console.WriteLine("empty");
+
         }
     }
 }
