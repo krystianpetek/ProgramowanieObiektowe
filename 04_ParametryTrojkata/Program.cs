@@ -5,7 +5,7 @@ namespace _04_ParametryTrojkata
 {
     internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             CultureInfo.CurrentCulture = CultureInfo.GetCultureInfo("en-US");
             string[] wejscie = Console.ReadLine().Split("; ");
@@ -26,11 +26,11 @@ namespace _04_ParametryTrojkata
                 return;
             }
             double obwod = a + b + c;
-            Console.WriteLine($"obwód = {Math.Round(obwod,2):F2}");
+            Console.WriteLine($"obwód = {Math.Round(obwod, 2):F2}");
             double p = (a + b + c) / 2;
-            double pole = p*(p-a)*(p-b)*(p-c);
+            double pole = p * (p - a) * (p - b) * (p - c);
             pole = Math.Sqrt(pole);
-            Console.WriteLine($"pole = {Math.Round(pole,2):F2}");
+            Console.WriteLine($"pole = {Math.Round(pole, 2):F2}");
 
             if ((a * a + b * b) == c * c || (a * a + c * c) == b * b || (b * b + c * c) == a * a)
                 Console.WriteLine($"trójkąt jest prostokątny");
@@ -38,11 +38,10 @@ namespace _04_ParametryTrojkata
                 Console.WriteLine($"trójkąt jest rozwartokątny");
             else if ((a * a + b * b) > c * c || (a * a + c * c) > b * b || (b * b + c * c) > a * a)
                 Console.WriteLine($"trójkąt jest ostrokątny");
-            
 
             if (a == b && b == c && c == a)
                 Console.WriteLine($"trójkąt równoboczny");
-            else if(a == b || b == c || a == c )
+            else if (a == b || b == c || a == c)
                 Console.WriteLine($"trójkąt równoramienny");
         }
     }

@@ -4,7 +4,7 @@ namespace _02_Emerytura2
 {
     internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             string nazwisko = Console.ReadLine();
             int wiek = int.Parse(Console.ReadLine());
@@ -35,7 +35,6 @@ namespace _02_Emerytura2
                 {
                     Console.Write($" lat!");
                 }
-
             }
         }
     }

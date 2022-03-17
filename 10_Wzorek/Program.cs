@@ -4,10 +4,11 @@ namespace _10_Wzorek
 {
     internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             Wzorek(5);
         }
+
         public static void Wzorek(int n)
         {
             if (n < 3)
@@ -18,17 +19,17 @@ namespace _10_Wzorek
             }
 
             int globalna = 0;
-            for (int i = n; i > 0; i-=2)
+            for (int i = n; i > 0; i -= 2)
             {
-                for(int Z = 0;Z<globalna;Z++)
+                for (int Z = 0; Z < globalna; Z++)
                 {
                     Console.Write(" ");
                 }
-                    globalna++;
+                globalna++;
                 for (int j = 0; j < i; j++)
                 {
                     Console.Write("*");
-                }    
+                }
                 Console.WriteLine();
             }
         }

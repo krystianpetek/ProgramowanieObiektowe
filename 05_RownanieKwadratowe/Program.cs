@@ -4,11 +4,12 @@ namespace _05_RownanieKwadratowe
 {
     internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             QuadraticEquation(0, 2, 1);
             QuadraticEquation(1000000, 6000, -300295);
         }
+
         public static void QuadraticEquation(int a, int b, int c)
         {
             long A = a;
@@ -37,7 +38,7 @@ namespace _05_RownanieKwadratowe
             {
                 if (A == 0)
                 {
-                    double x = Math.Round(C * -1.0 / B,2);
+                    double x = Math.Round(C * -1.0 / B, 2);
                     Console.WriteLine($"x={x:F2}");
                 }
                 else
@@ -46,7 +47,7 @@ namespace _05_RownanieKwadratowe
                     //double x2 = (-B + Math.Sqrt(delta)) / 2 * A;
                     double x1 = Math.Round(((B * -1) + Math.Sqrt(delta)) / (2 * A), 2);
                     double x2 = Math.Round((((B * -1) + (Math.Sqrt(delta) * -1)) / (2 * A)), 2);
-                    if(x1 > x2)
+                    if (x1 > x2)
                     {
                         double temp = x1;
                         x1 = x2;

@@ -4,7 +4,7 @@ namespace _03_Emerytura3
 {
     internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             string wejscie = Console.ReadLine();
             string[] split = wejscie.Split(" ");
@@ -36,7 +36,6 @@ namespace _03_Emerytura3
                 {
                     Console.Write($" lat!");
                 }
-
             }
         }
     }

@@ -1,16 +1,16 @@
 ﻿using System;
-using System.Text;
 
 namespace _11_PrzetwarzanieTablic1D_1
 {
     internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             int[] a = new int[] { -2, -1, 0, 1, 4 };
             int[] b = new int[] { -3, -2, -1, 1, 2, 3 };
             Print(a, b);
         }
+
         public static void Print(int[] a, int[] b)
         {
             string sBuilder = "";

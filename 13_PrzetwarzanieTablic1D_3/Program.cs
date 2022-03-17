@@ -4,7 +4,7 @@ namespace _13_PrzetwarzanieTablic1D_3
 {
     internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             int[] a = new int[] { -2, -1, 0, 1, 4 };
             int[] b = new int[] { -3, -2, -1, 1, 2, 3 };
@@ -14,7 +14,8 @@ namespace _13_PrzetwarzanieTablic1D_3
             b = new int[] { 0, 1, 2, 3, 3 };
             Print(a, b);
         }
-        static void Print(int[] a, int[] b)
+
+        private static void Print(int[] a, int[] b)
         {
             string wyjscie = string.Empty;
             for (int i = 0; i < a.Length; i++)
@@ -27,7 +28,6 @@ namespace _13_PrzetwarzanieTablic1D_3
                         isInTab = true;
                         continue;
                     }
-
                 }
                 if (!isInTab)
                 {
@@ -44,7 +44,6 @@ namespace _13_PrzetwarzanieTablic1D_3
                         isInTab = true;
                         continue;
                     }
-
                 }
                 if (!isInTab)
                 {
@@ -53,9 +52,9 @@ namespace _13_PrzetwarzanieTablic1D_3
             }
             if (wyjscie.Length > 0)
             {
-                string[] x= wyjscie.Split(' ');
-                int[] intx = new int[x.Length-1];
-                for(int i = 0;i< x.Length-1; i++)
+                string[] x = wyjscie.Split(' ');
+                int[] intx = new int[x.Length - 1];
+                for (int i = 0; i < x.Length - 1; i++)
                 {
                     intx[i] = int.Parse(x[i]);
                 }

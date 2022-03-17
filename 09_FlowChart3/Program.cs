@@ -4,7 +4,7 @@ namespace _09_FlowChart3
 {
     internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             string[] wejscie = Console.ReadLine().Split(' ');
             int.TryParse(wejscie[0], out int x);
@@ -14,7 +14,6 @@ namespace _09_FlowChart3
             while (x >= 0 || y >= 0)
                 if (x > 0)
                 {
-
                     if (y > 0)
                     {
                         x--;
@@ -31,7 +30,6 @@ namespace _09_FlowChart3
                         }
                         else
                         {
-
                             Console.Write("G");
                             Console.WriteLine();
                             break;

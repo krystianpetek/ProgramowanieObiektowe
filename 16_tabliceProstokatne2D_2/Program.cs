@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ConsoleApp1
+namespace _16_tabliceProstokatne2D_2
 {
     internal class Program
     {

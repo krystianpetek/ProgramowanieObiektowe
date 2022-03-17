@@ -1,10 +1,10 @@
-﻿ using System;
+﻿using System;
 
 namespace _06_ObjetoscStozka
 {
     internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             string[] wejscie = Console.ReadLine().Split(' ', StringSplitOptions.RemoveEmptyEntries);
             _ = long.TryParse(wejscie[0], out long R);
@@ -15,14 +15,14 @@ namespace _06_ObjetoscStozka
                 Console.WriteLine($"ujemny argument");
                 return;
             }
-            if(R > L)
+            if (R > L)
             {
                 Console.WriteLine($"obiekt nie istnieje");
                 return;
             }
 
             decimal H = (decimal)Math.Sqrt((L * L) - (R * R));
-            decimal Pp = (decimal)Math.PI * (decimal)R*R;
+            decimal Pp = (decimal)Math.PI * (decimal)R * R;
             decimal V = Pp * H / 3;
             decimal a = Math.Floor(V);
             decimal b = Math.Ceiling(V);

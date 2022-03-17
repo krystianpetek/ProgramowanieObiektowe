@@ -4,7 +4,7 @@ namespace _01_Emerytura1
 {
     internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             string nazwisko = Console.ReadLine();
             int wiek = int.Parse(Console.ReadLine());
@@ -24,8 +24,6 @@ namespace _01_Emerytura1
             {
                 Console.WriteLine($"Do emerytury brakuje Ci {wiekEmerytalny - wiek} lat!");
             }
-
-
         }
     }
 }
