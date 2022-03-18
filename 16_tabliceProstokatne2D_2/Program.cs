@@ -31,6 +31,7 @@ namespace _16_tabliceProstokatne2D_2
             WyswietlMacierz(macierzA);
             WyswietlMacierz(macierzB);
         }
+
         public static void PrzepisanieMacierzy(int[] wartosciMacierzy, int[,] macierzWynikowa)
         {
             for (int i = 0; i < wartosciMacierzy.Length;)
@@ -45,6 +46,7 @@ namespace _16_tabliceProstokatne2D_2
                 }
             }
         }
+
         public static void WyswietlMacierz(int[,] macierz)
         {
             for(int i = 0; i < macierz.GetLength(0); i++)
@@ -53,7 +55,7 @@ namespace _16_tabliceProstokatne2D_2
                 {
                     Console.Write($"{macierz[i,j]} ");
                 }
-                Console.WriteLine("\n");
+                Console.WriteLine();
             }
         }
     }
