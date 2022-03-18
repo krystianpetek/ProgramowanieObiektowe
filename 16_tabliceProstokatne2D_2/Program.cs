@@ -30,6 +30,9 @@ namespace _16_tabliceProstokatne2D_2
 
             WyswietlMacierz(macierzA);
             WyswietlMacierz(macierzB);
+        
+            // liczenie
+
         }
 
         public static void PrzepisanieMacierzy(int[] wartosciMacierzy, int[,] macierzWynikowa)
