@@ -17,7 +17,7 @@ namespace _16_tabliceProstokatne2D_2
             int.TryParse(wymiaryMacierzB[0], out int nB);
             int.TryParse(wymiaryMacierzB[1], out int mB);
 
-            if(mA != nB)
+            if (mA != nB)
             {
                 Console.WriteLine("impossible");
                 return;
@@ -28,11 +28,23 @@ namespace _16_tabliceProstokatne2D_2
             int[,] macierzB = new int[nB, mB];
             PrzepisanieMacierzy(wartosciMacierzB, macierzB);
 
-            WyswietlMacierz(macierzA);
-            WyswietlMacierz(macierzB);
-        
             // liczenie
 
+            for (int k = 0; k < nA; k++)
+            {
+                for (int l = 0; l < mB; l++)
+                {
+                    int wynik2 = 0;
+                    for (int i = 0; i < nB; i++)
+                    {
+                        int macierzX = macierzA[k, i];
+                        int macierzY = macierzB[i, l];
+                        wynik2 += macierzX * macierzY;
+                    }
+                    Console.Write($"{wynik2} ");
+                }
+                Console.WriteLine();
+            }
         }
 
         public static void PrzepisanieMacierzy(int[] wartosciMacierzy, int[,] macierzWynikowa)
@@ -52,16 +64,14 @@ namespace _16_tabliceProstokatne2D_2
 
         public static void WyswietlMacierz(int[,] macierz)
         {
-            for(int i = 0; i < macierz.GetLength(0); i++)
+            for (int i = 0; i < macierz.GetLength(0); i++)
             {
-                for(int j = 0;j< macierz.GetLength(1); j++)
+                for (int j = 0; j < macierz.GetLength(1); j++)
                 {
-                    Console.Write($"{macierz[i,j]} ");
+                    Console.Write($"{macierz[i, j]} ");
                 }
                 Console.WriteLine();
             }
         }
     }
-    
 }
-
