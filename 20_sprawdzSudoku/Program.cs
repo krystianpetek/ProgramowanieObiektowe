@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace _20_sprawdzSudoku
 {
@@ -148,7 +147,6 @@ namespace _20_sprawdzSudoku
                 }
                 for (int j = 0; j < sudoku[i].Length; j++)
                 {
-                    
                     if (j < 3)
                         lista1[x + mnoznik] = sudoku[i][j];
                     else if (j < 6)
@@ -162,10 +160,10 @@ namespace _20_sprawdzSudoku
                         x = 0;
                     }
                 }
-                
             }
             return judge;
         }
+
         public static bool jeszczeJedenCheck(int[] tab)
         {
             for (int c = 0; c < tab.Length; c++)
