@@ -20,11 +20,7 @@ namespace _25_kolekcjeAgregatorLogow
         static void Main(string[] args)
         {
             int.TryParse(Console.ReadLine(), out int howManyLogs);
-            //string[][] lista = new string[howManyLogs][];
-            //for(int i = 0; i < howManyLogs; i++)
-            //{
-            //    lista[i] = Console.ReadLine().Split(" ");
-            //}
+
             List<Logi> listaLogow = new List<Logi>();
             for (int i = 0; i < howManyLogs; i++)
             {
@@ -32,6 +28,70 @@ namespace _25_kolekcjeAgregatorLogow
                 Logi x = new Logi(linia[0], linia[1], int.Parse(linia[2]));
                 listaLogow.Add(x);
             }
+
+
+            //SortedDictionary<string, int> listaUzytkownikow = new SortedDictionary<string, int>();
+            //SortedDictionary<string, string> listaIP = new SortedDictionary<string, string>();
+
+            //for (int i = 0; i < listaLogow.Count; i++)
+            //{
+            //    if((listaUzytkownikow.ContainsKey(listaLogow[i].Nazwa)))
+            //    {
+            //        listaUzytkownikow[listaLogow[i].Nazwa] += listaLogow[i].Czas;
+            //    }
+            //    else
+            //    {
+            //        listaUzytkownikow.Add(listaLogow[i].Nazwa, listaLogow[i].Czas);
+            //    }
+            //}
+            //for (int i = 0; i < listaLogow.Count; i++)
+            //{
+            //    if ((listaIP.ContainsKey(listaLogow[i].Nazwa)))
+            //    {
+            //        if (!listaIP[listaLogow[i].Nazwa].Contains(listaLogow[i].IP))
+            //            listaIP[listaLogow[i].Nazwa] += $" {listaLogow[i].IP}";
+            //    }
+            //    else
+            //    {
+            //        listaIP.Add(listaLogow[i].Nazwa, listaLogow[i].IP);
+            //    }
+            //}
+            List<Wyjscie> listaWyjsciowa = new List<Wyjscie>();
+            for (int i = 0; i < listaLogow.Count; i++)
+            {
+                Wyjscie encja = new Wyjscie(listaLogow[i].IP, listaLogow[i].Nazwa, listaLogow[i].Czas);
+                bool sprawdz = false;
+                for(int j = 0;j<listaWyjsciowa.Count; j++)
+                {
+                    if(listaWyjsciowa[j].Nazwa == encja.Nazwa)
+                    {
+                        sprawdz = true;
+                        listaWyjsciowa[j].Czas += encja.Czas;
+                        if (!listaWyjsciowa[j].listaIP.Contains(encja.listaIP[0]))
+                        {
+                            listaWyjsciowa[j].listaIP.Add(encja.listaIP[0]);
+                        }
+                    }
+                    listaWyjsciowa[j].listaIP.Sort();
+                }
+                if (!sprawdz)
+                {
+                        listaWyjsciowa.Add(encja);
+                }
+            }
+
+            for (int i = 0; i < listaWyjsciowa.Count; i++)
+            {
+                Console.Write($"{listaWyjsciowa[i].Nazwa}: {listaWyjsciowa[i].Czas}");
+                for(int j = 0;j<listaWyjsciowa[i].listaIP.Count;j++)
+                {
+                    if(j == listaWyjsciowa[i].listaIP.Count)
+                    {
+                        Console.Write($"{listaWyjsciowa[i].listaIP[]}]");
+                        Console.WriteLine();
+                    }
+                    Console.Write($"[{}");
+                }
         }
     }
     public class Logi
@@ -50,5 +110,17 @@ namespace _25_kolekcjeAgregatorLogow
         public int cIP => int.Parse(IP.Split(".")[2]);
         public int dIP => int.Parse(IP.Split(".")[3]);
 
+    }
+    public class Wyjscie
+    {
+        public Wyjscie(string ip, string nazwa, int czas)
+        {
+            listaIP.Add(ip);
+            Nazwa = nazwa;
+            Czas = czas;
+        }
+        public List<string> listaIP = new List<string>();
+        public string Nazwa { get; set; }
+        public int Czas { get; set; }
     }
 }
