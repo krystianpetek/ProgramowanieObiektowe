@@ -4,7 +4,7 @@ namespace _24_Czas24h
 {
     internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             // Test 1
             var t = new Czas24h(2, 15, 37);
