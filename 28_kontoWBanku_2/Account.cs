@@ -32,7 +32,7 @@ namespace _28_kontoWBanku_2
             IsBlocked = true;
         }
 
-        public bool Deposit(decimal amount)
+        public virtual bool Deposit(decimal amount)
         {
             if (amount > 0 && IsBlocked == false)
             {
@@ -47,11 +47,11 @@ namespace _28_kontoWBanku_2
             IsBlocked = false;
         }
 
-        public bool Withdrawal(decimal amount)
+        public virtual bool Withdrawal(decimal amount)
         {
             if (amount > 0 && IsBlocked == false)
             {
-                if (Balance > Math.Round(amount, PRECISION))
+                if (Balance >= Math.Round(amount, PRECISION))
                 {
                     Balance -= Math.Round(amount, PRECISION);
                     return true;
