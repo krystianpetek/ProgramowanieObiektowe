@@ -71,13 +71,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RationalLibrary", "Rational
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RationalConsoleApp", "RationalConsoleApp\RationalConsoleApp.csproj", "{FF904824-CDE6-4D36-9B0F-3B7454D21EA1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RationalUnitTests", "RationalUnitTests\RationalUnitTests.csproj", "{FE7FCDC4-3C8C-4FFD-A5B0-16E5F7BB9B03}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RationalUnitTests", "RationalUnitTests\RationalUnitTests.csproj", "{FE7FCDC4-3C8C-4FFD-A5B0-16E5F7BB9B03}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Laboratorium01", "Laboratorium01", "{EAF16590-1D9A-41C3-A3B8-63CC13E6DFE1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GradeBook", "GradeBook\GradeBook.csproj", "{F62EFB05-6678-4EF3-96B8-DAF42ED0B784}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GradeBook", "GradeBook\GradeBook.csproj", "{F62EFB05-6678-4EF3-96B8-DAF42ED0B784}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GradeBookTests", "GradeBookTests\GradeBookTests.csproj", "{D5CCC8E3-501D-4222-BF29-75296EC4FA4B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GradeBookTests", "GradeBookTests\GradeBookTests.csproj", "{D5CCC8E3-501D-4222-BF29-75296EC4FA4B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Laboratorium02", "Laboratorium02", "{C1AF0C03-D59A-47F0-8206-776C2C1DB3B0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
