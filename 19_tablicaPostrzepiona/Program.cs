@@ -57,7 +57,7 @@ namespace _19_tablicaPostrzepiona
                 {
                     if (tab[i][j] == '\0')
                     {
-                        
+
                         Console.Write("  ");
                     }
                     else

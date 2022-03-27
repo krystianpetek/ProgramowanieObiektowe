@@ -1,4 +1,4 @@
-﻿using System.Numerics;
+﻿global using System.Numerics;
 
 namespace RationalLibrary
 {
@@ -10,11 +10,11 @@ namespace RationalLibrary
         #region stałe
         public readonly static BigRational Zero = new(0);
         public readonly static BigRational One = new(1);
-        public readonly static BigRational Half = new(1,2);
+        public readonly static BigRational Half = new(1, 2);
 
         public readonly static BigRational PositiveInfinity = new(1, 0);
-        public readonly static BigRational NegativeInfinity = new(-1,0);
-        public readonly static BigRational NaN = new(0,0);
+        public readonly static BigRational NegativeInfinity = new(-1, 0);
+        public readonly static BigRational NaN = new(0, 0);
 
         #endregion
 
@@ -26,7 +26,7 @@ namespace RationalLibrary
             var gcd = BigInteger.GreatestCommonDivisor(numerator, denominator);
             Numerator /= gcd;
             Denominator /= gcd;
-            if(Denominator < 0)
+            if (Denominator < 0)
             {
                 Numerator *= -1;
                 Denominator *= -1;

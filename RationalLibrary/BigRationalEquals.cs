@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace RationalLibrary
 {
     public readonly partial struct BigRational : IEquatable<BigRational>
@@ -17,12 +11,12 @@ namespace RationalLibrary
                 return true;
             if (IsNaN(this) && !IsNaN(other) || !IsNaN(this) && IsNaN(other))
                 return false;
-           
+
             return this.Numerator == other.Numerator && this.Denominator == other.Denominator;
         }
         public override bool Equals(object? obj)
         {
-            if(obj == null) return false;
+            if (obj == null) return false;
             if (obj is BigRational other) return Equals(other);
 
             return false;
