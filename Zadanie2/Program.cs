@@ -1,2 +1,15 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿using Zadanie2.Device;
+using Zadanie2.Document;
+
+var xerox = new Copier();
+xerox.PowerOn();
+IDocument doc1 = new PDFDocument("aaa.pdf");
+xerox.Print(in doc1);
+
+IDocument doc2;
+xerox.Scan(out doc2);
+
+xerox.ScanAndPrint();
+System.Console.WriteLine(xerox.Counter);
+System.Console.WriteLine(xerox.PrintCounter);
+System.Console.WriteLine(xerox.ScanCounter);
