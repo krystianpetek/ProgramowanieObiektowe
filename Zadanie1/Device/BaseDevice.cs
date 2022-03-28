@@ -2,7 +2,7 @@
 {
     public abstract class BaseDevice : IDevice
     {
-        public int Counter { get; private set; }
+        public int Counter { get; protected set; } = 0;
 
         protected IDevice.State state { get; set; }
 

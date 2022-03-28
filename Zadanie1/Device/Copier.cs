@@ -11,7 +11,6 @@ namespace Zadanie1.Device
 
         public int PrintCounter;
         public int ScanCounter;
-        public new int Counter;
 
         public void ScanAndPrint()
         {
