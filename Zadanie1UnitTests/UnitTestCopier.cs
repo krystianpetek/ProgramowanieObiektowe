@@ -42,6 +42,7 @@ namespace Zadanie1UnitTests
             }
             Assert.AreEqual(currentConsoleOut, Console.Out);
         }
+
         [TestMethod]
         public void Copier_Print_DeviceOFF()
         {
@@ -50,7 +51,7 @@ namespace Zadanie1UnitTests
 
             var currentConsoleOut = Console.Out;
             currentConsoleOut.Flush();
-            using(var consoleOutput = new ConsoleRedirectionToStringWriter())
+            using (var consoleOutput = new ConsoleRedirectionToStringWriter())
             {
                 IDocument doc1 = new PDFDocument("aaa.pdf");
                 copier.Print(in doc1);
@@ -88,15 +89,14 @@ namespace Zadanie1UnitTests
 
             var currentConsoleOut = Console.Out;
             currentConsoleOut.Flush();
-            using( var consoleOutput = new ConsoleRedirectionToStringWriter())
+            using (var consoleOutput = new ConsoleRedirectionToStringWriter())
             {
                 IDocument document1;
                 copier.Scan(out document1);
                 Assert.IsFalse(consoleOutput.GetOutput().Contains("Scan"));
             }
-            Assert.AreEqual (currentConsoleOut, Console.Out);
+            Assert.AreEqual(currentConsoleOut, Console.Out);
         }
-
 
         // weryfikacja, czy wywołanie metody `Scan` z parametrem określającym format dokumentu zawiera odpowiednie rozszerzenie ( `.jpg`, `.txt`, `.pdf` )
         [TestMethod]
@@ -107,7 +107,7 @@ namespace Zadanie1UnitTests
 
             var currentConsoleOut = Console.Out;
             currentConsoleOut.Flush();
-            using(var consoleOutput = new ConsoleRedirectionToStringWriter() )
+            using (var consoleOutput = new ConsoleRedirectionToStringWriter())
             {
                 IDocument document;
                 copier.Scan(out document, IDocument.FormatType.TXT);
@@ -156,15 +156,99 @@ namespace Zadanie1UnitTests
             copier.PowerOff();
             var currentConsoleOut = Console.Out;
             currentConsoleOut.Flush();
-            using(var consoleOutput = new ConsoleRedirectionToStringWriter())
+            using (var consoleOutput = new ConsoleRedirectionToStringWriter())
             {
                 copier.ScanAndPrint();
                 Assert.IsFalse(consoleOutput.GetOutput().Contains("Scan"));
                 Assert.IsFalse(consoleOutput.GetOutput().Contains("Print"));
             }
-            Assert.AreEqual(Console.Out, currentConsoleOut);
+            Assert.AreEqual(currentConsoleOut, Console.Out);
         }
 
+        // weryfikacja ilości wydruku przez drukarke
+        [TestMethod]
+        public void Copier_PrintCounter()
+        {
+            var copier = new Copier();
+            copier.PowerOn();
 
+            IDocument doc1 = new PDFDocument("aaa.pdf");
+            copier.Print(in doc1);
+            IDocument doc2 = new TextDocument("aaa.txt");
+            copier.Print(in doc2);
+            IDocument doc3 = new ImageDocument("aaa.jpg");
+            copier.Print(in doc3);
+
+            copier.PowerOff();
+            copier.Print(in doc3);
+            copier.Scan(out doc1);
+            copier.PowerOn();
+
+            copier.ScanAndPrint();
+            copier.ScanAndPrint();
+
+            // 5 wydrukó, gdy urządzenie włączone
+            Assert.AreEqual(5, copier.PrintCounter);
+        }
+
+        [TestMethod]
+        public void Copier_ScanCounter()
+        {
+            var copier = new Copier();
+            copier.PowerOn();
+
+            IDocument doc1;
+            copier.Scan(out doc1);
+            IDocument doc2;
+            copier.Scan(out doc2);
+
+            IDocument doc3 = new ImageDocument("aaa.jpg");
+            copier.Print(in doc3);
+
+            copier.PowerOff();
+            copier.Print(in doc3);
+            copier.Scan(out doc1);
+            copier.PowerOn();
+
+            copier.ScanAndPrint();
+            copier.ScanAndPrint();
+
+            // 4 skany, gdy urzadzenie właczone
+            Assert.AreEqual(4, copier.ScanCounter);
+        }
+
+        // licznik włączeń
+        [TestMethod]
+        public void Copier_PowerOnCounter()
+        {
+            var copier = new Copier();
+            copier.PowerOn();
+            copier.PowerOn();
+            copier.PowerOn();
+
+            IDocument document1;
+            copier.Scan(out document1);
+            IDocument document2;
+            copier.Scan(out document2);
+
+            copier.PowerOff();
+            copier.PowerOff();
+            copier.PowerOff();
+            copier.PowerOn();
+
+            IDocument document3 = new ImageDocument("aaa.jpg");
+            copier.Print(in document3);
+
+            copier.PowerOff();
+            copier.Print(in document3);
+            copier.Scan(out document1);
+            copier.PowerOn();
+
+            copier.ScanAndPrint();
+            copier.ScanAndPrint();
+
+            // 3 włączenia
+            Assert.AreEqual(3, copier.Counter);
+        }
     }
 }

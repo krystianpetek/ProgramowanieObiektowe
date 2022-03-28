@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CS_MSDN_Inheritance
 {
@@ -13,6 +9,7 @@ namespace CS_MSDN_Inheritance
         protected string Title { get; set; }
         protected string Description { get; set; }
         protected TimeSpan jobLength { get; set; }
+
         public WorkItem()
         {
             ID = 0;
@@ -20,6 +17,7 @@ namespace CS_MSDN_Inheritance
             Description = "Default description";
             jobLength = new TimeSpan();
         }
+
         public WorkItem(string title, string desc, TimeSpan joblen)
         {
             this.ID = GetNextID();
@@ -27,14 +25,17 @@ namespace CS_MSDN_Inheritance
             this.Description = desc;
             this.jobLength = joblen;
         }
-        static WorkItem() =>  currentID = 0;
+
+        static WorkItem() => currentID = 0;
+
         protected int GetNextID() => ++currentID;
+
         public void Update(string title, TimeSpan joblen)
         {
             this.Title = title;
             this.jobLength = joblen;
         }
-        public override string ToString() => $"{this.ID} - {this.Title}";
 
+        public override string ToString() => $"{this.ID} - {this.Title}";
     }
 }

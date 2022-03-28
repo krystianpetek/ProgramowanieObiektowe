@@ -53,7 +53,7 @@ namespace Zadanie1.Device
         public void Scan(out IDocument document, IDocument.FormatType formatType = IDocument.FormatType.JPG)
         {
             document = new TextDocument("");
-            
+
             if (GetState() == IDevice.State.ON)
             {
                 ScanCounter++;
@@ -62,9 +62,11 @@ namespace Zadanie1.Device
                     case IDocument.FormatType.TXT:
                         document = new TextDocument($"TextScan{ScanCounter}.txt");
                         break;
+
                     case IDocument.FormatType.PDF:
                         document = new PDFDocument($"PDFScan{ScanCounter}.pdf");
                         break;
+
                     case IDocument.FormatType.JPG:
                     default:
                         document = new ImageDocument($"ImageScan{ScanCounter}.jpg");
