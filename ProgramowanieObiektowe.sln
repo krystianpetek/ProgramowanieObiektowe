@@ -65,7 +65,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "29_implementacjaUproszczone
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Powtorka", "Powtorka", "{F5D26166-77A0-431C-A81C-41090FCD56EA}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Wyklad02", "Wyklad02", "{9F0C737A-66A0-49D3-9AFB-9D6434D3E86B}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Konwersatorium02", "Konwersatorium02", "{9F0C737A-66A0-49D3-9AFB-9D6434D3E86B}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RationalLibrary", "RationalLibrary\RationalLibrary.csproj", "{178066A8-4CFA-4956-B14F-D065229D53B5}"
 EndProject
