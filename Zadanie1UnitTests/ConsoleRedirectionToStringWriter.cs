@@ -1,5 +1,4 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
+﻿using System;
 using System.IO;
 
 namespace Zadanie1UnitTests
@@ -13,8 +12,9 @@ namespace Zadanie1UnitTests
         {
             stringWriter = new StringWriter();
             originalOutput = Console.Out;
-            Console.SetOut(originalOutput);
+            Console.SetOut(stringWriter);
         }
+
         public string GetOutput()
         {
             return stringWriter.ToString();

@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Zadanie1.Document;
+﻿using Zadanie1.Document;
+using static Zadanie1.Document.IDocument;
 
 namespace Zadanie1.Device
 {
@@ -14,6 +10,6 @@ namespace Zadanie1.Device
         /// </summary>
         /// <param name="document">obiekt typu IDocument, różny od null</param>
         /// <param name="formatType">obiekt typu enum IDocument.FormatType, zawiera format pliku</param>
-        public void Scan(out IDocument document, IDocument.FormatType formatType);
+        public void Scan(out IDocument document, FormatType formatType);
     }
 }

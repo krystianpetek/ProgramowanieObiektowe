@@ -1,20 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Zadanie1.Document
+﻿namespace Zadanie1.Document
 {
     public interface IDocument
     {
         /// <summary>
         /// Przechowuje możliwe formaty plików
         /// </summary>
-        public enum FormatType { 
+        public enum FormatType
+        {
             TXT,
             PDF,
-            JPG 
+            JPG
         }
 
         /// <summary>
