@@ -41,6 +41,10 @@ namespace Zadanie1.Device
                 Console.Write("Print: ");
                 Console.WriteLine();
                 ScanCounter++;
+                // https://github.com/wsei-csharp201/cs-lab04-Implementacje-interfejsow-implicit-explicit-kompozycja/blob/main/README.md
+                // https://github.com/wsei-csharp201/cs-lab04-Implementacje-interfejsow-implicit-explicit-kompozycja/blob/main/UnitTestCopier.cs
+                // https://raw.githubusercontent.com/wsei-csharp201/cs-lab04-Implementacje-interfejsow-implicit-explicit-kompozycja/main/ClassDiagram-ver1.png
+                // https://raw.githubusercontent.com/wsei-csharp201/cs-lab04-Implementacje-interfejsow-implicit-explicit-kompozycja/main/ClassDiagram-ver2.png
             }
         }
         
