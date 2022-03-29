@@ -72,7 +72,6 @@ namespace Zadanie2.Device
                 DateTime x = DateTime.Now;
                 Console.Write($"{x} Send fax: {doc.GetFileName()} to number: {faxNumber }\n");
             }
-
         }
 
         public void ReceiveFax(out IDocument document)
