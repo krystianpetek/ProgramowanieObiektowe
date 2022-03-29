@@ -12,9 +12,11 @@ xerox.ReceiveFax(out doc1Fax);
 IDocument doc2;
 xerox.Scan(out doc2);
 
-xerox.SendFax("123123123");
+xerox.SendFax("+48338720020");
 
 xerox.ScanAndPrint();
-System.Console.WriteLine(xerox.Counter);
-System.Console.WriteLine(xerox.PrintCounter);
-System.Console.WriteLine(xerox.ScanCounter);
+Console.WriteLine($"Ilość uruchomień urządzenia wielofunkcyjnego: {xerox.Counter}");
+Console.WriteLine($"Ilość wydruków z urządzenia wielofunkcyjnego: {xerox.PrintCounter}");
+Console.WriteLine($"Ilość skanów z urządzenia wielofunkcyjnego: {xerox.ScanCounter}");
+Console.WriteLine($"Ilość wysłanych faxów z urządzenia wielofunkcyjnego: {xerox.SendFaxCounter}");
+Console.WriteLine($"Ilość odebranych faxów z urządzenia wielofunkcyjnego: {xerox.ReceiveFaxCounter}");

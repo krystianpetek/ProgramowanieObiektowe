@@ -2,7 +2,7 @@
 
 namespace Zadanie2.Device
 {
-    internal class MultiFunctionalDevice : BaseDevice, IPrinter, IScanner, IFax
+    public class MultiFunctionalDevice : BaseDevice, IPrinter, IScanner, IFax
     {
         public MultiFunctionalDevice()
         {
@@ -11,6 +11,8 @@ namespace Zadanie2.Device
 
         public int PrintCounter;
         public int ScanCounter;
+        public int SendFaxCounter;
+        public int ReceiveFaxCounter;
 
         public void ScanAndPrint()
         {
@@ -77,18 +79,15 @@ namespace Zadanie2.Device
             }
         }
 
-        public int FaxCounter;
-
         public void SendFax(string faxNumber)
         {
             if(state == IDevice.State.ON)
             {
-                FaxCounter++;
+                SendFaxCounter++;
                 IDocument doc;
                 Scan(out doc);
                 DateTime x = DateTime.Now;
                 Console.Write($"{x} Send fax: {doc.GetFileName()} to number: {faxNumber }\n");
-
             }
 
         }
@@ -98,9 +97,9 @@ namespace Zadanie2.Device
             document = new ImageDocument("");
             if (state == IDevice.State.ON)
             {
-                FaxCounter++;
+                ReceiveFaxCounter++;
                 DateTime x = DateTime.Now;
-                document = new ImageDocument($"Fax{FaxCounter}.{document.GetFormatType().ToString().ToLower()}");
+                document = new ImageDocument($"Fax{ReceiveFaxCounter}.{document.GetFormatType().ToString().ToLower()}");
                 Console.Write($"{x} Receive fax: {document.GetFileName()}\n");
                 Print(document);
             }
