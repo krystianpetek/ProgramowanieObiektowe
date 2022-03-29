@@ -2,16 +2,13 @@
 
 namespace Zadanie3.Device
 {
-    public class Copier
+    public class Copier : BaseDevice
     {
         Printer printer;
         Scanner scanner;
 
         public Copier()
-        {
-            printer.state = IDevice.State.OFF;
-            scanner.state = IDevice.State.OFF;
-            
+        {            
             state = IDevice.State.OFF;
         }
 

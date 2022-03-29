@@ -13,6 +13,7 @@ namespace Zadanie3.Device
 
         public IDevice.State GetState()
         {
+            
             throw new NotImplementedException();
         }
 
