@@ -6,12 +6,11 @@ xerox.PowerOn();
 IDocument doc1 = new PDFDocument("aaa.pdf");
 xerox.Print(in doc1);
 
-IDocument doc1Fax;
-xerox.ReceiveFax(out doc1Fax);
+xerox.ReceiveFax(out doc1);
+xerox.ReceiveFax(out doc1);
 
 IDocument doc2;
 xerox.Scan(out doc2);
-
 xerox.SendFax("+48338720020");
 
 xerox.ScanAndPrint();
