@@ -2,9 +2,9 @@
 {
     public abstract class BaseDevice : IDevice
     {
-        public int Counter { get; protected set; } = 0;
+        public int Counter { get; private set; } = 0;
 
-        protected IDevice.State state { get; set; }
+        protected IDevice.State state = IDevice.State.OFF;
 
         public IDevice.State GetState() => state;
 
