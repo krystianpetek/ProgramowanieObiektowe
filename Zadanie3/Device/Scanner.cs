@@ -7,7 +7,7 @@ using Zadanie3.Document;
 
 namespace Zadanie3.Device
 {
-    public class Printer : IPrinter
+    public class Scanner : IScanner
     {
         public int Counter => throw new NotImplementedException();
 
@@ -26,7 +26,7 @@ namespace Zadanie3.Device
             throw new NotImplementedException();
         }
 
-        public void Print(in IDocument document)
+        public void Scan(out IDocument document, IDocument.FormatType formatType)
         {
             throw new NotImplementedException();
         }

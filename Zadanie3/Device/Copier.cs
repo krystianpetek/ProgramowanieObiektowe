@@ -1,18 +1,22 @@
-﻿using Zadanie2.Document;
+﻿using Zadanie3.Document;
 
-namespace Zadanie2.Device
+namespace Zadanie3.Device
 {
-    public class MultiFunctionalDevice : BaseDevice, IPrinter, IScanner, IFax
+    public class Copier
     {
-        public MultiFunctionalDevice()
+        Printer printer;
+        Scanner scanner;
+
+        public Copier()
         {
+            printer.state = IDevice.State.OFF;
+            scanner.state = IDevice.State.OFF;
+            
             state = IDevice.State.OFF;
         }
 
         public int PrintCounter;
         public int ScanCounter;
-        public int SendFaxCounter;
-        public int ReceiveFaxCounter;
 
         public void ScanAndPrint()
         {
@@ -21,6 +25,23 @@ namespace Zadanie2.Device
                 IDocument dokument;
                 Scan(out dokument);
                 Print(dokument);
+            }
+        }
+
+        public new void PowerOn()
+        {
+            if (GetState() == IDevice.State.OFF)
+            {
+                Counter++;
+                state = IDevice.State.ON;
+            }
+        }
+
+        public new void PowerOff()
+        {
+            if (GetState() == IDevice.State.ON)
+            {
+                state = IDevice.State.OFF;
             }
         }
 
@@ -59,32 +80,6 @@ namespace Zadanie2.Device
                 }
                 DateTime x = DateTime.Now;
                 Console.Write($"{x} Scan: {document.GetFileName()}\n");
-            }
-        }
-
-        public void SendFax(string faxNumber)
-        {
-            if(state == IDevice.State.ON)
-            {
-                SendFaxCounter++;
-                IDocument doc;
-                Scan(out doc);
-                DateTime x = DateTime.Now;
-                Console.Write($"{x} Send fax: {doc.GetFileName()} to number: {faxNumber }\n");
-            }
-
-        }
-
-        public void ReceiveFax(out IDocument document)
-        {
-            document = new ImageDocument("");
-            if (state == IDevice.State.ON)
-            {
-                ReceiveFaxCounter++;
-                DateTime x = DateTime.Now;
-                document = new ImageDocument($"Fax{ReceiveFaxCounter}.{document.GetFormatType().ToString().ToLower()}");
-                Console.Write($"{x} Receive fax: {document.GetFileName()}\n");
-                Print(document);
             }
         }
     }

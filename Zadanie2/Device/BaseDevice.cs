@@ -10,14 +10,21 @@
 
         public void PowerOff()
         {
-            state = IDevice.State.OFF;
-            Console.WriteLine("... Device is OFF !");
+            if (GetState() == IDevice.State.ON)
+            {
+                state = IDevice.State.OFF;
+                Console.WriteLine("... Device is OFF !");
+            }
         }
 
         public void PowerOn()
         {
-            state = IDevice.State.ON;
-            Console.WriteLine("Device is ON ...");
+            if (GetState() == IDevice.State.OFF)
+            {
+                state = IDevice.State.ON;
+                Counter++;
+                Console.WriteLine("Device is ON ...");
+            }
         }
     }
 }

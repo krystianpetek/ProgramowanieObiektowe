@@ -22,23 +22,6 @@ namespace Zadanie1.Device
             }
         }
 
-        public new void PowerOn()
-        {
-            if (GetState() == IDevice.State.OFF)
-            {
-                Counter++;
-                state = IDevice.State.ON;
-            }
-        }
-
-        public new void PowerOff()
-        {
-            if (GetState() == IDevice.State.ON)
-            {
-                state = IDevice.State.OFF;
-            }
-        }
-
         public void Print(in IDocument document)
         {
             if (GetState() == IDevice.State.ON)
