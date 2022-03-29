@@ -4,11 +4,6 @@ namespace Zadanie1.Device
 {
     public class Copier : BaseDevice, IPrinter, IScanner
     {
-        public Copier()
-        {
-            state = IDevice.State.OFF;
-        }
-
         public int PrintCounter;
         public int ScanCounter;
 
@@ -27,7 +22,6 @@ namespace Zadanie1.Device
             if (GetState() == IDevice.State.ON)
             {
                 PrintCounter++;
-
                 DateTime x = DateTime.Now;
                 Console.Write($"{x} Print: {document.GetFileName()}\n");
             }

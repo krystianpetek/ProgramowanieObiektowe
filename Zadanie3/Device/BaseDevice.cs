@@ -3,13 +3,12 @@ namespace Zadanie3.Device
 {
     public abstract class BaseDevice : IDevice
     {
-        public int Counter { get; protected set; } = 0;
-
-        protected IDevice.State state;
+        public int Counter { get; set; } = 0;
+        public IDevice.State state { get; set; } = IDevice.State.OFF;
 
         public IDevice.State GetState() => state;
 
-        public void PowerOff()
+        public virtual void PowerOff()
         {
             if (GetState() == IDevice.State.ON)
             {
@@ -18,7 +17,7 @@ namespace Zadanie3.Device
             }
         }
 
-        public void PowerOn()
+        public virtual void PowerOn()
         {
             if (GetState() == IDevice.State.OFF)
             {

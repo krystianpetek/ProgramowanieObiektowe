@@ -7,76 +7,50 @@ namespace Zadanie3.Device
         Printer printer;
         Scanner scanner;
 
-        public Copier()
-        {            
-            state = IDevice.State.OFF;
-        }
+        public int PrintCounter => printer.Counter;
+        public int ScanCounter => scanner.Counter;
 
-        public int PrintCounter;
-        public int ScanCounter;
+        public Copier()
+        {
+            printer = new Printer();
+            scanner = new Scanner();
+        }
+        public void Print(in IDocument document)
+        {
+            printer.Print(document);
+        }
 
         public void ScanAndPrint()
         {
-            if (GetState() == IDevice.State.ON)
-            {
-                IDocument dokument;
-                Scan(out dokument);
-                Print(dokument);
-            }
+            IDocument document = new ImageDocument("tempFile.jpg");
+            scanner.Scan(out document);
+            printer.Print(document);
         }
-
-        public new void PowerOn()
+        public void Scan(out IDocument document)
         {
-            if (GetState() == IDevice.State.OFF)
-            {
-                Counter++;
-                state = IDevice.State.ON;
-            }
+            scanner.Scan(out document);
         }
 
-        public new void PowerOff()
+        public override void PowerOff()
         {
             if (GetState() == IDevice.State.ON)
             {
                 state = IDevice.State.OFF;
+                printer.state = IDevice.State.OFF;
+                scanner.state = IDevice.State.OFF;
+                Console.WriteLine("... Device is OFF !");
             }
         }
 
-        public void Print(in IDocument document)
+        public override void PowerOn()
         {
-            if (GetState() == IDevice.State.ON)
+            if (GetState() == IDevice.State.OFF)
             {
-                PrintCounter++;
-
-                DateTime x = DateTime.Now;
-                Console.Write($"{x} Print: {document.GetFileName()}\n");
-            }
-        }
-
-        public void Scan(out IDocument document, IDocument.FormatType formatType = IDocument.FormatType.JPG)
-        {
-            document = new TextDocument("");
-
-            if (GetState() == IDevice.State.ON)
-            {
-                ScanCounter++;
-                switch (formatType)
-                {
-                    case IDocument.FormatType.TXT:
-                        document = new TextDocument($"TextScan{ScanCounter}.txt");
-                        break;
-
-                    case IDocument.FormatType.PDF:
-                        document = new PDFDocument($"PDFScan{ScanCounter}.pdf");
-                        break;
-
-                    case IDocument.FormatType.JPG:
-                    default:
-                        document = new ImageDocument($"ImageScan{ScanCounter}.jpg");
-                        break;
-                }
-                DateTime x = DateTime.Now;
-                Console.Write($"{x} Scan: {document.GetFileName()}\n");
+                base.Counter++;
+                state = IDevice.State.ON;
+                printer.state = IDevice.State.ON;
+                scanner.state = IDevice.State.ON;
+                Console.WriteLine("Device is ON ...");
             }
         }
     }

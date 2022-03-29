@@ -2,9 +2,10 @@
 {
     public interface IDevice
     {
-        /// <summary>
-        /// Przechowuje możliwe stany urządzeń
-        /// </summary>
+        //protected State state { get; set; }
+        ///// <summary>
+        ///// Przechowuje możliwe stany urządzeń
+        ///// </summary>
         public enum State
         {
             ON,

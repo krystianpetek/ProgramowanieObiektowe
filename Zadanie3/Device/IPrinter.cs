@@ -9,5 +9,6 @@ namespace Zadanie3.Device
         /// </summary>
         /// <param name="document">obiekt typu IDocument, różny od null</param>
         public void Print(in IDocument document);
+
     }
 }

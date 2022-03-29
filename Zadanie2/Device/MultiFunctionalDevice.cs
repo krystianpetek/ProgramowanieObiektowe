@@ -4,11 +4,6 @@ namespace Zadanie2.Device
 {
     public class MultiFunctionalDevice : BaseDevice, IPrinter, IScanner, IFax
     {
-        public MultiFunctionalDevice()
-        {
-            state = IDevice.State.OFF;
-        }
-
         public int PrintCounter;
         public int ScanCounter;
         public int SendFaxCounter;
@@ -29,7 +24,6 @@ namespace Zadanie2.Device
             if (GetState() == IDevice.State.ON)
             {
                 PrintCounter++;
-
                 DateTime x = DateTime.Now;
                 Console.Write($"{x} Print: {document.GetFileName()}\n");
             }

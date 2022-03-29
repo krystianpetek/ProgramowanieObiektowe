@@ -9,27 +9,39 @@ namespace Zadanie3.Device
 {
     public class Printer : IPrinter
     {
-        public int Counter => throw new NotImplementedException();
+        public int Counter { get; set; } = 0;
 
-        public IDevice.State GetState()
-        {
-            
-            throw new NotImplementedException();
-        }
+        public IDevice.State state { get; set; } = IDevice.State.OFF;
+
+        public IDevice.State GetState() => this.state;
 
         public void PowerOff()
         {
-            throw new NotImplementedException();
+            if (GetState() == IDevice.State.ON)
+            {
+                state = IDevice.State.OFF;
+                Console.WriteLine("... Device is OFF !");
+            }
         }
 
         public void PowerOn()
         {
-            throw new NotImplementedException();
+            if (GetState() == IDevice.State.OFF)
+            {
+                state = IDevice.State.ON;
+                Counter++;
+                Console.WriteLine("Device is ON ...");
+            }
         }
 
         public void Print(in IDocument document)
         {
-            throw new NotImplementedException();
+            if (GetState() == IDevice.State.ON)
+            {
+                Counter++;
+                DateTime x = DateTime.Now;
+                Console.Write($"{x} Print: {document.GetFileName()}\n");
+            }
         }
     }
 }
