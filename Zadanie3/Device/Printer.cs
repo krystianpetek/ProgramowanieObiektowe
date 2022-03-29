@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Zadanie3.Document;
+﻿using Zadanie3.Document;
 
 namespace Zadanie3.Device
 {
     public class Printer : IPrinter
     {
         public int Counter { get; set; } = 0;
+        public int PrintCounter { get; set; } = 0;
 
         public IDevice.State state { get; set; } = IDevice.State.OFF;
 
@@ -38,7 +34,7 @@ namespace Zadanie3.Device
         {
             if (GetState() == IDevice.State.ON)
             {
-                Counter++;
+                PrintCounter++;
                 DateTime x = DateTime.Now;
                 Console.Write($"{x} Print: {document.GetFileName()}\n");
             }

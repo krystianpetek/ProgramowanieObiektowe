@@ -1,6 +1,6 @@
-﻿using Zadanie2.Document;
+﻿using Zadanie3.Document;
 
-namespace Zadanie2.Device
+namespace Zadanie3.Device
 {
     internal interface IFax : IDevice
     {

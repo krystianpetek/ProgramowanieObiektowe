@@ -1,33 +1,33 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-using Zadanie2.Device;
-using Zadanie2.Document;
+using Zadanie3.Device;
+using Zadanie3.Document;
 
-namespace Zadanie2UnitTests
+namespace Zadanie3UnitTests
 {
     [TestClass]
-    public class UnitTestMultiFunctionalDevice
+    public class MultidimensionalDeviceTests
     {
         /// <summary>
         /// Weryfikacja czy urządzenie jest wyłączone
         /// </summary>
         [TestMethod]
-        public void MultiFunctionalDevice_GetState_StateOff()
+        public void MultidimensionalDevice_GetState_StateOff()
         {
-            var multiFunctionalDevice = new MultiFunctionalDevice();
-            multiFunctionalDevice.PowerOff();
-            Assert.AreEqual(IDevice.State.OFF, multiFunctionalDevice.GetState());
+            var multidimensionalDevice = new MultidimensionalDevice();
+            multidimensionalDevice.PowerOff();
+            Assert.AreEqual(IDevice.State.OFF, multidimensionalDevice.GetState());
         }
 
         /// <summary>
         /// Weryfikacja czy urządzenie jest włączone
         /// </summary>
         [TestMethod]
-        public void MultiFunctionalDevice_GetState_StateOn()
+        public void MultidimensionalDevice_GetState_StateOn()
         {
-            var multiFunctionalDevice = new MultiFunctionalDevice();
-            multiFunctionalDevice.PowerOn();
-            Assert.AreEqual(IDevice.State.ON, multiFunctionalDevice.GetState());
+            var multidimensionalDevice = new MultidimensionalDevice();
+            multidimensionalDevice.PowerOn();
+            Assert.AreEqual(IDevice.State.ON, multidimensionalDevice.GetState());
         }
 
         /// <summary>
@@ -35,17 +35,17 @@ namespace Zadanie2UnitTests
         /// Wymagane przekierowanie konsoli do strumienia StringWriter
         /// </summary>
         [TestMethod]
-        public void MultiFunctionalDevice_Print_DeviceOff()
+        public void MultidimensionalDevice_Print_DeviceOff()
         {
-            var multiFunctionalDevice = new MultiFunctionalDevice();
-            multiFunctionalDevice.PowerOff();
+            var multidimensionalDevice = new MultidimensionalDevice();
+            multidimensionalDevice.PowerOff();
 
             var currentConsoleOut = Console.Out;
             currentConsoleOut.Flush();
             using (var consoleOutput = new ConsoleRedirectionToStringWriter())
             {
                 IDocument doc1 = new PDFDocument("aaa.pdf");
-                multiFunctionalDevice.Print(in doc1);
+                multidimensionalDevice.Print(in doc1);
                 Assert.IsFalse(consoleOutput.GetOutput().Contains("Print"));
             }
             Assert.AreEqual(currentConsoleOut, Console.Out);
@@ -56,17 +56,17 @@ namespace Zadanie2UnitTests
         /// Wymagane przekierowanie konsoli do strumienia StringWriter
         /// </summary>
         [TestMethod]
-        public void MultiFunctionalDevice_Print_DeviceOn()
+        public void MultidimensionalDevice_Print_DeviceOn()
         {
-            var multiFunctionalDevice = new MultiFunctionalDevice();
-            multiFunctionalDevice.PowerOn();
+            var multidimensionalDevice = new MultidimensionalDevice();
+            multidimensionalDevice.PowerOn();
 
             var currentConsoleOut = Console.Out;
             currentConsoleOut.Flush();
             using (var consoleOutput = new ConsoleRedirectionToStringWriter())
             {
                 IDocument doc1 = new PDFDocument("aaa.pdf");
-                multiFunctionalDevice.Print(in doc1);
+                multidimensionalDevice.Print(in doc1);
                 Assert.IsTrue(consoleOutput.GetOutput().Contains("Print:"));
             }
             Assert.AreEqual(currentConsoleOut, Console.Out);
@@ -77,17 +77,17 @@ namespace Zadanie2UnitTests
         /// Wymagane przekierowanie konsoli do strumienia StringWriter
         /// </summary>
         [TestMethod]
-        public void MultiFunctionalDevice_Scan_DeviceOff()
+        public void MultidimensionalDevice_Scan_DeviceOff()
         {
-            var multiFunctionalDevice = new MultiFunctionalDevice();
-            multiFunctionalDevice.PowerOff();
+            var multidimensionalDevice = new MultidimensionalDevice();
+            multidimensionalDevice.PowerOff();
 
             var currentConsoleOut = Console.Out;
             currentConsoleOut.Flush();
             using (var consoleOutput = new ConsoleRedirectionToStringWriter())
             {
                 IDocument document1;
-                multiFunctionalDevice.Scan(out document1);
+                multidimensionalDevice.Scan(out document1);
                 Assert.IsFalse(consoleOutput.GetOutput().Contains("Scan"));
             }
             Assert.AreEqual(currentConsoleOut, Console.Out);
@@ -98,17 +98,17 @@ namespace Zadanie2UnitTests
         /// Wymagane przekierowanie konsoli do strumienia StringWriter
         /// </summary>
         [TestMethod]
-        public void MultiFunctionalDevice_Scan_DeviceOn()
+        public void MultidimensionalDevice_Scan_DeviceOn()
         {
-            var multiFunctionalDevice = new MultiFunctionalDevice();
-            multiFunctionalDevice.PowerOn();
+            var multidimensionalDevice = new MultidimensionalDevice();
+            multidimensionalDevice.PowerOn();
 
             var currentConsoleOut = Console.Out;
             currentConsoleOut.Flush();
             using (var consoleOutput = new ConsoleRedirectionToStringWriter())
             {
                 IDocument doc1;
-                multiFunctionalDevice.Scan(out doc1);
+                multidimensionalDevice.Scan(out doc1);
                 Assert.IsTrue(consoleOutput.GetOutput().Contains("Scan"));
             }
             Assert.AreEqual(currentConsoleOut, Console.Out);
@@ -119,17 +119,17 @@ namespace Zadanie2UnitTests
         /// Wymagane przekierowanie konsoli do strumienia StringWriter
         /// </summary>
         [TestMethod]
-        public void MultiFunctionalDevice_ScanAndPrint_DeviceOn()
+        public void MultidimensionalDevice_ScanAndPrint_DeviceOn()
         {
-            var multiFunctionalDevice = new MultiFunctionalDevice();
-            multiFunctionalDevice.PowerOn();
+            var multidimensionalDevice = new MultidimensionalDevice();
+            multidimensionalDevice.PowerOn();
 
             var currentConsoleOut = Console.Out;
             currentConsoleOut.Flush();
 
             using (var consoleOutput = new ConsoleRedirectionToStringWriter())
             {
-                multiFunctionalDevice.ScanAndPrint();
+                multidimensionalDevice.ScanAndPrint();
                 Assert.IsTrue(consoleOutput.GetOutput().Contains("Scan"));
                 Assert.IsTrue(consoleOutput.GetOutput().Contains("Print"));
             }
@@ -141,15 +141,15 @@ namespace Zadanie2UnitTests
         /// Wymagane przekierowanie konsoli do strumienia StringWriter
         /// </summary>
         [TestMethod]
-        public void MultiFunctionalDevice_ScanAndPrint_DeviceOff()
+        public void MultidimensionalDevice_ScanAndPrint_DeviceOff()
         {
-            var multiFunctionalDevice = new MultiFunctionalDevice();
-            multiFunctionalDevice.PowerOff();
+            var multidimensionalDevice = new MultidimensionalDevice();
+            multidimensionalDevice.PowerOff();
             var currentConsoleOut = Console.Out;
             currentConsoleOut.Flush();
             using (var consoleOutput = new ConsoleRedirectionToStringWriter())
             {
-                multiFunctionalDevice.ScanAndPrint();
+                multidimensionalDevice.ScanAndPrint();
                 Assert.IsFalse(consoleOutput.GetOutput().Contains("Scan"));
                 Assert.IsFalse(consoleOutput.GetOutput().Contains("Print"));
             }
@@ -162,25 +162,25 @@ namespace Zadanie2UnitTests
         /// Wymagane przekierowanie konsoli do strumienia StringWriter
         /// </summary>
         [TestMethod]
-        public void MultiFunctionalDevice_Scan_FormatTypeDocument()
+        public void MultidimensionalDevice_Scan_FormatTypeDocument()
         {
-            var multiFunctionalDevice = new MultiFunctionalDevice();
-            multiFunctionalDevice.PowerOn();
+            var multidimensionalDevice = new MultidimensionalDevice();
+            multidimensionalDevice.PowerOn();
 
             var currentConsoleOut = Console.Out;
             currentConsoleOut.Flush();
             using (var consoleOutput = new ConsoleRedirectionToStringWriter())
             {
                 IDocument document;
-                multiFunctionalDevice.Scan(out document, IDocument.FormatType.TXT);
+                multidimensionalDevice.Scan(out document, IDocument.FormatType.TXT);
                 Assert.IsTrue(consoleOutput.GetOutput().Contains("Scan"));
                 Assert.IsTrue(consoleOutput.GetOutput().Contains(".txt"));
 
-                multiFunctionalDevice.Scan(out document, IDocument.FormatType.JPG);
+                multidimensionalDevice.Scan(out document, IDocument.FormatType.JPG);
                 Assert.IsTrue(consoleOutput.GetOutput().Contains("Scan"));
                 Assert.IsTrue(consoleOutput.GetOutput().Contains(".jpg"));
 
-                multiFunctionalDevice.Scan(out document, IDocument.FormatType.PDF);
+                multidimensionalDevice.Scan(out document, IDocument.FormatType.PDF);
                 Assert.IsTrue(consoleOutput.GetOutput().Contains("Scan"));
                 Assert.IsTrue(consoleOutput.GetOutput().Contains(".pdf"));
             }
@@ -191,219 +191,219 @@ namespace Zadanie2UnitTests
         /// Weryfikacja ilości wydruku plików przez urządzenie wielofunkcyjne
         /// </summary>
         [TestMethod]
-        public void MultiFunctionalDevice_PrintCounter()
+        public void MultidimensionalDevice_PrintCounter()
         {
-            var multiFunctionalDevice = new MultiFunctionalDevice();
-            multiFunctionalDevice.PowerOn();
+            var multidimensionalDevice = new MultidimensionalDevice();
+            multidimensionalDevice.PowerOn();
 
             IDocument doc1 = new PDFDocument("aaa.pdf");
-            multiFunctionalDevice.Print(in doc1);
+            multidimensionalDevice.Print(in doc1);
             IDocument doc2 = new TextDocument("aaa.txt");
-            multiFunctionalDevice.Print(in doc2);
+            multidimensionalDevice.Print(in doc2);
             IDocument doc3 = new ImageDocument("aaa.jpg");
-            multiFunctionalDevice.Print(in doc3);
+            multidimensionalDevice.Print(in doc3);
 
-            multiFunctionalDevice.PowerOff();
-            multiFunctionalDevice.Print(in doc3);
-            multiFunctionalDevice.Scan(out doc1);
-            multiFunctionalDevice.PowerOn();
+            multidimensionalDevice.PowerOff();
+            multidimensionalDevice.Print(in doc3);
+            multidimensionalDevice.Scan(out doc1);
+            multidimensionalDevice.PowerOn();
 
-            multiFunctionalDevice.ScanAndPrint();
-            multiFunctionalDevice.ScanAndPrint();
+            multidimensionalDevice.ScanAndPrint();
+            multidimensionalDevice.ScanAndPrint();
 
             // 5 wydruków, gdy urządzenie włączone
-            Assert.AreEqual(5, multiFunctionalDevice.PrintCounter);
+            Assert.AreEqual(5, multidimensionalDevice.PrintCounter);
         }
 
         /// <summary>
         /// Weryfikacja ilości skanów plików przez urządzenie wielofunkcyjne
         /// </summary>
         [TestMethod]
-        public void MultiFunctionalDevice_ScanCounter()
+        public void MultidimensionalDevice_ScanCounter()
         {
-            var multiFunctionalDevice = new MultiFunctionalDevice();
-            multiFunctionalDevice.PowerOn();
+            var multidimensionalDevice = new MultidimensionalDevice();
+            multidimensionalDevice.PowerOn();
 
             IDocument doc1;
-            multiFunctionalDevice.Scan(out doc1);
+            multidimensionalDevice.Scan(out doc1);
             IDocument doc2;
-            multiFunctionalDevice.Scan(out doc2);
+            multidimensionalDevice.Scan(out doc2);
 
             IDocument doc3 = new ImageDocument("aaa.jpg");
-            multiFunctionalDevice.Print(in doc3);
+            multidimensionalDevice.Print(in doc3);
 
-            multiFunctionalDevice.PowerOff();
-            multiFunctionalDevice.Print(in doc3);
-            multiFunctionalDevice.Scan(out doc1);
-            multiFunctionalDevice.PowerOn();
+            multidimensionalDevice.PowerOff();
+            multidimensionalDevice.Print(in doc3);
+            multidimensionalDevice.Scan(out doc1);
+            multidimensionalDevice.PowerOn();
 
-            multiFunctionalDevice.ScanAndPrint();
-            multiFunctionalDevice.ScanAndPrint();
+            multidimensionalDevice.ScanAndPrint();
+            multidimensionalDevice.ScanAndPrint();
 
             // 4 skany, gdy urzadzenie właczone
-            Assert.AreEqual(4, multiFunctionalDevice.ScanCounter);
+            Assert.AreEqual(4, multidimensionalDevice.ScanCounter);
         }
 
         /// <summary>
         /// Weryfikacja ilości uruchomień urządzenia wielofunkcyjnego
         /// </summary>
         [TestMethod]
-        public void MultiFunctionalDevice_PowerOnCounter()
+        public void MultidimensionalDevice_PowerOnCounter()
         {
-            var multiFunctionalDevice = new MultiFunctionalDevice();
-            multiFunctionalDevice.PowerOn();
-            multiFunctionalDevice.SendFax("+48123123123");
-            multiFunctionalDevice.PowerOn();
+            var multidimensionalDevice = new MultidimensionalDevice();
+            multidimensionalDevice.PowerOn();
+            multidimensionalDevice.SendFax("+48123123123");
+            multidimensionalDevice.PowerOn();
             IDocument documentFax;
-            multiFunctionalDevice.ReceiveFax(out documentFax);
-            multiFunctionalDevice.PowerOn();
+            multidimensionalDevice.ReceiveFax(out documentFax);
+            multidimensionalDevice.PowerOn();
 
             IDocument document1;
-            multiFunctionalDevice.Scan(out document1);
+            multidimensionalDevice.Scan(out document1);
             IDocument document2;
-            multiFunctionalDevice.Scan(out document2);
+            multidimensionalDevice.Scan(out document2);
 
-            multiFunctionalDevice.PowerOff();
-            multiFunctionalDevice.ReceiveFax(out documentFax);
-            multiFunctionalDevice.PowerOff();
-            multiFunctionalDevice.SendFax("+48334321325");
-            multiFunctionalDevice.PowerOff();
-            multiFunctionalDevice.PowerOn();
+            multidimensionalDevice.PowerOff();
+            multidimensionalDevice.ReceiveFax(out documentFax);
+            multidimensionalDevice.PowerOff();
+            multidimensionalDevice.SendFax("+48334321325");
+            multidimensionalDevice.PowerOff();
+            multidimensionalDevice.PowerOn();
 
             IDocument document3 = new ImageDocument("aaa.jpg");
-            multiFunctionalDevice.Print(in document3);
+            multidimensionalDevice.Print(in document3);
 
-            multiFunctionalDevice.PowerOff();
-            multiFunctionalDevice.Print(in document3);
-            multiFunctionalDevice.SendFax("+48334321325");
-            multiFunctionalDevice.Scan(out document1);
-            multiFunctionalDevice.PowerOn();
+            multidimensionalDevice.PowerOff();
+            multidimensionalDevice.Print(in document3);
+            multidimensionalDevice.SendFax("+48334321325");
+            multidimensionalDevice.Scan(out document1);
+            multidimensionalDevice.PowerOn();
 
-            multiFunctionalDevice.ScanAndPrint();
-            multiFunctionalDevice.ScanAndPrint();
+            multidimensionalDevice.ScanAndPrint();
+            multidimensionalDevice.ScanAndPrint();
 
             // 3 włączenia
-            Assert.AreEqual(3, multiFunctionalDevice.Counter);
+            Assert.AreEqual(3, multidimensionalDevice.Counter);
         }
 
         [TestMethod]
-        public void MultiFunctionalDevice_SendFax_DeviceOn()
+        public void MultidimensionalDevice_SendFax_DeviceOn()
         {
-            var multiFunctionalDevice = new MultiFunctionalDevice();
-            multiFunctionalDevice.PowerOn();
+            var multidimensionalDevice = new MultidimensionalDevice();
+            multidimensionalDevice.PowerOn();
 
             var currentConsoleOut = Console.Out;
             currentConsoleOut.Flush();
             using (var consoleOutput = new ConsoleRedirectionToStringWriter())
             {
-                multiFunctionalDevice.SendFax("123456789");
+                multidimensionalDevice.SendFax("123456789");
                 Assert.IsTrue(consoleOutput.GetOutput().Contains("Send fax"));
             }
             Assert.AreEqual(currentConsoleOut, Console.Out);
         }
 
         [TestMethod]
-        public void MultiFunctionalDevice_SendFax_DeviceOff()
+        public void MultidimensionalDevice_SendFax_DeviceOff()
         {
-            var multiFunctionalDevice = new MultiFunctionalDevice();
-            multiFunctionalDevice.PowerOff();
+            var multidimensionalDevice = new MultidimensionalDevice();
+            multidimensionalDevice.PowerOff();
 
             var currentConsoleOut = Console.Out;
             currentConsoleOut.Flush();
             using (var consoleOutput = new ConsoleRedirectionToStringWriter())
             {
-                multiFunctionalDevice.SendFax("123456789");
+                multidimensionalDevice.SendFax("123456789");
                 Assert.IsFalse(consoleOutput.GetOutput().Contains("Send fax"));
             }
             Assert.AreEqual(currentConsoleOut, Console.Out);
         }
 
         [TestMethod]
-        public void MultiFunctionalDevice_ReceiveFax_DeviceOn()
+        public void MultidimensionalDevice_ReceiveFax_DeviceOn()
         {
-            var multiFunctionalDevice = new MultiFunctionalDevice();
-            multiFunctionalDevice.PowerOn();
+            var multidimensionalDevice = new MultidimensionalDevice();
+            multidimensionalDevice.PowerOn();
 
             var currentConsoleOut = Console.Out;
             currentConsoleOut.Flush();
             using (var consoleOutput = new ConsoleRedirectionToStringWriter())
             {
                 IDocument document;
-                multiFunctionalDevice.ReceiveFax(out document);
+                multidimensionalDevice.ReceiveFax(out document);
                 Assert.IsTrue(consoleOutput.GetOutput().Contains("Receive fax"));
             }
             Assert.AreEqual(currentConsoleOut, Console.Out);
         }
 
         [TestMethod]
-        public void MultiFunctionalDevice_ReceiveFax_DeviceOff()
+        public void MultidimensionalDevice_ReceiveFax_DeviceOff()
         {
-            var multiFunctionalDevice = new MultiFunctionalDevice();
-            multiFunctionalDevice.PowerOff();
+            var multidimensionalDevice = new MultidimensionalDevice();
+            multidimensionalDevice.PowerOff();
 
             var currentConsoleOut = Console.Out;
             currentConsoleOut.Flush();
             using (var consoleOutput = new ConsoleRedirectionToStringWriter())
             {
                 IDocument document;
-                multiFunctionalDevice.ReceiveFax(out document);
+                multidimensionalDevice.ReceiveFax(out document);
                 Assert.IsFalse(consoleOutput.GetOutput().Contains("Receive fax"));
             }
             Assert.AreEqual(currentConsoleOut, Console.Out);
         }
 
         [TestMethod]
-        public void MultiFunctionalDevice_SendFax_Counter()
+        public void MultidimensionalDevice_SendFax_Counter()
         {
-            var multiFunctionalDevice = new MultiFunctionalDevice();
-            multiFunctionalDevice.SendFax("+48884284782");
-            multiFunctionalDevice.PowerOn();
-            multiFunctionalDevice.SendFax("+48884284782");
-            multiFunctionalDevice.SendFax("+48884284782");
+            var multidimensionalDevice = new MultidimensionalDevice();
+            multidimensionalDevice.SendFax("+48884284782");
+            multidimensionalDevice.PowerOn();
+            multidimensionalDevice.SendFax("+48884284782");
+            multidimensionalDevice.SendFax("+48884284782");
             IDocument doc1;
-            multiFunctionalDevice.Scan(out doc1);
+            multidimensionalDevice.Scan(out doc1);
             IDocument doc2;
-            multiFunctionalDevice.Scan(out doc2);
+            multidimensionalDevice.Scan(out doc2);
             IDocument doc3 = new PDFDocument("aaa.pdf");
-            multiFunctionalDevice.Print(in doc3);
-            multiFunctionalDevice.PowerOff();
-            multiFunctionalDevice.Print(in doc3);
-            multiFunctionalDevice.SendFax("+48884284782");
-            multiFunctionalDevice.Scan(out doc1);
-            multiFunctionalDevice.PowerOn();
-            multiFunctionalDevice.ScanAndPrint();
-            multiFunctionalDevice.SendFax("+48884284782");
-            multiFunctionalDevice.ScanAndPrint();
+            multidimensionalDevice.Print(in doc3);
+            multidimensionalDevice.PowerOff();
+            multidimensionalDevice.Print(in doc3);
+            multidimensionalDevice.SendFax("+48884284782");
+            multidimensionalDevice.Scan(out doc1);
+            multidimensionalDevice.PowerOn();
+            multidimensionalDevice.ScanAndPrint();
+            multidimensionalDevice.SendFax("+48884284782");
+            multidimensionalDevice.ScanAndPrint();
 
-            Assert.AreEqual(7, multiFunctionalDevice.ScanCounter);
-            Assert.AreEqual(3, multiFunctionalDevice.SendFaxCounter);
+            Assert.AreEqual(7, multidimensionalDevice.ScanCounter);
+            Assert.AreEqual(3, multidimensionalDevice.SendFaxCounter);
         }
 
         [TestMethod]
-        public void MultiFunctionalDevice_ReceiveFax_Counter()
+        public void MultidimensionalDevice_ReceiveFax_Counter()
         {
-            var multiFunctionalDevice = new MultiFunctionalDevice();
-            multiFunctionalDevice.SendFax("+48884284782");
-            multiFunctionalDevice.PowerOn();
-            multiFunctionalDevice.SendFax("+48884284782");
-            multiFunctionalDevice.SendFax("+48884284782");
+            var multidimensionalDevice = new MultidimensionalDevice();
+            multidimensionalDevice.SendFax("+48884284782");
+            multidimensionalDevice.PowerOn();
+            multidimensionalDevice.SendFax("+48884284782");
+            multidimensionalDevice.SendFax("+48884284782");
             IDocument doc1;
-            multiFunctionalDevice.ReceiveFax(out doc1);
+            multidimensionalDevice.ReceiveFax(out doc1);
             IDocument doc2;
-            multiFunctionalDevice.Scan(out doc2);
+            multidimensionalDevice.Scan(out doc2);
             IDocument doc3 = new PDFDocument("aaa.pdf");
-            multiFunctionalDevice.Print(in doc3);
-            multiFunctionalDevice.PowerOff();
-            multiFunctionalDevice.Print(in doc3);
-            multiFunctionalDevice.SendFax("+48884284782");
-            multiFunctionalDevice.ReceiveFax(out doc1);
-            multiFunctionalDevice.PowerOn();
-            multiFunctionalDevice.ScanAndPrint();
-            multiFunctionalDevice.SendFax("+48884284782");
-            multiFunctionalDevice.ScanAndPrint();
+            multidimensionalDevice.Print(in doc3);
+            multidimensionalDevice.PowerOff();
+            multidimensionalDevice.Print(in doc3);
+            multidimensionalDevice.SendFax("+48884284782");
+            multidimensionalDevice.ReceiveFax(out doc1);
+            multidimensionalDevice.PowerOn();
+            multidimensionalDevice.ScanAndPrint();
+            multidimensionalDevice.SendFax("+48884284782");
+            multidimensionalDevice.ScanAndPrint();
 
-            Assert.AreEqual(4, multiFunctionalDevice.PrintCounter);
-            Assert.AreEqual(1, multiFunctionalDevice.ReceiveFaxCounter);
+            Assert.AreEqual(4, multidimensionalDevice.PrintCounter);
+            Assert.AreEqual(1, multidimensionalDevice.ReceiveFaxCounter);
         }
     }
 }

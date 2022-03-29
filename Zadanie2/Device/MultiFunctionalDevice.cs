@@ -31,7 +31,7 @@ namespace Zadanie2.Device
 
         public void Scan(out IDocument document, IDocument.FormatType formatType = IDocument.FormatType.JPG)
         {
-            document = new TextDocument("");
+            document = new TextDocument("Temp");
 
             if (GetState() == IDevice.State.ON)
             {
@@ -58,7 +58,7 @@ namespace Zadanie2.Device
 
         public void SendFax(string faxNumber)
         {
-            if(state == IDevice.State.ON)
+            if (state == IDevice.State.ON)
             {
                 SendFaxCounter++;
                 IDocument doc;

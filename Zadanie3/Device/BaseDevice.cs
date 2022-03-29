@@ -1,5 +1,4 @@
-﻿
-namespace Zadanie3.Device
+﻿namespace Zadanie3.Device
 {
     public abstract class BaseDevice : IDevice
     {
