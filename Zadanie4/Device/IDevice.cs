@@ -17,6 +17,7 @@
         /// </summary>
         void PowerOn()
         {
+            Counter++;
             SetState(State.ON);
         }
 

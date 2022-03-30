@@ -1,9 +1,10 @@
 ﻿using Zadanie4.Device;
 using Zadanie4.Document;
 
-var xerox = new Copier();
-xerox.PowerOn();
+IDevice xerox = new Copier();
 IDocument doc1 = new PDFDocument("aaa.pdf");
+xerox.Print(doc1);
+xerox.PowerOn();
 xerox.Print(in doc1);
 
 IDocument doc2;

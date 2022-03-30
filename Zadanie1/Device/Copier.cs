@@ -12,7 +12,7 @@ namespace Zadanie1.Device
             if (GetState() == IDevice.State.ON)
             {
                 IDocument dokument;
-                Scan(out dokument);
+                Scan(out dokument,IDocument.FormatType.JPG);
                 Print(dokument);
             }
         }

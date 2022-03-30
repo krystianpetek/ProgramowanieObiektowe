@@ -11,5 +11,7 @@ namespace Zadanie4.Device
         /// <param name="document">obiekt typu IDocument, różny od null</param>
         /// <param name="formatType">obiekt typu enum IDocument.FormatType, zawiera format pliku</param>
         public void Scan(out IDocument document, FormatType formatType);
+
+
     }
 }
