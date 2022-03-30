@@ -1,7 +1,7 @@
 ﻿using Zadanie4.Device;
 using Zadanie4.Document;
 
-IDevice xerox = new Copier();
+Copier xerox = new Copier();
 IDocument doc1 = new PDFDocument("aaa.pdf");
 xerox.Print(doc1);
 xerox.PowerOn();

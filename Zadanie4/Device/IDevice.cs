@@ -60,7 +60,6 @@
         /// </summary>
         /// <param name="state"></param>
         abstract protected void SetState(State state);
-        public State state { get; }
 
     }
 }

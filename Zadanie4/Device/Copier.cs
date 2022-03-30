@@ -63,7 +63,7 @@ namespace Zadanie4.Device
 
         void IDevice.SetState(IDevice.State state)
         {
-            this.state = state;
+            
         }
         public void PowerOn()
         {
