@@ -105,7 +105,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zadanie5", "Zadanie5\Zadani
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "HierarchiaKlas", "HierarchiaKlas", "{41D3324D-0CAC-4F44-9FF1-E1D0B30FC3A4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HierarchiaKlasPojazdow", "HierarchiaKlasPojazdow\HierarchiaKlasPojazdow.csproj", "{FEDE4E57-AB36-43DB-BD64-D58075EAC8F3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HierarchiaKlasPojazdow", "HierarchiaKlasPojazdow\HierarchiaKlasPojazdow.csproj", "{FEDE4E57-AB36-43DB-BD64-D58075EAC8F3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
