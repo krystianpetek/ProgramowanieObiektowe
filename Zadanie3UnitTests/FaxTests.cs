@@ -158,6 +158,5 @@ namespace Zadanie3UnitTests
 
             Assert.AreEqual(1, fax.ReceiveFaxCounter);
         }
-
     }
 }

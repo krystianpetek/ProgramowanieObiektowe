@@ -1,16 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace HierarchiaKlasPojazdow
+﻿namespace HierarchiaKlasPojazdow
 {
     internal class Samochod : IWodny, ILadowy
     {
         public Samochod()
         {
-            
         }
 
         public int Max => throw new NotImplementedException();

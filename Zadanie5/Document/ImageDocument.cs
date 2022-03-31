@@ -1,4 +1,4 @@
-﻿namespace Zadanie4.Document
+﻿namespace Zadanie5.Document
 {
     public class ImageDocument : AbstractDocument
     {

@@ -15,27 +15,18 @@
         /// <summary>
         /// Uruchamia urządzeniem zmienia stan na ON
         /// </summary>
-        public void PowerOn()
+        void PowerOn()
         {
             SetState(State.ON);
         }
+
         /// <summary>
         /// Wyłącza urządzenie, zmienia stan na OFF
         /// </summary>
-        public void PowerOff()
+        void PowerOff()
         {
             SetState(State.OFF);
         }
-
-        /// <summary>
-        /// Zwraca aktualny stan urządzenia
-        /// </summary>
-        State GetState() => state;
-
-        /// <summary>
-        /// Przechowuje aktualną liczbę uruchomień urządzenia
-        /// </summary>
-        int Counter { get; set; }
 
         /// <summary>
         /// Uruchamia tryb oszczędzania energii urządzenia
@@ -54,10 +45,24 @@
         }
 
         /// <summary>
+        /// Przechowuje aktualną liczbę uruchomień urządzenia
+        /// </summary>
+        int Counter { get; }
+
+        /// <summary>
+        /// Zwraca aktualny stan urządzenia
+        /// </summary>
+        State GetState()
+        {
+            return state;
+        }
+
+        /// <summary>
         /// Ustawia stan urządzenia
         /// </summary>
         /// <param name="state"></param>
         abstract protected void SetState(State state);
-        public State state { get; set; }
+
+        State state { get; set; }
     }
 }

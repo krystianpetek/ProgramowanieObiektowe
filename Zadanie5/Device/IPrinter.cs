@@ -1,6 +1,6 @@
-﻿using Zadanie4.Document;
+﻿using Zadanie5.Document;
 
-namespace Zadanie4.Device
+namespace Zadanie5.Device
 {
     public interface IPrinter : IDevice
     {
@@ -8,7 +8,14 @@ namespace Zadanie4.Device
         /// Dokument jest drukowany, jeśli urządzenie włączone. W przeciwnym przypadku nic się nie wykonuje
         /// </summary>
         /// <param name="document">obiekt typu IDocument, różny od null</param>
-        public void Print(in IDocument document);
-
+        public void Print(in IDocument document)
+        {
+            if (GetState() == State.ON)
+            {
+                Counter++;
+                DateTime x = DateTime.Now;
+                Console.Write($"{x} Print: {document.GetFileName()}\n");
+            }
+        }
     }
 }

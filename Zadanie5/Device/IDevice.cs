@@ -1,4 +1,4 @@
-﻿namespace Zadanie4.Device
+﻿namespace Zadanie5.Device
 {
     public interface IDevice
     {
@@ -23,20 +23,10 @@
         /// <summary>
         /// Wyłącza urządzenie, zmienia stan na OFF
         /// </summary>
-        public void PowerOff()
+        void PowerOff()
         {
             SetState(State.OFF);
         }
-
-        /// <summary>
-        /// Zwraca aktualny stan urządzenia
-        /// </summary>
-        State GetState();
-
-        /// <summary>
-        /// Przechowuje aktualną liczbę uruchomień urządzenia
-        /// </summary>
-        int Counter { get; set; }
 
         /// <summary>
         /// Uruchamia tryb oszczędzania energii urządzenia
@@ -55,11 +45,24 @@
         }
 
         /// <summary>
+        /// Przechowuje aktualną liczbę uruchomień urządzenia
+        /// </summary>
+        int Counter { get; set; }
+
+        /// <summary>
+        /// Zwraca aktualny stan urządzenia
+        /// </summary>
+        State GetState()
+        {
+            return state;
+        }
+
+        /// <summary>
         /// Ustawia stan urządzenia
         /// </summary>
         /// <param name="state"></param>
         abstract protected void SetState(State state);
-        public State state { get; }
 
+        State state { get; set; }
     }
 }
