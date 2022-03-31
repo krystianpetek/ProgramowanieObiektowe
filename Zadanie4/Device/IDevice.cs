@@ -15,12 +15,10 @@
         /// <summary>
         /// Uruchamia urządzeniem zmienia stan na ON
         /// </summary>
-        void PowerOn()
+        public void PowerOn()
         {
-            Counter++;
             SetState(State.ON);
         }
-
         /// <summary>
         /// Wyłącza urządzenie, zmienia stan na OFF
         /// </summary>
@@ -32,7 +30,7 @@
         /// <summary>
         /// Zwraca aktualny stan urządzenia
         /// </summary>
-        State GetState();
+        State GetState() => state;
 
         /// <summary>
         /// Przechowuje aktualną liczbę uruchomień urządzenia
@@ -60,6 +58,6 @@
         /// </summary>
         /// <param name="state"></param>
         abstract protected void SetState(State state);
-
+        public State state { get; set; }
     }
 }

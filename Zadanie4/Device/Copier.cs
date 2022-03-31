@@ -4,15 +4,10 @@ namespace Zadanie4.Device
 {
     public class Copier : IPrinter, IScanner
     {
-        public int PrintCounter { get; set; }
-        public int ScanCounter { get; set; }
+        
+        public int PrintCounter => ((IPrinter)this).Counter;
+        public int ScanCounter => ((IScanner)this).Counter;
         public int Counter { get; set; }
-        public IDevice.State state { get; set; } = IDevice.State.OFF;
-
-        public IDevice.State GetState()
-        {
-            return state;
-        }
 
         public void ScanAndPrint()
         {
@@ -26,12 +21,18 @@ namespace Zadanie4.Device
 
         public void Print(in IDocument document)
         {
-            if (GetState() == IDevice.State.ON)
+            this.StandbyOff();
+            ((IScanner)this).StandbyOn();
+            ((IPrinter)this).StandbyOff();
+            if (this.GetState() == IDevice.State.ON &&
+                ((IPrinter)this).GetState() == IDevice.State.ON)
             {
-                PrintCounter++;
+                ((IPrinter)this).Counter++;
                 DateTime x = DateTime.Now;
                 Console.Write($"{x} Print: {document.GetFileName()}\n");
             }
+            ((IPrinter)this).StandbyOn();
+            this.StandbyOn();
         }
 
         public void Scan(out IDocument document, IDocument.FormatType formatType = IDocument.FormatType.JPG)
@@ -40,7 +41,7 @@ namespace Zadanie4.Device
 
             if (GetState() == IDevice.State.ON)
             {
-                ScanCounter++;
+                ((IScanner)this).Counter++;
                 switch (formatType)
                 {
                     case IDocument.FormatType.TXT:
@@ -61,17 +62,40 @@ namespace Zadanie4.Device
             }
         }
 
-        void IDevice.SetState(IDevice.State state)
-        {
-            
-        }
         public void PowerOn()
         {
-            
+            ((IPrinter)this).PowerOn();
+            ((IScanner)this).PowerOn();
         }
+
         public void PowerOff()
         {
-
+            ((IPrinter)this).PowerOff();
+            ((IScanner)this).PowerOff();
         }
+
+        public void StandbyOff()
+        {
+            ((IPrinter)this).StandbyOff();
+            ((IScanner)this).StandbyOff();
+        }
+
+        public void StandbyOn()
+        {
+            ((IPrinter)this).StandbyOn();
+            ((IScanner)this).StandbyOn();
+        }
+
+        public IDevice.State GetState()
+        {
+            return state;
+        }
+
+        void IDevice.SetState(IDevice.State state)
+        {
+            this.state = state;
+        }
+
+        public IDevice.State state { get; set; } = IDevice.State.OFF;
     }
 }
