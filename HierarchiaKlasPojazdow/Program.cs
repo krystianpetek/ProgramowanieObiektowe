@@ -4,4 +4,4 @@ Console.WriteLine("Hello, World!");
 
 Samochod samochod = new Samochod();
 Console.WriteLine(samochod);
-IPojazd sam = samochod;
+samochod

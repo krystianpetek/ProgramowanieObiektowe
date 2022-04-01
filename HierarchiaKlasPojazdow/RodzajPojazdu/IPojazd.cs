@@ -7,7 +7,10 @@
         int Predkosc { get; }
         bool CzyPoruszaSie { get; }
         void ZwiekszPredkosc();
-        void ZmniejszPredkosc();
+        public void ZmniejszPredkosc()
+        {
+            Console.WriteLine($"Zwalnianie, aktualna prędkość: " + Predkosc);
+        }
 
     }
 }

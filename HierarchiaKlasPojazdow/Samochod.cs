@@ -30,10 +30,7 @@
         {
             Console.WriteLine($"Przyśpieszanie, aktualna prędkość: " + Predkosc);
         }
-        public void ZmniejszPredkosc()
-        {
-            Console.WriteLine($"Zwalnianie, aktualna prędkość: " + Predkosc);
-        }
+
 
     }
 }
