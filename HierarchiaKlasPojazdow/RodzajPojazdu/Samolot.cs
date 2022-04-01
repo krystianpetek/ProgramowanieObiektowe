@@ -1,21 +1,15 @@
-﻿namespace HierarchiaKlasPojazdow
+﻿namespace HierarchiaKlasPojazdow.RodzajPojazdu
 {
-    internal class Samochod : ILadowy, ISilnik
+    internal class Samolot : IPowietrzny, ISilnik
     {
-        public Samochod()
+        public Samolot()
         {
-            _predkosc = 0;
-            _czyPoruszaSie = false;
+            Predkosc = 0;
         }
-        private int _predkosc;
-        private bool _czyPoruszaSie;
-
-        public int Predkosc => _predkosc;
-
-        public bool CzyPoruszaSie => _czyPoruszaSie;
-
-        public RodzajSilnika Silnik { get; init; }
-        public double MocSilnika { get; init; }
+        public int Predkosc { get; set; }
+        public bool CzyPoruszaSie { get; set; }
+        public RodzajSilnika Silnik { get => throw new NotImplementedException(); init => throw new NotImplementedException(); }
+        public double MocSilnika { get => throw new NotImplementedException(); init => throw new NotImplementedException(); }
 
         public void Start()
         {
