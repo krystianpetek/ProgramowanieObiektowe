@@ -1,7 +1,9 @@
 ﻿using HierarchiaKlasPojazdow;
 
-Console.WriteLine("Hello, World!");
+Samochod samochod = new Samochod(RodzajSilnika.LPG, 125);
+samochod.ZwiekszPredkosc();
+samochod.ZmniejszPredkosc();
+samochod.ZmniejszPredkosc();
+samochod.Stop();
 
-Samochod samochod = new Samochod();
-Console.WriteLine(samochod);
-samochod
+Console.WriteLine(samochod.ToString());

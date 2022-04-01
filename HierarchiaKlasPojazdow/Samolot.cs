@@ -1,15 +1,27 @@
-﻿namespace HierarchiaKlasPojazdow.RodzajPojazdu
+﻿namespace HierarchiaKlasPojazdow
 {
     internal class Samolot : IPowietrzny, ISilnik
     {
-        public Samolot()
-        {
-            Predkosc = 0;
-        }
-        public int Predkosc { get; set; }
-        public bool CzyPoruszaSie { get; set; }
+        public int Predkosc => throw new NotImplementedException();
+
+        public bool CzyPoruszaSie => throw new NotImplementedException();
+
         public RodzajSilnika Silnik { get => throw new NotImplementedException(); init => throw new NotImplementedException(); }
         public double MocSilnika { get => throw new NotImplementedException(); init => throw new NotImplementedException(); }
+
+        public Samolot()
+        {
+        }
+
+        public void ZwiekszPredkosc()
+        {
+            Console.WriteLine($"Przyśpieszanie, aktualna prędkość: " + Predkosc);
+        }
+
+        public void ZmniejszPredkosc()
+        {
+            Console.WriteLine($"Zwalnianie, aktualna prędkość: " + Predkosc);
+        }
 
         public void Start()
         {
@@ -20,14 +32,5 @@
         {
             throw new NotImplementedException();
         }
-        public void ZwiekszPredkosc()
-        {
-            Console.WriteLine($"Przyśpieszanie, aktualna prędkość: " + Predkosc);
-        }
-        public void ZmniejszPredkosc()
-        {
-            Console.WriteLine($"Zwalnianie, aktualna prędkość: " + Predkosc);
-        }
-
     }
 }

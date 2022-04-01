@@ -2,15 +2,9 @@
 {
     internal interface IPojazd
     {
-        abstract void Start();
-        abstract void Stop();
-        int Predkosc { get; }
-        bool CzyPoruszaSie { get; }
-        void ZwiekszPredkosc();
-        public void ZmniejszPredkosc()
-        {
-            Console.WriteLine($"Zwalnianie, aktualna prędkość: " + Predkosc);
-        }
-
+        public const int MaksymalnaPredkosc = 0;
+        public const int MinimalnaPredkosc = 0;
+        public const int Przyspieszenie = 0;
+        public const string JednostkaPredkosci = "km/h";
     }
 }
