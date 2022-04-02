@@ -6,7 +6,7 @@ namespace HierarchiaKlasPojazdow.RodzajPojazdu
     {
         public const int MaksymalnaPredkosc = 40;
         public const int MinimalnaPredkosc = 1;
-        public const int Przyspieszenie = 10; 
+        public const int Przyspieszenie = 10;
         public const string JednostkaPredkosci = JednostkiPredkosci.MilaMorskaNaGodzine;
 
         public static int Wypornosc { get; set; }

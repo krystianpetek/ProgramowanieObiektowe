@@ -1,7 +1,4 @@
-﻿using System.ComponentModel;
-using System.Runtime.Serialization;
-
-namespace HierarchiaKlasPojazdow.Enumy
+﻿namespace HierarchiaKlasPojazdow.Enumy
 {
     //public enum JednostkiPredkosci
     //{

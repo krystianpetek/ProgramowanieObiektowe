@@ -22,64 +22,65 @@ namespace HierarchiaKlasPojazdow.RodzajPojazdu
                 aktualneSrodowisko = Srodowisko.Ladowe;
                 return;
             }
-
-
         }
+
         public int MinimalnaPredkosc
         {
             get
             {
                 int minimalnaPredkosc = default;
 
-                if(aktualneSrodowisko == Srodowisko.Ladowe)
+                if (aktualneSrodowisko == Srodowisko.Ladowe)
                     minimalnaPredkosc = ILadowy.MinimalnaPredkosc;
-                
-                if(aktualneSrodowisko == Srodowisko.Wodne)
+
+                if (aktualneSrodowisko == Srodowisko.Wodne)
                     minimalnaPredkosc = IWodny.MinimalnaPredkosc;
-                
-                if(aktualneSrodowisko == Srodowisko.Powietrzne)
+
+                if (aktualneSrodowisko == Srodowisko.Powietrzne)
                     minimalnaPredkosc = IPowietrzny.MinimalnaPredkosc;
 
                 return minimalnaPredkosc;
             }
         }
+
         public int MaksymalnaPredkosc
         {
             get
             {
                 int maksymalnaPredkosc = default;
 
-                if(aktualneSrodowisko == Srodowisko.Ladowe)
+                if (aktualneSrodowisko == Srodowisko.Ladowe)
                     maksymalnaPredkosc = ILadowy.MaksymalnaPredkosc;
-                
-                if(aktualneSrodowisko == Srodowisko.Wodne)
+
+                if (aktualneSrodowisko == Srodowisko.Wodne)
                     maksymalnaPredkosc = IWodny.MaksymalnaPredkosc;
-                
-                if(aktualneSrodowisko == Srodowisko.Powietrzne)
+
+                if (aktualneSrodowisko == Srodowisko.Powietrzne)
                     maksymalnaPredkosc = IPowietrzny.MaksymalnaPredkosc;
 
                 return maksymalnaPredkosc;
             }
         }
+
         public int Przyspieszenie
         {
             get
             {
                 int przyspieszenie = default;
 
-                if(aktualneSrodowisko == Srodowisko.Ladowe)
+                if (aktualneSrodowisko == Srodowisko.Ladowe)
                     przyspieszenie = ILadowy.Przyspieszenie;
-                
-                if(aktualneSrodowisko == Srodowisko.Wodne)
+
+                if (aktualneSrodowisko == Srodowisko.Wodne)
                     przyspieszenie = IWodny.Przyspieszenie;
-                
-                if(aktualneSrodowisko == Srodowisko.Powietrzne)
+
+                if (aktualneSrodowisko == Srodowisko.Powietrzne)
                     przyspieszenie = IPowietrzny.Przyspieszenie;
 
                 return przyspieszenie;
             }
         }
-        
+
         public string JednostkaPredkosci
         {
             get
@@ -88,8 +89,8 @@ namespace HierarchiaKlasPojazdow.RodzajPojazdu
 
                 if (aktualneSrodowisko == Srodowisko.Ladowe)
                     jednostkaPredkosci = JednostkiPredkosci.KilometryNaGodzine;
-                
-                if(aktualneSrodowisko == Srodowisko.Wodne)
+
+                if (aktualneSrodowisko == Srodowisko.Wodne)
                     jednostkaPredkosci = JednostkiPredkosci.MilaMorskaNaGodzine;
 
                 if (aktualneSrodowisko == Srodowisko.Powietrzne)
@@ -142,7 +143,6 @@ namespace HierarchiaKlasPojazdow.RodzajPojazdu
             {
                 Start();
             }
-
             if (Predkosc >= MaksymalnaPredkosc)
             {
                 Console.WriteLine("Jadę z maksymalną prędkością");
