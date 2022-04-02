@@ -1,4 +1,6 @@
-﻿namespace HierarchiaKlasPojazdow.RodzajPojazdu
+﻿using HierarchiaKlasPojazdow.Enumy;
+
+namespace HierarchiaKlasPojazdow.RodzajPojazdu
 {
     internal abstract partial class Pojazd
     {
@@ -34,14 +36,23 @@
 
         public Pojazd()
         {
-            if (this is ILadowy)
+            dostepneSrodowisko = new List<Srodowisko>();
+            if(this is IPowietrzny)
             {
-                srodowisko = Srodowisko.Ladowe;
-                return;
+                dostepneSrodowisko.Add(Srodowisko.Powietrzne);
+                aktualneSrodowisko = Srodowisko.Powietrzne;
+
             }
             if (this is IWodny)
             {
-                srodowisko = Srodowisko.Wodne;
+                dostepneSrodowisko.Add(Srodowisko.Wodne);
+                aktualneSrodowisko = Srodowisko.Wodne;
+            }
+            if (this is ILadowy)
+            {
+                dostepneSrodowisko.Add(Srodowisko.Ladowe);
+                aktualneSrodowisko = Srodowisko.Ladowe;
+                return;
             }
         }
 
@@ -69,6 +80,7 @@
 
         public abstract bool CzyPoruszaSie { get; init; }
 
-        public abstract Srodowisko srodowisko { get; set; }
+        public abstract Srodowisko aktualneSrodowisko { get; set; }
+        public abstract List<Srodowisko> dostepneSrodowisko {get;set;}
     }
 }

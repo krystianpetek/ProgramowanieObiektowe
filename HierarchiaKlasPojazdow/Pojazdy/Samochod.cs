@@ -1,18 +1,19 @@
-﻿using HierarchiaKlasPojazdow.RodzajPojazdu;
+﻿using HierarchiaKlasPojazdow.Enumy;
+using HierarchiaKlasPojazdow.RodzajPojazdu;
 
-namespace HierarchiaKlasPojazdow
+namespace HierarchiaKlasPojazdow.Pojazdy
 {
     internal class Samochod : Pojazd, ILadowy, ISilnik
     {
-        public Samochod(RodzajSilnika silnik, double mocSilnika)
+        public Samochod(RodzajSilnika silnik, double mocSilnika) : base()
         {
             _predkosc = 0;
             _czyPoruszaSie = false;
             MocSilnika = mocSilnika;
             Silnik = silnik;
             LiczbaKol = 4;
+            aktualneSrodowisko = Srodowisko.Ladowe;
         }
-
         private int _predkosc;
         private bool _czyPoruszaSie;
 
@@ -31,8 +32,9 @@ namespace HierarchiaKlasPojazdow
             init { _czyPoruszaSie = false; }
         }
 
-        public override Srodowisko srodowisko { get; set; }
+        public override Srodowisko aktualneSrodowisko { get; set; }
         public int LiczbaKol { get; init; }
+        public override List<Srodowisko> dostepneSrodowisko { get;set; }
 
         public override void Start()
         {
@@ -93,8 +95,24 @@ namespace HierarchiaKlasPojazdow
 
         public override string ToString()
         {
-            return $"{this.GetType()}{srodowisko}\nCzy porusza się: {CzyPoruszaSie}\nMinPredkosc: {ILadowy.MinimalnaPredkosc}\nMaxPredkosc: {ILadowy.MaksymalnaPredkosc}\n" +
-                $"Aktualna prędkość: {Predkosc}\nIlosc kół: {LiczbaKol}\nPojazd silnikowy{((this is ISilnik) ? true : false)}";
+            string czyPoruszaSie = ((CzyPoruszaSie) ? "Tak\nAktualna prędkość: ".PadRight(30) + $"{Predkosc} {ILadowy.JednostkaPredkosci}\n" : "Nie");
+            string czyPojazdMaSilnik = (this is ISilnik ? "Tak" : "Nie");
+            string srodowiska = "";
+            for(int i = 0;i<dostepneSrodowisko.Count;i++)
+            { if(i == dostepneSrodowisko.Count-1)
+                {
+                    
+                }
+            }    
+            return $"Typ pojazdu: ".PadRight(30) + $"{GetType().Name}\n" +
+                $"Mozliwe środowiska pojazdu: ".PadRight(30) + $"{srodowiska}\n" +
+                $"Predkość minimalna: ".PadRight(30) + $"{ ILadowy.MinimalnaPredkosc}\n" +
+                $"Prędkość maksymalna: ".PadRight(30) + $"{ ILadowy.MaksymalnaPredkosc}\n" +
+                $"Aktualne środowisko: ".PadRight(30) + $"{aktualneSrodowisko}\n" +
+                $"Czy porusza się: ".PadRight(30) + $"{czyPoruszaSie}\n" +
+                //$"Aktualna prędkość: ".PadRight(30) + $"{Predkosc} {ILadowy.JednostkaPredkosci}\n" +
+                $"Pojazd silnikowy: ".PadRight(30) + $"{czyPojazdMaSilnik}\n" +
+                $"Ilosc kół: ".PadRight(30) + $"{LiczbaKol}\n";
         }
     }
 }

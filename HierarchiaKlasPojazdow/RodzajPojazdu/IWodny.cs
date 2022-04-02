@@ -1,6 +1,6 @@
-﻿namespace HierarchiaKlasPojazdow
+﻿namespace HierarchiaKlasPojazdow.RodzajPojazdu
 {
-    internal interface IWodny : IPojazd
+    internal interface IWodny //: IPojazd
     {
         public const int MaksymalnaPredkosc = 40;
         public const int MinimalnaPredkosc = 1;

@@ -1,4 +1,4 @@
-﻿namespace HierarchiaKlasPojazdow
+﻿namespace HierarchiaKlasPojazdow.Enumy
 {
     public enum RodzajSilnika
     {
@@ -7,5 +7,5 @@
         LPG,
         Elektryczny,
         Hybrydowy
-    }
+    };
 }

@@ -1,4 +1,7 @@
-﻿namespace HierarchiaKlasPojazdow
+﻿using HierarchiaKlasPojazdow.Enumy;
+using HierarchiaKlasPojazdow.RodzajPojazdu;
+
+namespace HierarchiaKlasPojazdow.Pojazdy
 {
     internal class Samolot : IPowietrzny, ISilnik
     {

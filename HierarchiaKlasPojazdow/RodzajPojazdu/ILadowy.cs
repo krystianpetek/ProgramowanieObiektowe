@@ -1,4 +1,4 @@
-﻿namespace HierarchiaKlasPojazdow
+﻿namespace HierarchiaKlasPojazdow.RodzajPojazdu
 {
     internal interface ILadowy
     {

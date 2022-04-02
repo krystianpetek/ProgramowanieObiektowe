@@ -1,4 +1,5 @@
-﻿using HierarchiaKlasPojazdow;
+﻿using HierarchiaKlasPojazdow.Enumy;
+using HierarchiaKlasPojazdow.Pojazdy;
 
 Samochod samochod = new Samochod(RodzajSilnika.LPG, 125);
 samochod.ZwiekszPredkosc();

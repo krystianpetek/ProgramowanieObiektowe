@@ -1,4 +1,6 @@
-﻿namespace HierarchiaKlasPojazdow
+﻿using HierarchiaKlasPojazdow.Enumy;
+
+namespace HierarchiaKlasPojazdow.RodzajPojazdu
 {
     public interface ISilnik
     {
