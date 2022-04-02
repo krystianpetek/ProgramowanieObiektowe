@@ -34,7 +34,7 @@ namespace HierarchiaKlasPojazdow.Pojazdy
 
         public override Srodowisko aktualneSrodowisko { get; set; }
         public int LiczbaKol { get; init; }
-        public override List<Srodowisko> dostepneSrodowisko { get;set; }
+        public override List<Srodowisko> dostepneSrodowisko { get;init; } = new List<Srodowisko>();
 
         public override void Start()
         {
@@ -98,21 +98,24 @@ namespace HierarchiaKlasPojazdow.Pojazdy
             string czyPoruszaSie = ((CzyPoruszaSie) ? "Tak\nAktualna prędkość: ".PadRight(30) + $"{Predkosc} {ILadowy.JednostkaPredkosci}\n" : "Nie");
             string czyPojazdMaSilnik = (this is ISilnik ? "Tak" : "Nie");
             string srodowiska = "";
-            for(int i = 0;i<dostepneSrodowisko.Count;i++)
-            { if(i == dostepneSrodowisko.Count-1)
+            for (int i = 0; i < dostepneSrodowisko.Count; i++)
+            {
+                if (i == dostepneSrodowisko.Count-1)
                 {
-                    
+                    srodowiska += $"{dostepneSrodowisko[i]}";
+                    break;
                 }
-            }    
-            return $"Typ pojazdu: ".PadRight(30) + $"{GetType().Name}\n" +
-                $"Mozliwe środowiska pojazdu: ".PadRight(30) + $"{srodowiska}\n" +
-                $"Predkość minimalna: ".PadRight(30) + $"{ ILadowy.MinimalnaPredkosc}\n" +
-                $"Prędkość maksymalna: ".PadRight(30) + $"{ ILadowy.MaksymalnaPredkosc}\n" +
-                $"Aktualne środowisko: ".PadRight(30) + $"{aktualneSrodowisko}\n" +
-                $"Czy porusza się: ".PadRight(30) + $"{czyPoruszaSie}\n" +
+                srodowiska += $"{dostepneSrodowisko[i]}, ";
+            }
+            return $"{"Typ pojazdu: ",-30}{GetType().Name}\n" +
+                $"{"Mozliwe środowiska pojazdu: ",-30}{srodowiska}\n" +
+                $"{"Predkość minimalna: ",-30}{ ILadowy.MinimalnaPredkosc}\n" +
+                $"{"Prędkość maksymalna: ",-30}{ ILadowy.MaksymalnaPredkosc}\n" +
+                $"{"Aktualne środowisko: ",-30}{aktualneSrodowisko}\n" +
+                $"{"Czy porusza się: ",-30}{czyPoruszaSie}\n" +
                 //$"Aktualna prędkość: ".PadRight(30) + $"{Predkosc} {ILadowy.JednostkaPredkosci}\n" +
-                $"Pojazd silnikowy: ".PadRight(30) + $"{czyPojazdMaSilnik}\n" +
-                $"Ilosc kół: ".PadRight(30) + $"{LiczbaKol}\n";
+                $"{"Pojazd silnikowy: ",-30}{czyPojazdMaSilnik}\n" +
+                $"{"Ilosc kół: ",-30}{LiczbaKol}\n";
         }
     }
 }

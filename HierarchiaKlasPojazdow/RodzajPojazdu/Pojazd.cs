@@ -2,41 +2,10 @@
 
 namespace HierarchiaKlasPojazdow.RodzajPojazdu
 {
-    internal abstract partial class Pojazd
+    public abstract class Pojazd
     {
-        public static double KilometryNaMileMorskie(double x)
+        internal Pojazd()
         {
-            return Math.Round(x * 0.53996, 5);
-        }
-
-        public static double KilometryNaMetry(double x)
-        {
-            return Math.Round(x * 0.27778, 5);
-        }
-
-        public static double MetryNaKilometry(double x)
-        {
-            return Math.Round(x * 3.60000, 5);
-        }
-
-        public static double MetryNaMileMorskie(double x)
-        {
-            return Math.Round(x * 1.94385, 5);
-        }
-
-        public static double MileMorskieNaKilometry(double x)
-        {
-            return Math.Round(x * 1.85199, 5);
-        }
-
-        public static double MileMorskieNaMetry(double x)
-        {
-            return Math.Round(x * 0.51444, 5);
-        }
-
-        public Pojazd()
-        {
-            dostepneSrodowisko = new List<Srodowisko>();
             if(this is IPowietrzny)
             {
                 dostepneSrodowisko.Add(Srodowisko.Powietrzne);
@@ -79,8 +48,7 @@ namespace HierarchiaKlasPojazdow.RodzajPojazdu
         }
 
         public abstract bool CzyPoruszaSie { get; init; }
-
         public abstract Srodowisko aktualneSrodowisko { get; set; }
-        public abstract List<Srodowisko> dostepneSrodowisko {get;set;}
+        public abstract List<Srodowisko> dostepneSrodowisko {get;init;}
     }
 }
