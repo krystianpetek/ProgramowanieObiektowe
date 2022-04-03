@@ -1,7 +1,6 @@
-﻿using Interfejsy_CS.ExplicitImplicit;
+﻿using Interfejsy_CS.Device;
+using Interfejsy_CS.ExplicitImplicit;
 using Interfejsy_CS.Stos;
-using Interfejsy_CS.Device;
-using Interfejsy_CS.LeftRight;
 
 IStos<int> s1 = new StosWTablicy<int>();
 Console.WriteLine(s1 is IStos<int>);
@@ -35,7 +34,7 @@ Console.WriteLine(string.Join(" ", kolekcja));
 A a = new A(); // klasa
 IA ia = new A(); // interface
 
-a.M(); // niejawna 
+a.M(); // niejawna
 
 ((IA)a).M(); // jawna klasa
 ia.M(); // jawna interface
