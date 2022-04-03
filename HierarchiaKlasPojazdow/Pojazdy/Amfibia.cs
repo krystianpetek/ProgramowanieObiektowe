@@ -3,18 +3,20 @@ using HierarchiaKlasPojazdow.RodzajPojazdu;
 
 namespace HierarchiaKlasPojazdow.Pojazdy
 {
-    internal class Samolot : Pojazd, ILadowy, IPowietrzny, ISilnik
+    internal class Amfibia : Pojazd, ILadowy, IWodny, ISilnik
     {
-        public Samolot(double mocSilnika) : base()
+        public Amfibia(double mocSilnika, int liczbaKol, int wypornosc) : base()
         {
-            LiczbaKol = 8;
-            Silnik = RodzajSilnika.Odrzutowy;
+            Silnik = RodzajSilnika.Diesel;
             MocSilnika = mocSilnika;
+            LiczbaKol = liczbaKol;
+            Wypornosc = wypornosc;
         }
 
         public int LiczbaKol { get; init; }
         public RodzajSilnika Silnik { get; init; }
         public double MocSilnika { get; init; }
+        public int Wypornosc { get; init; }
 
         public override string ToString()
         {
@@ -38,18 +40,19 @@ namespace HierarchiaKlasPojazdow.Pojazdy
                 $"{"Predkość maksymalna: ",-30}{ MaksymalnaPredkosc} {JednostkaPredkosci}\n" +
                 $"{"Czy pojazd porusza się: ",-30}{czyPoruszaSie}\n" +
                 $"{"Pojazd silnikowy: ",-30}{czyPojazdMaSilnik}\n" +
-                $"{"Ilość kół: ",-30}{LiczbaKol}\n";
+                $"{"Ilość kół: ",-30}{LiczbaKol}\n" +
+                $"{"Wyporność: ",-30}{Wypornosc} kg\n";
         }
 
         // W klasie reprezentującej pojazd dostarcz statyczną metodę konwertującą szybkości z jednego systemu zapisu na inny.
-        public static double MetryNaKilometry(double x)
+        public static double MileMorskieNaKilometry(double x)
         {
-            return Math.Round(x * 3.60000, 2);
+            return Math.Round(x * 1.85199, 2);
         }
 
-        public static double KilometryNaMetry(double x)
+        public static double KilometryNaMileMorskie(double x)
         {
-            return Math.Round(x * 0.27778, 2);
+            return Math.Round(x * 0.53996, 2);
         }
     }
 }

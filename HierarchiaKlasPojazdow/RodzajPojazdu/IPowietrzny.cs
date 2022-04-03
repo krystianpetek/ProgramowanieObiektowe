@@ -2,21 +2,22 @@
 
 namespace HierarchiaKlasPojazdow.RodzajPojazdu
 {
-    internal interface IPowietrzny //: IPojazd
+    internal interface IPowietrzny
     {
-        public const int MaksymalnaPredkosc = 200;
-        public const int MinimalnaPredkosc = 20;
-        public const int Przyspieszenie = 40;
+        public const double MaksymalnaPredkosc = 200;
+        public const double MinimalnaPredkosc = 20;
+        public const double Przyspieszenie = 30;
         public const string JednostkaPredkosci = JednostkiPredkosci.MetryNaSekunde;
+        public const bool czyMoznaZatrzymac = false;
 
-        public static string MetryNaKilometry(double x)
+        public static double MetryNaKilometry(double x)
         {
-            return $"{Math.Round(x * 3.60000, 5)} {JednostkiPredkosci.KilometryNaGodzine}";
+            return Math.Round(x * 3.60000, 2);
         }
 
-        public static string MetryNaMileMorskie(double x)
+        public static double MetryNaMileMorskie(double x)
         {
-            return $"{Math.Round(x * 1.94385, 5)} {JednostkiPredkosci.MilaMorskaNaGodzine}";
+            return Math.Round(x * 1.94385, 2);
         }
     }
 }

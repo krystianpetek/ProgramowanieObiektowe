@@ -6,6 +6,8 @@
         Diesel,
         LPG,
         Elektryczny,
-        Hybrydowy
+        Hybrydowy,
+        Odrzutowy,
+        Turbowalowy
     };
 }

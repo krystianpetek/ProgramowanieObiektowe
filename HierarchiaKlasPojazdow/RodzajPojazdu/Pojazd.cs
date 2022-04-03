@@ -20,15 +20,14 @@ namespace HierarchiaKlasPojazdow.RodzajPojazdu
             {
                 dostepneSrodowisko.Add(Srodowisko.Ladowe);
                 aktualneSrodowisko = Srodowisko.Ladowe;
-                return;
             }
         }
 
-        public int MinimalnaPredkosc
+        public virtual double MinimalnaPredkosc
         {
             get
             {
-                int minimalnaPredkosc = default;
+                double minimalnaPredkosc = default;
 
                 if (aktualneSrodowisko == Srodowisko.Ladowe)
                     minimalnaPredkosc = ILadowy.MinimalnaPredkosc;
@@ -43,11 +42,11 @@ namespace HierarchiaKlasPojazdow.RodzajPojazdu
             }
         }
 
-        public int MaksymalnaPredkosc
+        public virtual double MaksymalnaPredkosc
         {
             get
             {
-                int maksymalnaPredkosc = default;
+                double maksymalnaPredkosc = default;
 
                 if (aktualneSrodowisko == Srodowisko.Ladowe)
                     maksymalnaPredkosc = ILadowy.MaksymalnaPredkosc;
@@ -62,11 +61,11 @@ namespace HierarchiaKlasPojazdow.RodzajPojazdu
             }
         }
 
-        public int Przyspieszenie
+        public virtual double Przyspieszenie
         {
             get
             {
-                int przyspieszenie = default;
+                double przyspieszenie = default;
 
                 if (aktualneSrodowisko == Srodowisko.Ladowe)
                     przyspieszenie = ILadowy.Przyspieszenie;
@@ -100,11 +99,22 @@ namespace HierarchiaKlasPojazdow.RodzajPojazdu
             }
         }
 
+        public virtual bool CzyMoznaPojazdZatrzymac
+        {
+            get
+            {
+                bool zatrzymaj = true;
+                if (aktualneSrodowisko == Srodowisko.Powietrzne)
+                    zatrzymaj = false;
+                return zatrzymaj;
+            }
+        }
+
         protected double predkosc;
 
         public double Predkosc
         {
-            get { return predkosc; }
+            get { return Math.Round(predkosc, 2); }
             init { predkosc = 0; }
         }
 
@@ -117,48 +127,90 @@ namespace HierarchiaKlasPojazdow.RodzajPojazdu
         }
 
         protected Srodowisko aktualneSrodowisko { get; set; } = Srodowisko.Ladowe;
+        public Srodowisko AktualneSrodowisko => aktualneSrodowisko;
         protected List<Srodowisko> dostepneSrodowisko { get; init; } = new List<Srodowisko>();
 
-        public virtual void ZmniejszPredkosc()
+        public virtual void ZmniejszPredkosc(int interwalZmianyPredkosci)
         {
+            if (interwalZmianyPredkosci < 1)
+                return;
+
+            if (this is ILadowy && this is IPowietrzny && aktualneSrodowisko == Srodowisko.Powietrzne)
+            {
+                double poZwolnieniu = Predkosc - interwalZmianyPredkosci * Przyspieszenie;
+                if (IPowietrzny.MetryNaKilometry(poZwolnieniu) <= IPowietrzny.MinimalnaPredkosc)
+                {
+                    aktualneSrodowisko = Srodowisko.Ladowe;
+                    predkosc = IPowietrzny.MetryNaKilometry(poZwolnieniu);
+                    if (Predkosc <= 0)
+                        predkosc = ILadowy.MinimalnaPredkosc;
+                    Console.WriteLine($"Zwalniam, aktualna prędkość: {Predkosc} {JednostkaPredkosci}");
+                    return;
+                }
+            }
+
             if (Predkosc == MinimalnaPredkosc)
             {
-                Console.WriteLine("Jadę z minimalną prędkością");
+                Console.WriteLine("Poruszam się z minimalną prędkością, nie mogę już bardziej zwolnić");
                 return;
             }
-            if (Predkosc - Przyspieszenie < MinimalnaPredkosc)
+            if (Predkosc - interwalZmianyPredkosci * Przyspieszenie < MinimalnaPredkosc)
             {
                 predkosc = MinimalnaPredkosc;
             }
             else
             {
-                predkosc -= Przyspieszenie;
+                predkosc -= interwalZmianyPredkosci * Przyspieszenie;
             }
             Console.WriteLine($"Zwalniam, aktualna prędkość: {Predkosc} {JednostkaPredkosci}");
         }
 
-        public virtual void ZwiekszPredkosc()
+        public void ZmniejszPredkosc()
         {
+            ZmniejszPredkosc(1);
+        }
+
+        public virtual void ZwiekszPredkosc(int interwalZmianyPredkosci)
+        {
+            if (interwalZmianyPredkosci < 1)
+                return;
+
+            if (this is ILadowy && this is IPowietrzny && aktualneSrodowisko == Srodowisko.Ladowe)
+            {
+                double poPrzyspieszeniu = Predkosc + interwalZmianyPredkosci * Przyspieszenie;
+                if (ILadowy.KilometryNaMetry(poPrzyspieszeniu) >= IPowietrzny.MinimalnaPredkosc)
+                {
+                    aktualneSrodowisko = Srodowisko.Powietrzne;
+                    predkosc = ILadowy.KilometryNaMetry(poPrzyspieszeniu);
+                    Console.WriteLine($"Przyśpieszam, aktualna prędkość: {Predkosc} {JednostkaPredkosci}");
+                    return;
+                }
+            }
             if (!CzyPoruszaSie)
             {
                 Start();
             }
             if (Predkosc >= MaksymalnaPredkosc)
             {
-                Console.WriteLine("Jadę z maksymalną prędkością");
+                Console.WriteLine("Poruszam się z maksymalną prędkością, nie mogę już bardziej przyśpieszyć");
                 return;
             }
 
-            if (Predkosc + Przyspieszenie > MaksymalnaPredkosc)
+            if (Predkosc + interwalZmianyPredkosci * Przyspieszenie > MaksymalnaPredkosc)
             {
                 predkosc = MaksymalnaPredkosc;
             }
             else
             {
-                predkosc += Przyspieszenie;
+                predkosc += interwalZmianyPredkosci * Przyspieszenie;
                 czyPoruszaSie = true;
             }
             Console.WriteLine($"Przyśpieszam, aktualna prędkość: {Predkosc} {JednostkaPredkosci}");
+        }
+
+        public void ZwiekszPredkosc()
+        {
+            ZwiekszPredkosc(1);
         }
 
         public virtual void Start()
@@ -175,9 +227,14 @@ namespace HierarchiaKlasPojazdow.RodzajPojazdu
 
         public virtual void Stop()
         {
+            if (!CzyMoznaPojazdZatrzymac)
+            {
+                Console.WriteLine("Nie można zatrzymać pojazdu w powietrzu");
+                return;
+            }
             if (!CzyPoruszaSie)
             {
-                Console.WriteLine("Pojazd nie rusza się");
+                Console.WriteLine("Pojazd nie porusza się");
                 return;
             }
             predkosc = 0;
@@ -200,15 +257,60 @@ namespace HierarchiaKlasPojazdow.RodzajPojazdu
             }
             return $"{"\nTyp pojazdu: ",-31}{GetType().Name}\n" +
                 $"{"Możliwe środowiska pojazdu: ",-30}{srodowiska}\n" +
+                $"{"Aktualne środowisko: ",-30}{aktualneSrodowisko}\n" +
                 $"{"Predkość minimalna: ",-30}{ ILadowy.MinimalnaPredkosc}\n" +
                 $"{"Predkość maksymalna: ",-30}{ ILadowy.MaksymalnaPredkosc}\n" +
-                $"{"Aktualne środowisko: ",-30}{aktualneSrodowisko}\n" +
                 $"{"Czy pojazd porusza się: ",-30}{czyPoruszaSie}\n";
         }
 
-        public void TestowoPrzypiszSrodowisko(Srodowisko srodowisko)
+        public void ZmienSrodowisko()
         {
-            aktualneSrodowisko = srodowisko;
+            if (this is IWodny && this is ILadowy)
+            {
+                if (aktualneSrodowisko == Srodowisko.Ladowe)
+                {
+                    aktualneSrodowisko = Srodowisko.Wodne;
+                    if (ILadowy.KilometryNaMileMorskie(Predkosc) > IWodny.MaksymalnaPredkosc)
+                        predkosc = IWodny.MaksymalnaPredkosc;
+                    else
+                        predkosc = ILadowy.KilometryNaMileMorskie(Predkosc);
+                }
+                else
+                {
+                    aktualneSrodowisko = Srodowisko.Ladowe;
+                    predkosc = IWodny.MileMorskieNaKilometry(Predkosc);
+                }
+                Console.WriteLine($"Zmieniam środowisko, aktualna prędkość: {Predkosc} {JednostkaPredkosci}");
+            }
+        }
+
+        public static int PorownajDwaPojazdy(Pojazd x, Pojazd y)
+        {
+            double xPredkosc = 0.0;
+            double yPredkosc = 0.0;
+            if (x.AktualneSrodowisko == Srodowisko.Ladowe)
+                xPredkosc = x.Predkosc;
+            if (x.AktualneSrodowisko == Srodowisko.Wodne)
+                xPredkosc = IWodny.MileMorskieNaKilometry(x.Predkosc);
+            if (x.AktualneSrodowisko == Srodowisko.Powietrzne)
+                xPredkosc = IPowietrzny.MetryNaKilometry(x.Predkosc);
+
+            if (y.AktualneSrodowisko == Srodowisko.Ladowe)
+                yPredkosc = y.Predkosc;
+            if (y.AktualneSrodowisko == Srodowisko.Wodne)
+                yPredkosc = IWodny.MileMorskieNaKilometry(y.Predkosc);
+            if (y.AktualneSrodowisko == Srodowisko.Powietrzne)
+                yPredkosc = IPowietrzny.MetryNaKilometry(y.Predkosc);
+
+            int wynik = 0;
+            if (xPredkosc > yPredkosc)
+                wynik = -1;
+            if (xPredkosc == yPredkosc)
+                wynik = 0;
+            if (xPredkosc == yPredkosc)
+                wynik = 1;
+
+            return wynik;
         }
     }
 }

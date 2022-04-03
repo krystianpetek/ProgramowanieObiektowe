@@ -1,25 +1,17 @@
-﻿using HierarchiaKlasPojazdow.Enumy;
-using HierarchiaKlasPojazdow.RodzajPojazdu;
+﻿using HierarchiaKlasPojazdow.RodzajPojazdu;
 
 namespace HierarchiaKlasPojazdow.Pojazdy
 {
-    internal class Samolot : Pojazd, ILadowy, IPowietrzny, ISilnik
+    internal class Rower : Pojazd, ILadowy
     {
-        public Samolot(double mocSilnika) : base()
-        {
-            LiczbaKol = 8;
-            Silnik = RodzajSilnika.Odrzutowy;
-            MocSilnika = mocSilnika;
-        }
-
-        public int LiczbaKol { get; init; }
-        public RodzajSilnika Silnik { get; init; }
-        public double MocSilnika { get; init; }
+        public int LiczbaKol { get; init; } = 2;
+        public override double MaksymalnaPredkosc => 80;
+        public override double Przyspieszenie => 10;
 
         public override string ToString()
         {
             string czyPoruszaSie = ((CzyPoruszaSie) ? $"Tak\n{"Aktualna prędkość: ",-30}{Predkosc} {JednostkaPredkosci}" : "Nie");
-            string czyPojazdMaSilnik = (this is ISilnik ? $"Tak\n{"Rodzaj napędu: ",-30}{Silnik}\n{"Moc silnika: ",-30}{MocSilnika} KM" : "Nie");
+            string czyPojazdMaSilnik = (this is ISilnik ? $"Tak" : "Nie");
             string srodowiska = "";
             for (int i = 0; i < dostepneSrodowisko.Count; i++)
             {
@@ -30,6 +22,7 @@ namespace HierarchiaKlasPojazdow.Pojazdy
                 }
                 srodowiska += $"{dostepneSrodowisko[i]}, ";
             }
+
             return $"\nInformacje o pojezdzie: \n" +
                 $"{"Typ pojazdu: ",-30}{GetType().Name}\n" +
                 $"{"Możliwe środowiska pojazdu: ",-30}{srodowiska}\n" +
@@ -39,17 +32,6 @@ namespace HierarchiaKlasPojazdow.Pojazdy
                 $"{"Czy pojazd porusza się: ",-30}{czyPoruszaSie}\n" +
                 $"{"Pojazd silnikowy: ",-30}{czyPojazdMaSilnik}\n" +
                 $"{"Ilość kół: ",-30}{LiczbaKol}\n";
-        }
-
-        // W klasie reprezentującej pojazd dostarcz statyczną metodę konwertującą szybkości z jednego systemu zapisu na inny.
-        public static double MetryNaKilometry(double x)
-        {
-            return Math.Round(x * 3.60000, 2);
-        }
-
-        public static double KilometryNaMetry(double x)
-        {
-            return Math.Round(x * 0.27778, 2);
         }
     }
 }
