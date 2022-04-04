@@ -35,7 +35,7 @@ Console.WriteLine(liczba.Between<int>(0, 9));
 Console.WriteLine(liczba.Between<int>(0, 5));
 Console.WriteLine(liczba.Between<int>(0, 4));
 napis = "alicja";
-Console.WriteLine(napis.Between("ala","baba"));
+Console.WriteLine(napis.Between("ala", "baba"));
 
 // zadanie 7
 Console.WriteLine(liczba.BetterBetween<int>(0, 9, (x, y) => x.CompareTo(y)));
