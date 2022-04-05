@@ -122,8 +122,13 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BigRational", "BigRational", "{5E4C7C3F-5F69-468D-A3BA-65D205CEEB94}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ImplementacjaInterfejsow", "ImplementacjaInterfejsow", "{F02E445D-7208-4801-9F13-92B49876FA7B}"
+	ProjectSection(SolutionItems) = preProject
+		ImplementacjaInterfejsow\1_Tut.pdf = ImplementacjaInterfejsow\1_Tut.pdf
+		ImplementacjaInterfejsow\2_Tut.pdf = ImplementacjaInterfejsow\2_Tut.pdf
+		ImplementacjaInterfejsow\Program.cs = ImplementacjaInterfejsow\Program.cs
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImplementacjaInterfejsow", "ImplementacjaInterfejsow\ImplementacjaInterfejsow.csproj", "{2A216F6E-7CF8-4EE6-8F98-2C1C815B48B1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ImplementacjaInterfejsow", "ImplementacjaInterfejsow\ImplementacjaInterfejsow.csproj", "{2A216F6E-7CF8-4EE6-8F98-2C1C815B48B1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
