@@ -27,16 +27,50 @@ List<Pracownik> listaPracownikow = new List<Pracownik>()
     pracownik04,
     pracownik05
 };
+Wywolaj("\nLista pracowników domyślna");
 foreach(Pracownik employee in listaPracownikow)
     Console.WriteLine(employee);
 
+Wywolaj("\nLista pracowników Nazwisko -> Data zatrudnienia -> Wynagrodzenie");
 listaPracownikow.Sort();
-Console.WriteLine();
 foreach (Pracownik employee in listaPracownikow)
     Console.WriteLine(employee);
 
+Wywolaj("\nLista pracowników Czas zatrudnienia -> Wynagrodzenie (zewnętrzne API sortujące implementujące IComparer)");
 WgCzasuZatrudnieniaPotemWgWynagrodzeniaComparer porownywacz = new();
 listaPracownikow.Sort(porownywacz);
 foreach (Pracownik employee in listaPracownikow)
     Console.WriteLine(employee);
 
+Wywolaj("\nLista pracowników Czas zatrudnienia -> Nazwisko -> Wynagrodzenie (zewnętrzne API sortujące Comparison delegat)");
+listaPracownikow.Sort(WgCzasuZatrudnieniaPotemWgWynagrodzeniaComparer.PorownywaczDelegat);
+foreach (Pracownik employee in listaPracownikow)
+    Console.WriteLine(employee);
+
+Wywolaj("\nLista pracowników Wynagrodzenie -> Nazwisko (LINQ, metoda OrderBy oraz ThenBy z klasy Enumerable)");
+var x = listaPracownikow.OrderBy( x=>x.Wynagrodzenie).ThenBy(x=>x.Nazwisko);
+foreach (Pracownik emp in x)
+    Console.WriteLine(emp);
+
+Wywolaj("\nMoja metoda generyczna - Nazwisko -> Data zatrudnienia -> Wynagrodzenie");
+Sortowanie.Sortuj(listaPracownikow);
+foreach (Pracownik emp in listaPracownikow)
+    Console.WriteLine(emp);
+
+Wywolaj("\nMoja metoda generyczna - Czas zatrudnienia -> Wynagrodzenie (zewnętrzne API sortujące implementujące IComparer)");
+Sortowanie.Sortuj<Pracownik>(listaPracownikow, porownywacz);
+foreach (Pracownik emp in listaPracownikow)
+    Console.WriteLine(emp);
+
+Wywolaj("\nMoja metoda generyczna - Czas zatrudnienia -> Nazwisko -> Wynagrodzenie (zewnętrzne API sortujące Comparison delegat)");
+Sortowanie.Sortuj<Pracownik>(listaPracownikow, WgCzasuZatrudnieniaPotemWgWynagrodzeniaComparer.PorownywaczDelegat);
+foreach (Pracownik emp in listaPracownikow)
+    Console.WriteLine(emp);
+
+void Wywolaj(string wiadomosc)
+{
+    Console.ForegroundColor = ConsoleColor.Green;
+    Console.WriteLine(wiadomosc);
+    Console.ResetColor();
+    return;
+};
