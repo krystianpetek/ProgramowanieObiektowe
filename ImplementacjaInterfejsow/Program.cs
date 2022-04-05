@@ -74,3 +74,33 @@ void Wywolaj(string wiadomosc)
     Console.ResetColor();
     return;
 };
+
+class A
+{
+    protected int x = 123;
+}
+
+class D : A { }
+
+class C : B { }
+
+class B : A
+{
+    public int GetX() { return x; }
+
+    public static void Uruchom()
+    {
+        A a = new A();
+        B b = new B();
+        C c = new C();
+        D d = new D();
+
+
+    }
+   
+    public void Test()
+    {
+
+        //...
+    }
+}
