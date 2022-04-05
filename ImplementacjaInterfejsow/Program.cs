@@ -34,3 +34,9 @@ listaPracownikow.Sort();
 Console.WriteLine();
 foreach (Pracownik employee in listaPracownikow)
     Console.WriteLine(employee);
+
+WgCzasuZatrudnieniaPotemWgWynagrodzeniaComparer porownywacz = new();
+listaPracownikow.Sort(porownywacz);
+foreach (Pracownik employee in listaPracownikow)
+    Console.WriteLine(employee);
+
