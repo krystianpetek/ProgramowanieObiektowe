@@ -1,5 +1,4 @@
-﻿
-namespace RationalLibrary
+﻿namespace RationalLibrary
 {
     public readonly partial struct BigRational : IEquatable<BigRational>
     {
@@ -14,6 +13,7 @@ namespace RationalLibrary
 
             return this.Numerator == other.Numerator && this.Denominator == other.Denominator;
         }
+
         public override bool Equals(object? obj)
         {
             if (obj == null) return false;
@@ -36,6 +36,7 @@ namespace RationalLibrary
         {
             return !(left == right);
         }
+
         public static bool IsNaN(BigRational value) => value.Numerator == 0 && value.Denominator == 0;
 
         public static bool IsInfinity

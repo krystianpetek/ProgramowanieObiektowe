@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ImplementacjaInterfejsow
+﻿namespace ImplementacjaInterfejsow
 {
     internal class Pracownik : IEquatable<Pracownik>, IComparable<Pracownik>
     {
@@ -18,11 +12,15 @@ namespace ImplementacjaInterfejsow
             DataZatrudnienia = dataZatrudnienia;
             Wynagrodzenie = wynagrodzenie;
         }
-        public Pracownik() : this("Anonim", DateTime.Now, 0) { }
+
+        public Pracownik() : this("Anonim", DateTime.Now, 0)
+        {
+        }
 
         public string Nazwisko
         {
-            get {
+            get
+            {
                 return nazwisko;
             }
             set
@@ -30,7 +28,10 @@ namespace ImplementacjaInterfejsow
                 nazwisko = value.Trim();
             }
         }
-        public DateTime DataZatrudnienia { get { return dataZatrudnienia; }
+
+        public DateTime DataZatrudnienia
+        {
+            get { return dataZatrudnienia; }
             set
             {
                 if (value > DateTime.Now)
@@ -39,17 +40,23 @@ namespace ImplementacjaInterfejsow
                     dataZatrudnienia = value;
             }
         }
-        public decimal Wynagrodzenie { get { return wynagrodzenie; }
-            set {
 
-                if (value < 0) { wynagrodzenie = 0;
+        public decimal Wynagrodzenie
+        {
+            get { return wynagrodzenie; }
+            set
+            {
+                if (value < 0)
+                {
+                    wynagrodzenie = 0;
                     return;
                 }
                 wynagrodzenie = value;
-            } 
+            }
         }
-        public double CzasZatrudnienia => Math.Floor((DateTime.Now - DataZatrudnienia).TotalDays/30); 
-        
+
+        public double CzasZatrudnienia => Math.Floor((DateTime.Now - DataZatrudnienia).TotalDays / 30);
+
         public override string ToString()
         {
             return $"({Nazwisko}, {DataZatrudnienia.ToShortDateString()} ({CzasZatrudnienia}), {Wynagrodzenie})";
@@ -66,14 +73,17 @@ namespace ImplementacjaInterfejsow
 
             return true;
         }
+
         public override bool Equals(object? obj)
         {
             return Equals(obj as Pracownik);
         }
+
         public override int GetHashCode()
         {
             return HashCode.Combine(this.Nazwisko, this.DataZatrudnienia, this.Wynagrodzenie);
         }
+
         public static bool Equals(Pracownik p1, Pracownik p2)
         {
             return p1.Equals(p2);
@@ -120,8 +130,7 @@ namespace ImplementacjaInterfejsow
         //    return this.Wynagrodzenie.CompareTo(other.Wynagrodzenie);
         //}
 
-
-        public static bool operator == (Pracownik p1, Pracownik p2)
+        public static bool operator ==(Pracownik p1, Pracownik p2)
         {
             if (p1.Nazwisko == p2.Nazwisko &&
                 p1.DataZatrudnienia == p2.DataZatrudnienia &&
@@ -129,6 +138,7 @@ namespace ImplementacjaInterfejsow
                 return true;
             return false;
         }
+
         public static bool operator !=(Pracownik p1, Pracownik p2)
         {
             if (p1 == p2)
@@ -136,5 +146,4 @@ namespace ImplementacjaInterfejsow
             return true;
         }
     }
-    
 }

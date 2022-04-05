@@ -1,7 +1,7 @@
 ﻿using ImplementacjaInterfejsow;
 
 // zadanie 1
-Pracownik pracownik = new Pracownik("Petek", new DateTime(2019, 08, 01),2800);
+Pracownik pracownik = new Pracownik("Petek", new DateTime(2019, 08, 01), 2800);
 Console.WriteLine(pracownik.CzasZatrudnienia);
 Console.WriteLine(pracownik.ToString());
 Pracownik pracownik2 = new Pracownik("Petek", new DateTime(2019, 08, 01), 2800);
@@ -28,7 +28,7 @@ List<Pracownik> listaPracownikow = new List<Pracownik>()
     pracownik05
 };
 Wywolaj("\nLista pracowników domyślna");
-foreach(Pracownik employee in listaPracownikow)
+foreach (Pracownik employee in listaPracownikow)
     Console.WriteLine(employee);
 
 Wywolaj("\nLista pracowników Nazwisko -> Data zatrudnienia -> Wynagrodzenie");
@@ -48,7 +48,7 @@ foreach (Pracownik employee in listaPracownikow)
     Console.WriteLine(employee);
 
 Wywolaj("\nLista pracowników Wynagrodzenie -> Nazwisko (LINQ, metoda OrderBy oraz ThenBy z klasy Enumerable)");
-var x = listaPracownikow.OrderBy( x=>x.Wynagrodzenie).ThenBy(x=>x.Nazwisko);
+var x = listaPracownikow.OrderBy(x => x.Wynagrodzenie).ThenBy(x => x.Nazwisko);
 foreach (Pracownik emp in x)
     Console.WriteLine(emp);
 
@@ -74,33 +74,3 @@ void Wywolaj(string wiadomosc)
     Console.ResetColor();
     return;
 };
-
-class A
-{
-    protected int x = 123;
-}
-
-class D : A { }
-
-class C : B { }
-
-class B : A
-{
-    public int GetX() { return x; }
-
-    public static void Uruchom()
-    {
-        A a = new A();
-        B b = new B();
-        C c = new C();
-        D d = new D();
-
-
-    }
-   
-    public void Test()
-    {
-
-        //...
-    }
-}

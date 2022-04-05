@@ -8,15 +8,16 @@ namespace RationalLibrary
         public readonly BigInteger Denominator { get; init; }
 
         #region stałe
-        public readonly static BigRational Zero = new(0);
-        public readonly static BigRational One = new(1);
-        public readonly static BigRational Half = new(1, 2);
 
-        public readonly static BigRational PositiveInfinity = new(1, 0);
-        public readonly static BigRational NegativeInfinity = new(-1, 0);
-        public readonly static BigRational NaN = new(0, 0);
+        public static readonly BigRational Zero = new(0);
+        public static readonly BigRational One = new(1);
+        public static readonly BigRational Half = new(1, 2);
 
-        #endregion
+        public static readonly BigRational PositiveInfinity = new(1, 0);
+        public static readonly BigRational NegativeInfinity = new(-1, 0);
+        public static readonly BigRational NaN = new(0, 0);
+
+        #endregion stałe
 
         public BigRational(BigInteger numerator, BigInteger denominator)
         {
@@ -40,6 +41,7 @@ namespace RationalLibrary
         { }
 
         public override string? ToString() => $"{Numerator}/{Denominator}";
+
         public static BigRational Parse(string value)
         {
             var tab = value.Split('/');
