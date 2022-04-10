@@ -1,4 +1,4 @@
-﻿namespace ZadaniePudelko
+﻿namespace PudelkoLibrary
 {
     public sealed partial class Pudelko
     {

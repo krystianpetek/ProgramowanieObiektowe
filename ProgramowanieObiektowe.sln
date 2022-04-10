@@ -127,9 +127,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ImplementacjaInterfejsow", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Laboratorium03", "Laboratorium03", "{3FCC8267-7A13-445C-A331-3D4600741D73}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZadaniePudelko", "Pudelko\ZadaniePudelko.csproj", "{BCF2DE86-0115-4220-9A90-0148737331AF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PudelkoLibrary", "Pudelko\PudelkoLibrary.csproj", "{BCF2DE86-0115-4220-9A90-0148737331AF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests", "UnitTests\UnitTests.csproj", "{32D2FE99-45B7-42C2-B8DB-29E97733251C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTests", "UnitTests\UnitTests.csproj", "{32D2FE99-45B7-42C2-B8DB-29E97733251C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
