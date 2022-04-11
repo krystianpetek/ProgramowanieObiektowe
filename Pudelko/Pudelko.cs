@@ -1,81 +1,126 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace PudelkoLibrary
 {
-    public sealed partial class Pudelko
+    public sealed partial class Pudelko :IFormattable, IEnumerable, IEquatable<Pudelko>
     {
         public double A { get; init; } // dlugosc
         public double B { get; init; } // wysokosc
         public double C { get; init; } // szerokosc
         public UnitOfMeasure Miara { get; init; }
-        public Pudelko(double a = 0.1, double b = 0.1, double c = 0.1, UnitOfMeasure unit = UnitOfMeasure.meter)
+        public Pudelko(double? a = null, double? b = null, double? c = null,UnitOfMeasure unit = UnitOfMeasure.meter)
         {
-            #region błędy
-            if (a <= 0 || b <= 0 || c <= 0)
-                throw new ArgumentOutOfRangeException();
-
+            double aNotNull=0, bNotNull=0, cNotNull=0;
+            #region METRY
             if (unit == UnitOfMeasure.meter)
             {
-                if (a > 10 || b > 10 || c > 10)
-                    throw new ArgumentOutOfRangeException();
-            }
-            else if (unit == UnitOfMeasure.centimeter)
-            {
-                if (a > 1000 || b > 1000 || c > 1000)
-                    throw new ArgumentOutOfRangeException();
-            }
-            else if (unit == UnitOfMeasure.milimeter)
-            {
-                if (a > 10000 || b > 10000 || c > 10000)
-                    throw new ArgumentOutOfRangeException();
+                if (a != null)
+                    aNotNull = Math.Round((double)a, 3, MidpointRounding.ToZero);
+                else
+                    aNotNull = Math.Round(0.1000,3);
+                
+                if (b != null)
+                    bNotNull = Math.Round((double)b,3,MidpointRounding.ToZero);
+                else
+                    bNotNull = Math.Round(0.1000,3);
+                
+                if (c != null)
+                    cNotNull = Math.Round((double)c, 3, MidpointRounding.ToZero);
+                else
+                    cNotNull = Math.Round(0.1000,3);
             }
             #endregion
+            #region CENTYMETRY
+            if (unit == UnitOfMeasure.centimeter)
+            {
+                if (a != null)
+                    aNotNull = Math.Round( ((double)a/100) , 3, MidpointRounding.ToZero);
+                else
+                    aNotNull = Math.Round(0.1000, 3);
 
-            if (a == 0 && unit == UnitOfMeasure.meter)
-                A = Math.Round(0.1000, 3);
-            //else if (a == 0 && unit == UnitOfMeasure.centimeter)
-            //    A = Math.Round(10.0, 1);
-            //else if (a == 0 && unit == UnitOfMeasure.milimeter)
-            //    A = Math.Round(100.0, 0);
+                if (b != null)
+                    bNotNull = Math.Round(((double)b/100), 3, MidpointRounding.ToZero);
+                else
+                    bNotNull = Math.Round(0.1000, 3);
 
-            if (b == 0 && unit == UnitOfMeasure.meter)
-                B = Math.Round(0.1000, 3);
-            //else if (a == 0 && unit == UnitOfMeasure.centimeter)
-            //    B = Math.Round(10.0, 1);
-            //else if (a == 0 && unit == UnitOfMeasure.milimeter)
-            //    B = Math.Round(100.0, 0);
+                if (c != null)
+                    cNotNull = Math.Round(((double)c/100), 3, MidpointRounding.ToZero);
+                else
+                    cNotNull = Math.Round(0.1000, 3);
+            }
+            #endregion
+            #region MILIMETRY
+            if (unit == UnitOfMeasure.milimeter)
+            {
+                if (a != null)
+                    aNotNull = Math.Round( ((double)a/1000), 3, MidpointRounding.ToZero);
+                else
+                    aNotNull = Math.Round(0.1000, 3);
 
-            if (b == 0 && unit == UnitOfMeasure.meter)
-                C = Math.Round(0.1000, 3);
-            //else if (a == 0 && unit == UnitOfMeasure.centimeter)
-            //    C = Math.Round(10.0, 1);
-            //else if (a == 0 && unit == UnitOfMeasure.milimeter)
-            //    C = Math.Round(100.0, 0);
+                if (b != null)
+                    bNotNull= Math.Round(((double)b/1000), 3, MidpointRounding.ToZero);
+                else
+                    bNotNull = Math.Round(0.1000, 3);
 
-            if (a > 0 && unit == UnitOfMeasure.meter)
-                A = Math.Round(a, 3);
-            else if (a > 0 && unit == UnitOfMeasure.centimeter)
-                A = Math.Round(a / 100.0, 1);
-            else if (a > 0 && unit == UnitOfMeasure.milimeter)
-                A = a / 1000.0;
+                if (c != null)
+                    cNotNull = Math.Round(((double)c/1000), 3, MidpointRounding.ToZero);
+                else
+                    cNotNull = Math.Round(0.1000, 3);
+            }
+            #endregion
+            #region BŁEDY
+            if (aNotNull <= 0 || bNotNull <= 0 || cNotNull <= 0)
+                throw new ArgumentOutOfRangeException();
 
-            if (b > 0 && unit == UnitOfMeasure.meter)
-                B = Math.Round(b, 3);
-            else if (b > 0 && unit == UnitOfMeasure.centimeter)
-                B = Math.Round(b / 100.0, 1);
-            else if (b > 0 && unit == UnitOfMeasure.milimeter)
-                B = b / 1000.0;
+            if (aNotNull > 10.000 || bNotNull > 10.000 || cNotNull > 10.000)
+                throw new ArgumentOutOfRangeException();
+            
+            #endregion
+            A = aNotNull;
+            B = bNotNull;
+            C = cNotNull;
+        }
+        
+        public override string ToString()
+        {
+            return this.ToString("m");
+        }
 
-            if (c > 0 && unit == UnitOfMeasure.meter)
-                C = Math.Round(c, 3);
-            else if (c > 0 && unit == UnitOfMeasure.centimeter)
-                C = Math.Round(c / 100.0, 1);
-            else if (c > 0 && unit == UnitOfMeasure.milimeter)
-                C = c / 1000.0;
+        public string ToString(string? format)
+        {
+            return this.ToString(format, CultureInfo.CurrentCulture);
+        }
+
+        public string ToString(string? format, IFormatProvider? formatProvider)
+        {
+            char multiplicationSign = '\u00D7';
+            string wynik = "";
+            if (format == null || format == String.Empty)
+                format = "m";
+            if (format == "m")
+                return $"{A:F3} m {multiplicationSign} {B:F3} m {multiplicationSign} {C:F3} m";
+            else if (format == "cm")
+                return $"{A * 100:F1} cm {multiplicationSign} {B * 100:F1} cm {multiplicationSign} {C * 100:F1} cm";
+            else if (format == "mm")
+                return $"{A * 1000:F0} mm {multiplicationSign} {B * 1000:F0} mm {multiplicationSign} {C * 1000:F0} mm";
+            else
+                throw new FormatException();
+        }
+
+        public IEnumerator GetEnumerator()
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool Equals(Pudelko? other)
+        {
+            throw new NotImplementedException();
         }
     }
 }
