@@ -111,11 +111,10 @@ namespace PudelkoLib
         }
         public bool Equals(Pudelko? other)
         {
-            (double a, double b, double c) thisObject = (this.A, this.B, this.C);
-            (double a, double b, double c) otherObject = (other.A, other.B, other.C);
-            thisObject = SortObject(thisObject);
-            otherObject = SortObject(otherObject);
-            if (thisObject.a != otherObject.a || thisObject.b != otherObject.b || thisObject.c != otherObject.c)
+            Pudelko p1, p2;
+            p1 = SortObject(this);
+            p2 = SortObject(other);
+            if (p1.A != p2.A || p1.B != p2.B || p1.C != p2.C)
                 return false;
             return true;
         }
@@ -123,24 +122,7 @@ namespace PudelkoLib
         {
             return HashCode.Combine(this.A, this.B, this.C);
         }
-        private (double a, double b, double c) SortObject((double a, double b, double c) thisObject)
-        {
-            double temp;
-            if (thisObject.a > thisObject.b)
-            {
-                temp = thisObject.a;
-                thisObject.a = thisObject.b;
-                thisObject.b = temp;
-            }
-            if (thisObject.b > thisObject.c)
-            {
 
-                temp = thisObject.b;
-                thisObject.b = thisObject.c;
-                thisObject.c = temp;
-            }
-            return thisObject;
-        }
         public static bool operator ==(Pudelko p1, Pudelko p2)
         {
             return p1.Equals(p2);
@@ -148,6 +130,31 @@ namespace PudelkoLib
         public static bool operator !=(Pudelko p1, Pudelko p2)
         {
             return !(p1 == p2);
+        }
+        public static Pudelko operator +(Pudelko p1, Pudelko p2)
+        {
+            var x = SortObject(p1);
+            var y = SortObject(p2);
+            return new Pudelko(x.A + y.A, x.B + y.B, x.C + y.C);
+        }
+
+        private static Pudelko SortObject(Pudelko pudelko)
+        {
+            double A = pudelko.A, B = pudelko.B, C = pudelko.C, temp;
+            if (A > B)
+            {
+                temp = A;
+                A = pudelko.B;
+                B = temp;
+            }
+            if (pudelko.B > pudelko.C)
+            {
+
+                temp = B;
+                B = C;
+                C = temp;
+            }
+            return new Pudelko(A, B, C);
         }
     }
 }

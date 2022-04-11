@@ -32,3 +32,4 @@ Console.WriteLine(p2.GetHashCode());
 Console.WriteLine(p3.GetHashCode());
 Console.WriteLine(p4.GetHashCode());
 
+Console.WriteLine(p2 + p2);
