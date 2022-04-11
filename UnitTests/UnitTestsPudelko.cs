@@ -1,10 +1,10 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using PudelkoLibrary;
+using PudelkoLib;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Threading;
-using static PudelkoLibrary.Pudelko;
+using static PudelkoLib.Pudelko;
 
 namespace PudelkoUnitTests
 {

@@ -1,4 +1,4 @@
-﻿namespace PudelkoLibrary
+﻿namespace PudelkoLib
 {
     public sealed partial class Pudelko
     {
