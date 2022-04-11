@@ -32,4 +32,13 @@ Console.WriteLine(p2.GetHashCode());
 Console.WriteLine(p3.GetHashCode());
 Console.WriteLine(p4.GetHashCode());
 
-Console.WriteLine(p2 + p2);
+Pudelko zapalki = new Pudelko(20,15,10, Pudelko.UnitOfMeasure.centimeter);
+Pudelko box304050 = new Pudelko(8.6, 5.5, 2.5, Pudelko.UnitOfMeasure.centimeter);
+
+Console.WriteLine(zapalki.Objetosc);
+Console.WriteLine(box304050.Objetosc);
+Console.WriteLine((zapalki + box304050).Objetosc);
+
+ValueTuple<int, int, int> vt3 = new(2003, 5501, 221);
+Pudelko v12 = vt3;
+Console.WriteLine(v12);

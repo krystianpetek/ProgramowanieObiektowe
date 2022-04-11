@@ -135,26 +135,29 @@ namespace PudelkoLib
         {
             var x = SortObject(p1);
             var y = SortObject(p2);
-            return new Pudelko(x.A + y.A, x.B + y.B, x.C + y.C);
+            var z = x.A;
+            if (x.A > y.A)
+                z = y.A;
+            return new Pudelko(((x.A > y.A) ? x.A : y.A), ((x.B > y.B) ? x.B : y.B), ((x.C > y.C) ? x.C + z : y.C + z));
         }
 
         private static Pudelko SortObject(Pudelko pudelko)
         {
-            double A = pudelko.A, B = pudelko.B, C = pudelko.C, temp;
-            if (A > B)
-            {
-                temp = A;
-                A = pudelko.B;
-                B = temp;
-            }
-            if (pudelko.B > pudelko.C)
-            {
+            SortedSet<double> pudlo = new SortedSet<double>() { pudelko.A, pudelko.B, pudelko.C };
+            return new Pudelko(pudlo.ElementAt(0), pudlo.ElementAt(1), pudlo.ElementAt(2));
+        }
+        public static explicit operator double[](Pudelko pudelko)
+        {
+            return new double[] { pudelko.A, pudelko.B, pudelko.C };
+        }
+        
+        public static implicit operator Pudelko(ValueTuple<int, int, int> value)
+        {
+            return new Pudelko(value.Item1,value.Item2,value.Item3, UnitOfMeasure.milimeter);
+        }
+        public Pudelko this[int index]
+        {
 
-                temp = B;
-                B = C;
-                C = temp;
-            }
-            return new Pudelko(A, B, C);
         }
     }
 }
