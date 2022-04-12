@@ -446,9 +446,94 @@ namespace PudelkoUnitTests
 
         #endregion
 
+        #region Volume/Area
+        [DataTestMethod, TestCategory("Volume and area")]
+        [DataRow(1.0, 2.543, 3.1, 7.883300000)]
+        [DataRow(1.0, 2, 3.154648, 6.308000000)]
+        [DataRow(1.0001, 2.54387, 3.1005, 7.883300000)]
+        [DataRow(0.0011546, 6.5237, 3.54, 0.023091420)]
+        public void PropertyVolume_DefaultMeters_ShouldReturnCorrectValue(double a, double b, double c, double expectedVolume)
+        {
+            Pudelko p = new Pudelko(a, b, c);
+            Assert.AreEqual(expectedVolume, p.Volume);
+        }
 
-        #region Pole, Objętość ===================================
-        // ToDo
+        [DataTestMethod, TestCategory("Volume and area")]
+        [DataRow(1.0, 2.543, 3.1, 7.883300000)]
+        [DataRow(1.0, 2, 3.154648, 6.308000000)]
+        [DataRow(1.0001, 2.54387, 3.1005, 7.883300000)]
+        [DataRow(0.0011546, 6.5237, 3.54, 0.023091420)]
+        public void PropertyVolume_UnitMeters_ShouldReturnCorrectValue(double a, double b, double c, double expectedVolume)
+        {
+            Pudelko p = new Pudelko(a, b, c, UnitOfMeasure.meter);
+            Assert.AreEqual(expectedVolume, p.Volume);
+        }
+
+        [DataTestMethod, TestCategory("Volume and area")]
+        [DataRow(10, 243, 301.2, 0.731916000)]
+        [DataRow(100.4323, 57.424, 985.33242123, 5.678244488)]
+        [DataRow(210.011546, 652.37, 354, 48.491982000)]
+        public void PropertyVolume_UnitCentimeter_ShouldReturnCorrectValue(double a, double b, double c, double expectedVolume)
+        {
+            Pudelko p = new Pudelko(a, b, c, UnitOfMeasure.centimeter);
+            Assert.AreEqual(expectedVolume, p.Volume);
+        }
+
+        [DataTestMethod, TestCategory("Volume and area")]
+        [DataRow(240, 3012.54, 3.21, 0.002168640)]
+        [DataRow(2504.3, 5742, 9815.311, 141.119755920)]
+        [DataRow(1, 210.011546, 8652.37, 0.001816920)]
+        public void PropertyVolume_UnitMilimeter_ShouldReturnCorrectValue(double a, double b, double c, double expectedVolume)
+        {
+            Pudelko p = new Pudelko(a, b, c, UnitOfMeasure.milimeter);
+            Assert.AreEqual(expectedVolume, p.Volume);
+        }
+
+        [DataTestMethod, TestCategory("Volume and area")]
+        [DataRow(1.0, 2.543, 3.1, 27.052600)]
+        [DataRow(1.0, 2, 3.154648, 22.924000)]
+        [DataRow(1.0001, 2.54387, 3.1005, 27.052600)]
+        [DataRow(0.0011546, 6.5237, 3.54, 46.202966)]
+        public void PropertyArea_DefaultMeters_ShouldReturnCorrectValue(double a, double b, double c, double expectedVolume)
+        {
+            Pudelko p = new Pudelko(a, b, c);
+            Assert.AreEqual(expectedVolume, p.Area);
+        }
+
+        [DataTestMethod, TestCategory("Volume and area")]
+        [DataRow(1.0, 2.543, 3.1, 7.883300000)]
+        [DataRow(1.0, 2, 3.154648, 6.308000000)]
+        [DataRow(1.0001, 2.54387, 3.1005, 7.883300000)]
+        [DataRow(0.0011546, 6.5237, 3.54, 0.023091420)]
+        public void PropertyArea_UnitMeters_ShouldReturnCorrectValue(double a, double b, double c, double expectedVolume)
+        {
+            Pudelko p = new Pudelko(a, b, c, UnitOfMeasure.meter);
+            Assert.AreEqual(expectedVolume, p.Area);
+        }
+        // https://www.calculat.org/pl/objetosc-pole/prostopadloscian.html
+
+        [DataTestMethod, TestCategory("Volume and area")]
+        [DataRow(10, 243, 301.2, 0.731916000)]
+        [DataRow(100.4323, 57.424, 985.33242123, 5.678244488)]
+        [DataRow(210.011546, 652.37, 354, 48.491982000)]
+        public void PropertyArea_UnitCentimeter_ShouldReturnCorrectValue(double a, double b, double c, double expectedVolume)
+        {
+            Pudelko p = new Pudelko(a, b, c, UnitOfMeasure.centimeter);
+            Assert.AreEqual(expectedVolume, p.Area);
+        }
+
+        [DataTestMethod, TestCategory("Volume and area")]
+        [DataRow(240, 3012.54, 3.21, 1.465272)]
+        [DataRow(2504.3, 5742, 9815.311, 190.624916)]
+        [DataRow(1, 210.011546, 8652.37, 3.651564)]
+        public void PropertyArea_UnitMilimeter_ShouldReturnCorrectValue(double a, double b, double c, double expectedVolume)
+        {
+            Pudelko p = new Pudelko(a, b, c, UnitOfMeasure.milimeter);
+            Assert.AreEqual(expectedVolume, p.Area);
+        }
+
+
+
 
         #endregion
 
