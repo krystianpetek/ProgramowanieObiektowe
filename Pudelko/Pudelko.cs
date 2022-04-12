@@ -1,4 +1,5 @@
-﻿using System.Globalization;
+﻿using System.Collections;
+using System.Globalization;
 
 namespace PudelkoLib
 {
@@ -10,9 +11,11 @@ namespace PudelkoLib
         public string Objetosc => $"{Math.Round(A * B * C, 9):F9} m\u00B3";
         public string Pole => $"{Math.Round(2 * A * B + 2 * B * C + 2 * C * A, 6):F6} m\u00B3";
         public UnitOfMeasure Miara { get; init; }
+
         public Pudelko(double? a = null, double? b = null, double? c = null, UnitOfMeasure unit = UnitOfMeasure.meter)
         {
             double aNotNull = 0, bNotNull = 0, cNotNull = 0;
+
             #region METRY
             if (unit == UnitOfMeasure.meter)
             {
@@ -32,6 +35,7 @@ namespace PudelkoLib
                     cNotNull = Math.Round(0.1000, 3);
             }
             #endregion
+
             #region CENTYMETRY
             if (unit == UnitOfMeasure.centimeter)
             {
@@ -51,6 +55,7 @@ namespace PudelkoLib
                     cNotNull = Math.Round(0.1000, 3);
             }
             #endregion
+
             #region MILIMETRY
             if (unit == UnitOfMeasure.milimeter)
             {
@@ -70,26 +75,30 @@ namespace PudelkoLib
                     cNotNull = Math.Round(0.1000, 3);
             }
             #endregion
-            #region BŁEDY
+            
+            #region WYJĄTKI
             if (aNotNull <= 0 || bNotNull <= 0 || cNotNull <= 0)
                 throw new ArgumentOutOfRangeException();
 
             if (aNotNull > 10.000 || bNotNull > 10.000 || cNotNull > 10.000)
                 throw new ArgumentOutOfRangeException();
-
             #endregion
+
             A = aNotNull;
             B = bNotNull;
             C = cNotNull;
         }
+        #region ToString
         public override string ToString()
         {
             return this.ToString("m");
         }
+
         public string ToString(string? format)
         {
             return this.ToString(format, CultureInfo.CurrentCulture);
         }
+
         public string ToString(string? format, IFormatProvider? formatProvider)
         {
             char multiplicationSign = '\u00D7';
@@ -105,10 +114,14 @@ namespace PudelkoLib
             else
                 throw new FormatException();
         }
+        #endregion
+
+        #region Equals
         public override bool Equals(object? obj)
         {
             return this.Equals(obj as Pudelko);
         }
+
         public bool Equals(Pudelko? other)
         {
             Pudelko p1, p2;
@@ -118,6 +131,7 @@ namespace PudelkoLib
                 return false;
             return true;
         }
+
         public override int GetHashCode()
         {
             return HashCode.Combine(this.A, this.B, this.C);
@@ -127,10 +141,14 @@ namespace PudelkoLib
         {
             return p1.Equals(p2);
         }
+
         public static bool operator !=(Pudelko p1, Pudelko p2)
         {
             return !(p1 == p2);
         }
+        #endregion
+
+        #region Operator+
         public static Pudelko operator +(Pudelko p1, Pudelko p2)
         {
             var x = SortObject(p1);
@@ -140,12 +158,9 @@ namespace PudelkoLib
                 z = y.A;
             return new Pudelko(((x.A > y.A) ? x.A : y.A), ((x.B > y.B) ? x.B : y.B), ((x.C > y.C) ? x.C + z : y.C + z));
         }
+        #endregion
 
-        private static Pudelko SortObject(Pudelko pudelko)
-        {
-            SortedSet<double> pudlo = new SortedSet<double>() { pudelko.A, pudelko.B, pudelko.C };
-            return new Pudelko(pudlo.ElementAt(0), pudlo.ElementAt(1), pudlo.ElementAt(2));
-        }
+        #region Konwersja
         public static explicit operator double[](Pudelko pudelko)
         {
             return new double[] { pudelko.A, pudelko.B, pudelko.C };
@@ -155,9 +170,30 @@ namespace PudelkoLib
         {
             return new Pudelko(value.Item1,value.Item2,value.Item3, UnitOfMeasure.milimeter);
         }
-        public Pudelko this[int index]
-        {
+        #endregion
 
+        #region Indexer
+        public double this[int index]
+        {
+            get
+            {
+                if (index == 0) return this.A;
+                else if (index == 1) return this.B;
+                else if (index == 2) return this.C;
+                else
+                    throw new IndexOutOfRangeException("Pudełko ma tylko 3 wartości");
+            }
+        }
+        #endregion
+
+        #region Foreach
+        
+        #endregion
+
+        private static Pudelko SortObject(Pudelko pudelko)
+        {
+            SortedSet<double> pudlo = new SortedSet<double>() { pudelko.A, pudelko.B, pudelko.C };
+            return new Pudelko(pudlo.ElementAt(0), pudlo.ElementAt(1), pudlo.ElementAt(2));
         }
     }
 }

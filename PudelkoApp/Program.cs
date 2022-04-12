@@ -42,3 +42,10 @@ Console.WriteLine((zapalki + box304050).Objetosc);
 ValueTuple<int, int, int> vt3 = new(2003, 5501, 221);
 Pudelko v12 = vt3;
 Console.WriteLine(v12);
+
+Console.WriteLine(v12[3]);
+
+foreach(double xe in v12)
+{
+    Console.WriteLine(xe);
+}
