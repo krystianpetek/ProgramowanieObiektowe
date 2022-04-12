@@ -3,7 +3,7 @@ using System.Globalization;
 
 namespace PudelkoLib
 {
-    public sealed partial class Pudelko : IFormattable, IEquatable<Pudelko>
+    public sealed partial class Pudelko : IFormattable, IEquatable<Pudelko>, IEnumerable
     {
         public double A { get; init; } // dlugosc
         public double B { get; init; } // wysokosc
@@ -185,15 +185,37 @@ namespace PudelkoLib
             }
         }
         #endregion
-
-        #region Foreach
         
+        #region Foreach iterator
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            double[] tab = new double[] { this.A, this.B, this.C };
+            foreach (var x in tab)
+            {
+                yield return x;
+            }
+        }
         #endregion
 
         private static Pudelko SortObject(Pudelko pudelko)
         {
             SortedSet<double> pudlo = new SortedSet<double>() { pudelko.A, pudelko.B, pudelko.C };
             return new Pudelko(pudlo.ElementAt(0), pudlo.ElementAt(1), pudlo.ElementAt(2));
+        }
+        public static Pudelko Parse(string x)
+        {
+            var split = x.Split(" ");
+            double a = double.Parse(split[0].Replace('.',','));
+            double b = double.Parse(split[3].Replace('.', ','));
+            double c = double.Parse(split[6].Replace('.', ','));
+            if (split[1] == "m" && split[4] == "m" && split[7] == "m")
+                return new Pudelko(a, b, c, UnitOfMeasure.meter);
+            else if (split[1] == "cm" && split[4] == "cm" && split[7] == "cm")
+                return new Pudelko(a, b, c, UnitOfMeasure.centimeter);
+            else if (split[1] == "mm" && split[4] == "mm" && split[7] == "mm")
+                return new Pudelko(a, b, c, UnitOfMeasure.milimeter);
+            else
+                throw new InvalidDataException("Błędne dane do parsowania");
         }
     }
 }

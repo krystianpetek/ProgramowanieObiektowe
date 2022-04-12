@@ -43,9 +43,12 @@ ValueTuple<int, int, int> vt3 = new(2003, 5501, 221);
 Pudelko v12 = vt3;
 Console.WriteLine(v12);
 
-Console.WriteLine(v12[3]);
+Console.WriteLine(v12[2]);
 
+Console.WriteLine();
 foreach(double xe in v12)
 {
     Console.WriteLine(xe);
 }
+
+var puds = Pudelko.Parse("2500 mm × 912 mm × 100 mm");
