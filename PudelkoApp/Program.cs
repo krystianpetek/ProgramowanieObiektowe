@@ -39,6 +39,7 @@ Pudelko box304050 = new Pudelko(8.6, 5.5, 2.5, Pudelko.UnitOfMeasure.centimeter)
 Console.WriteLine(zapalki.Volume);
 Console.WriteLine(box304050.Volume);
 Console.WriteLine((zapalki + box304050).Volume);
+Console.WriteLine((zapalki + box304050));
 
 ValueTuple<int, int, int> vt3 = new(2003, 5501, 221);
 Pudelko v12 = vt3;
@@ -60,4 +61,9 @@ Console.WriteLine(s);
 var plytaGipsowa = new Pudelko(2.6, 1.2, 0.0125);
 var pudelkoZChlebem = new Pudelko(0.2, 0.15, 0.1);
 
-Console.WriteLine(plytaGipsowa + pudelkoZChlebem);
+Console.WriteLine((plytaGipsowa + pudelkoZChlebem).Volume);
+
+var ppp1 = new Pudelko(3.2,2.2, 0.43);
+var ppp2 = new Pudelko(0.012, 1.5, 0.130);
+var ppp3 = ppp1 + ppp2;
+Console.WriteLine(ppp3.Volume);
