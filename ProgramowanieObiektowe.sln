@@ -67,7 +67,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Powtorka", "Powtorka", "{F5
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Konwersatorium02", "Konwersatorium02", "{9F0C737A-66A0-49D3-9AFB-9D6434D3E86B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RationalLibrary", "RationalLibrary\RationalLibrary.csproj", "{178066A8-4CFA-4956-B14F-D065229D53B5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RationalLib", "RationalLibrary\RationalLib.csproj", "{178066A8-4CFA-4956-B14F-D065229D53B5}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RationalConsoleApp", "RationalConsoleApp\RationalConsoleApp.csproj", "{FF904824-CDE6-4D36-9B0F-3B7454D21EA1}"
 EndProject
@@ -133,7 +133,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PudelkoUnitTests", "UnitTes
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Pudelko", "Pudelko", "{A85A3470-9629-408A-9BE6-9392416A9530}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PudelkoApp", "PudelkoApp\PudelkoApp.csproj", "{2DCC051B-587F-4C81-B0EC-FEC70C454E1D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PudelkoApp", "PudelkoApp\PudelkoApp.csproj", "{2DCC051B-587F-4C81-B0EC-FEC70C454E1D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Konwersatorium03", "Konwersatorium03", "{07FDC73F-1405-40DF-8FF7-0365024B79BC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

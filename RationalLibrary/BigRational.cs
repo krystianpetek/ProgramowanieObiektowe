@@ -24,6 +24,8 @@ namespace RationalLibrary
             Numerator = numerator;
             Denominator = denominator;
 
+            // implementacja aby ułamek był nieskracalny
+            // implementacja Greatest Common Divisor(najmniejszy wspólny dzielnik)
             var gcd = BigInteger.GreatestCommonDivisor(numerator, denominator);
             Numerator /= gcd;
             Denominator /= gcd;

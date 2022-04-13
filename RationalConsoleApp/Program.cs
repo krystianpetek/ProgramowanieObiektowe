@@ -1,4 +1,4 @@
-﻿// See https://aka.ms/new-console-template for more information
+﻿
 using RationalLibrary;
 
 Console.WriteLine(default(BigRational));

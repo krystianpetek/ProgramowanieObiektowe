@@ -15,7 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\RationalLibrary\RationalLibrary.csproj" />
+    <ProjectReference Include="..\RationalLibrary\RationalLib.csproj" />
   </ItemGroup>
 
 </Project>
