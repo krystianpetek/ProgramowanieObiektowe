@@ -4,7 +4,7 @@
     {
         public enum UnitOfMeasure
         {
-            milimeter, centimeter, meter
+            meter, centimeter, milimeter
         }
     }
 }

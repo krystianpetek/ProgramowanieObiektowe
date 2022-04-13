@@ -8,7 +8,6 @@ using static PudelkoLib.Pudelko;
 
 namespace PudelkoUnitTests
 {
-
     [TestClass]
     public static class InitializeCulture
     {
@@ -98,7 +97,6 @@ namespace PudelkoUnitTests
 
             AssertPudelko(p, expectedA, expectedB, expectedC);
         }
-
 
         // ----
 
@@ -266,7 +264,6 @@ namespace PudelkoUnitTests
             Pudelko p = new Pudelko(a, b, c, unit: UnitOfMeasure.centimeter);
         }
 
-
         [DataTestMethod, TestCategory("Constructors")]
         [DataRow(-1, 1, 1)]
         [DataRow(1, -1, 1)]
@@ -297,7 +294,6 @@ namespace PudelkoUnitTests
         {
             Pudelko p = new Pudelko(a, b, c, unit: UnitOfMeasure.milimeter);
         }
-
 
         public static IEnumerable<object[]> DataSet2Meters_ArgumentOutOfRangeEx => new List<object[]>
         {
@@ -366,9 +362,6 @@ namespace PudelkoUnitTests
             Pudelko p = new Pudelko(a, b, unit: UnitOfMeasure.milimeter);
         }
 
-
-
-
         [DataTestMethod, TestCategory("Constructors")]
         [DataRow(-1.0)]
         [DataRow(0)]
@@ -411,7 +404,7 @@ namespace PudelkoUnitTests
             Pudelko p = new Pudelko(a, unit: UnitOfMeasure.milimeter);
         }
 
-        #endregion
+        #endregion Constructor tests ================================
 
         #region ToString tests ===================================
 
@@ -443,9 +436,10 @@ namespace PudelkoUnitTests
             var stringformatedrepreentation = p.ToString("wrong code");
         }
 
-        #endregion
+        #endregion ToString tests ===================================
 
         #region Volume/Area ======================================
+
         [DataTestMethod, TestCategory("Volume and area")]
         [DataRow(1.0, 2.543, 3.1, 7.883300000)]
         [DataRow(1.0, 2, 3.154648, 6.308000000)]
@@ -529,14 +523,14 @@ namespace PudelkoUnitTests
             Pudelko p = new Pudelko(a, b, c, UnitOfMeasure.milimeter);
             Assert.AreEqual(expectedVolume, p.Area);
         }
-        #endregion
+
+        #endregion Volume/Area ======================================
 
         #region Equals ===========================================
+
         [DataTestMethod, TestCategory("Equals")]
         [DataRow(1, 2.1, 3.05, 1, 3.05, 2.1)]
         [DataRow(1, 2.1, 3.05, 2.1, 1, 3.05)]
-        //[DataRow(1, 2.1, 3.05, 1, 2.1, 3.05)]
-        //[DataRow(1, 2.1, 3.05, 3.05, 1, 2.1)]
         public void EqualsUnitDefault_WhenBoxesHasTheSameValueAndDifferentOrders_ShouldReturnTrue(double p1A, double p1B, double p1C, double p2A, double p2B, double p2C)
         {
             Pudelko p1 = new Pudelko(p1A, p1B, p1C);
@@ -613,9 +607,11 @@ namespace PudelkoUnitTests
             Pudelko p2 = new Pudelko(p2A, p2B, p2C, UnitOfMeasure.milimeter);
             Assert.IsFalse(p1.Equals(p2));
         }
-        #endregion
+
+        #endregion Equals ===========================================
 
         #region Operators overloading ===========================
+
         [DataTestMethod, TestCategory("Operators")]
         [DataRow(2.1, 1, 3.05, 305.0, 210.0, 100.0)]
         [DataRow(0.021, 1, 0.305, 100.0, 2.100, 30.5)]
@@ -678,11 +674,11 @@ namespace PudelkoUnitTests
 
         [DataTestMethod, TestCategory("Operators")]
         [DataRow(2.5, 5.3, 9, 3.1, 4.5, 1, 132.500000)]
-        [DataRow(2.6, 1.2, 0.0125, 0.2,0.15,0.10, 0.313440)]
-        [DataRow(3.2, 2.2, 0.43, 0.012,1.5,0.130, 3.038552)]
+        [DataRow(2.6, 1.2, 0.0125, 0.2, 0.15, 0.10, 0.313440)]
+        [DataRow(3.2, 2.2, 0.43, 0.012, 1.5, 0.130, 3.038552)]
         public void OperatorPlus_WhenAddedTwoBoxesInMeters_ShouldReturnSmallestBoundingBoxVolume(
-            double p1A, double p1B, double p1C, 
-            double p2A, double p2B, double p2C, 
+            double p1A, double p1B, double p1C,
+            double p2A, double p2B, double p2C,
             double expectedResult)
         {
             Pudelko p1 = new Pudelko(p1A, p1B, p1C, UnitOfMeasure.meter);
@@ -693,11 +689,11 @@ namespace PudelkoUnitTests
 
         [DataTestMethod, TestCategory("Operators")]
         [DataRow(250, 530, 900, 310, 450, 100, 132.5)]
-        [DataRow(260, 120, 1.25, 20,15,10, 0.313440)]
-        [DataRow(320, 220, 43, 1.2,150,13.0, 3.038552)]
+        [DataRow(260, 120, 1.25, 20, 15, 10, 0.313440)]
+        [DataRow(320, 220, 43, 1.2, 150, 13.0, 3.038552)]
         public void OperatorPlus_WhenAddedTwoBoxesInCentimeters_ShouldReturnSmallestBoundingBoxVolume(
-            double p1A, double p1B, double p1C, 
-            double p2A, double p2B, double p2C, 
+            double p1A, double p1B, double p1C,
+            double p2A, double p2B, double p2C,
             double expectedResult)
         {
             Pudelko p1 = new Pudelko(p1A, p1B, p1C, UnitOfMeasure.centimeter);
@@ -711,8 +707,8 @@ namespace PudelkoUnitTests
         [DataRow(2600, 1200, 12.5, 200, 150, 100, 0.313440)]
         [DataRow(3200, 2200, 430, 12, 1500, 130, 3.038552)]
         public void OperatorPlus_WhenAddedTwoBoxesInMilimeters_ShouldReturnSmallestBoundingBoxVolume(
-            double p1A, double p1B, double p1C, 
-            double p2A, double p2B, double p2C, 
+            double p1A, double p1B, double p1C,
+            double p2A, double p2B, double p2C,
             double expectedResult)
         {
             Pudelko p1 = new Pudelko(p1A, p1B, p1C, UnitOfMeasure.milimeter);
@@ -721,9 +717,10 @@ namespace PudelkoUnitTests
             Assert.AreEqual(expectedResult, p3.Volume);
         }
 
-        #endregion
+        #endregion Operators overloading ===========================
 
         #region Conversions =====================================
+
         [TestMethod]
         public void ExplicitConversion_ToDoubleArray_AsMeters()
         {
@@ -745,9 +742,10 @@ namespace PudelkoUnitTests
             Assert.AreEqual((int)(p.C * 1000), c);
         }
 
-        #endregion
+        #endregion Conversions =====================================
 
         #region Indexer, enumeration ============================
+
         [TestMethod]
         public void Indexer_ReadFrom()
         {
@@ -770,10 +768,12 @@ namespace PudelkoUnitTests
             }
         }
 
-        #endregion
+        #endregion Indexer, enumeration ============================
 
         //to do parsing
+
         #region Parsing =========================================
+
         //public static Pudelko Parse(string stringToSplit)
         //{
         //    string[] splittedString = stringToSplit.Split(" ");
@@ -789,7 +789,7 @@ namespace PudelkoUnitTests
         //    else
         //        throw new InvalidDataException("Wrong value for parse");
         //}
-        #endregion
 
+        #endregion Parsing =========================================
     }
 }

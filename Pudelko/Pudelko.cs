@@ -13,14 +13,16 @@ namespace PudelkoLib
         public double Area => Math.Round(2 * A * B + 2 * B * C + 2 * C * A, 6);
         public string AreaWithUnit => $"{Math.Round(2 * A * B + 2 * B * C + 2 * C * A, 6):F6} m\u00B3";
         public UnitOfMeasure Measure { get; init; }
+        public double SumOfTheSidesOfBox => A + B + C;
 
         public Pudelko(double? a = null, double? b = null, double? c = null, UnitOfMeasure unit = UnitOfMeasure.meter)
         {
-            double aNotNull = Math.Round(0.1000, 3); 
+            double aNotNull = Math.Round(0.1000, 3);
             double bNotNull = Math.Round(0.1000, 3);
             double cNotNull = Math.Round(0.1000, 3);
 
             #region METER
+
             if (unit == UnitOfMeasure.meter)
             {
                 if (a != null)
@@ -32,9 +34,11 @@ namespace PudelkoLib
                 if (c != null)
                     cNotNull = Math.Round((double)c, 3, MidpointRounding.ToZero);
             }
-            #endregion
+
+            #endregion METER
 
             #region CENTIMETER
+
             if (unit == UnitOfMeasure.centimeter)
             {
                 if (a != null)
@@ -46,9 +50,11 @@ namespace PudelkoLib
                 if (c != null)
                     cNotNull = Math.Round(((double)c / 100), 3, MidpointRounding.ToZero);
             }
-            #endregion
+
+            #endregion CENTIMETER
 
             #region MILIMETER
+
             if (unit == UnitOfMeasure.milimeter)
             {
                 if (a != null)
@@ -60,15 +66,18 @@ namespace PudelkoLib
                 if (c != null)
                     cNotNull = Math.Round(((double)c / 1000), 3, MidpointRounding.ToZero);
             }
-            #endregion
-            
+
+            #endregion MILIMETER
+
             #region EXCEPTIONS
+
             if (aNotNull <= 0 || bNotNull <= 0 || cNotNull <= 0)
                 throw new ArgumentOutOfRangeException();
 
             if (aNotNull > 10.000 || bNotNull > 10.000 || cNotNull > 10.000)
                 throw new ArgumentOutOfRangeException();
-            #endregion
+
+            #endregion EXCEPTIONS
 
             // immutable initialize
             A = aNotNull;
@@ -76,7 +85,9 @@ namespace PudelkoLib
             C = cNotNull;
             Measure = unit;
         }
+
         #region ToString
+
         public override string ToString()
         {
             return this.ToString("m");
@@ -99,9 +110,11 @@ namespace PudelkoLib
             else
                 throw new FormatException();
         }
-        #endregion
+
+        #endregion ToString
 
         #region Equals
+
         public override bool Equals(object? obj)
         {
             return this.Equals(obj as Pudelko);
@@ -131,9 +144,11 @@ namespace PudelkoLib
         {
             return !(p1 == p2);
         }
-        #endregion
+
+        #endregion Equals
 
         #region Addition Operator
+
         public static Pudelko operator +(Pudelko p1, Pudelko p2)
         {
             var x = SortObject(p1);
@@ -143,21 +158,25 @@ namespace PudelkoLib
                 z = y.A;
             return new Pudelko(((x.A > y.A) ? x.A : y.A), ((x.B > y.B) ? x.B : y.B), ((x.C > y.C) ? x.C + z : y.C + z));
         }
-        #endregion
+
+        #endregion Addition Operator
 
         #region Convertion
+
         public static explicit operator double[](Pudelko p)
         {
             return new double[] { p.A, p.B, p.C };
         }
-        
+
         public static implicit operator Pudelko(ValueTuple<int, int, int> values)
         {
-            return new Pudelko(values.Item1,values.Item2,values.Item3, UnitOfMeasure.milimeter);
+            return new Pudelko(values.Item1, values.Item2, values.Item3, UnitOfMeasure.milimeter);
         }
-        #endregion
+
+        #endregion Convertion
 
         #region Indexer
+
         public double this[int index]
         {
             get
@@ -169,9 +188,11 @@ namespace PudelkoLib
                     throw new IndexOutOfRangeException("Box has only three values");
             }
         }
-        #endregion
-        
+
+        #endregion Indexer
+
         #region Foreach iterator
+
         IEnumerator IEnumerable.GetEnumerator()
         {
             double[] valuesOfBoxStorredInArray = new double[] { this.A, this.B, this.C };
@@ -180,9 +201,11 @@ namespace PudelkoLib
                 yield return value;
             }
         }
-        #endregion
+
+        #endregion Foreach iterator
 
         #region Parse
+
         public static Pudelko Parse(string stringToSplit)
         {
             string[] splittedString = stringToSplit.Split(" ");
@@ -198,8 +221,8 @@ namespace PudelkoLib
             else
                 throw new InvalidDataException("Wrong value for parse");
         }
-        #endregion
 
+        #endregion Parse
 
         private static Pudelko SortObject(Pudelko pudelko)
         {
@@ -207,6 +230,23 @@ namespace PudelkoLib
             return new Pudelko(pudlo.ElementAt(0), pudlo.ElementAt(1), pudlo.ElementAt(2));
         }
 
-       
+        public static int BoxComparison(Pudelko p1, Pudelko p2)
+        {
+            if (p1.Volume < p2.Volume)
+                return -1;
+            else if (p1.Volume == p2.Volume)
+            {
+                if (p1.Area < p2.Area)
+                    return -1;
+                else if (p1.Area == p2.Area)
+                {
+                    if (p1.SumOfTheSidesOfBox < p2.SumOfTheSidesOfBox)
+                        return -1;
+                }
+                return 0;
+            }
+
+            return 1;
+        }
     }
 }
