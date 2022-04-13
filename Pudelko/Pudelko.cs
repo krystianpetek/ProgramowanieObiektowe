@@ -74,6 +74,7 @@ namespace PudelkoLib
             A = aNotNull;
             B = bNotNull;
             C = cNotNull;
+            Measure = unit;
         }
         #region ToString
         public override string ToString()

@@ -772,8 +772,23 @@ namespace PudelkoUnitTests
 
         #endregion
 
+        //to do parsing
         #region Parsing =========================================
-
+        //public static Pudelko Parse(string stringToSplit)
+        //{
+        //    string[] splittedString = stringToSplit.Split(" ");
+        //    double a = double.Parse(splittedString[0].Replace('.', ','));
+        //    double b = double.Parse(splittedString[3].Replace('.', ','));
+        //    double c = double.Parse(splittedString[6].Replace('.', ','));
+        //    if (splittedString[1] == "m" && splittedString[4] == "m" && splittedString[7] == "m")
+        //        return new Pudelko(a, b, c, UnitOfMeasure.meter);
+        //    else if (splittedString[1] == "cm" && splittedString[4] == "cm" && splittedString[7] == "cm")
+        //        return new Pudelko(a, b, c, UnitOfMeasure.centimeter);
+        //    else if (splittedString[1] == "mm" && splittedString[4] == "mm" && splittedString[7] == "mm")
+        //        return new Pudelko(a, b, c, UnitOfMeasure.milimeter);
+        //    else
+        //        throw new InvalidDataException("Wrong value for parse");
+        //}
         #endregion
 
     }
