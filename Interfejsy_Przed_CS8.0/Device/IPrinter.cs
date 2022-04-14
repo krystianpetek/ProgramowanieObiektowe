@@ -2,6 +2,6 @@
 {
     internal interface IPrinter
     {
-        void Run(); s
+        void Run();
     }
 }

@@ -39,6 +39,6 @@
 
         public static bool IsNaN(BigRational value) => value.Numerator == 0 && value.Denominator == 0;
 
-        public static bool IsInfinity
+        //public static bool IsInfinity
     }
 }
