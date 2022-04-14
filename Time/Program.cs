@@ -10,7 +10,7 @@ namespace Time
     {
         public static void Main(string[] args)
         {
-            Time czas = new Time("11:06:15");
+            Time czas = new Time("23:06:59");
             Console.WriteLine(czas.ToString());
 
             TimePeriod period = new TimePeriod(47945); // 13:19:05

@@ -15,13 +15,13 @@ namespace Time
         public Time(byte hours, byte minutes, byte seconds)
         {
             if (hours >= 24 || hours < 0)
-                throw new ArgumentOutOfRangeException("zakres godzin od 00 do 23");
+                throw new ArgumentOutOfRangeException("Wrong number of hour.");
             Hours = hours;
             if (minutes >= 60 || minutes < 0)
-                throw new ArgumentOutOfRangeException("zakres minut od 0 do 60");
+                throw new ArgumentOutOfRangeException("Wrong number of minute.");
             Minutes = minutes;
             if (seconds >= 60 || seconds < 0 )
-                throw new ArgumentOutOfRangeException("zakres sekund od 0 do 60");
+                throw new ArgumentOutOfRangeException("Wrong number of second.");
             Seconds = seconds;
         }
         public Time(byte hours, byte minutes) : this(hours, minutes, 0) { }
@@ -31,23 +31,26 @@ namespace Time
         {
             string[] splitTime = timePattern.Split(":");
             if (splitTime.Length < 2)
-                throw new FormatException("Błę");
-            
-            byte? hours = byte.Parse(splitTime[0]);
-            byte? minutes = byte.Parse(splitTime[1]);
-            byte? seconds = byte.Parse(splitTime[2]);
+                throw new FormatException("Błędne dane");
 
-            if (hours >= 24 || hours is null)
-                throw new ArgumentOutOfRangeException("zakres godzin od 00 do 23");
-            Hours = (byte)hours;
-            
-            if (minutes >= 60 || minutes is null)
-                throw new ArgumentOutOfRangeException("zakres minut od 0 do 60");
-            Minutes = (byte)minutes;
+            bool parseHours = byte.TryParse(splitTime[0],out byte hours);
+            bool parseMinutes = byte.TryParse(splitTime[1],out byte minutes);
+            bool parseSeconds = byte.TryParse(splitTime[2],out byte seconds);
 
-            if (seconds >= 60 || seconds is null)
-                throw new ArgumentOutOfRangeException("zakres sekund od 0 do 60");
-            Seconds = (byte)seconds;
+            if (!parseHours || !parseMinutes || !parseSeconds)
+                throw new FormatException("Invalid argument for parse to Time.");
+
+            if (hours >= 24 || hours < 0)
+                throw new ArgumentOutOfRangeException("Wrong number of hour.");
+            Hours = hours;
+            
+            if (minutes >= 60 || minutes < 0)
+                throw new ArgumentOutOfRangeException("Wrong number of minute.");
+            Minutes = minutes;
+
+            if (seconds >= 60 || seconds < 0)
+                throw new ArgumentOutOfRangeException("Wrong number of second.");
+            Seconds = seconds;
         }
         
         public override string ToString()
