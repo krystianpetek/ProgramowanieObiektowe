@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Interfejsy_8._0
+﻿namespace Interfejsy_8._0
 {
     internal interface ILogger
     {
