@@ -250,6 +250,68 @@ namespace TimeTests
         }
 
         #region StringParameter
+        [DataTestMethod, TestCategory("Constructor")]
+        [DataRow("0:0:0",0, 0, 0)]
+        [DataRow("00:00:00",0, 0, 0)]
+        [DataRow("23:00:00",23, 0, 0)]
+        [DataRow("0:59:00",0, 59, 0)]
+        [DataRow("00:0:59",0, 0, 59)]
+        [DataRow("0:59:59",0, 59, 59)]
+        [DataRow("23:0:59",23, 0, 59)]
+        [DataRow("23:59:0",23, 59, 0)]
+        [DataRow("23:59:59",23, 59, 59)]
+        public void ConstructorString_WhenGivenCorrectParameter_ShouldReturnAreEqualsTrue(
+            string pattern, int expectedHours, int expectedMinutes, int expectedSeconds)
+        {
+            Time time = new Time(pattern);
+            Assert.AreEqual(
+                ((byte)expectedHours, (byte)expectedMinutes, (byte)expectedSeconds),
+                (time.Hours, time.Minutes, time.Seconds));
+        }
+
+        [DataTestMethod, TestCategory("Constructor")]
+        [DataRow("::")]
+        [DataRow("0::")]
+        [DataRow("0:0:")]
+        [DataRow("0::0")]
+        [DataRow(":0:00")]
+        [DataRow("::00")]
+        [DataRow(":00:")]
+        [DataRow("")]
+        [DataRow(":")]
+        [DataRow(":::")]
+        [DataRow(":::::")]
+        [DataRow(":d:a:q:w:e")]
+        [DataRow("0:1:1:2")]
+        [DataRow("0:1:1:3:4:6")]
+        [ExpectedException(typeof(FormatException))]
+        public void ConstructorString_WhenGivenWrongFormatParameter_ShouldThrowFormatException(
+            string pattern)
+        {
+            Time time = new Time(pattern);
+        }
+
+        [DataTestMethod, TestCategory("Constructor")]
+        [DataRow("0:0:-1", 0, 0, -1)]
+        [DataRow("0:-1:-1", 0, -1, -1)]
+        [DataRow("-1:-1:-1", -1, -1, -1)]
+        [DataRow("-1:1:-1", -1, 1, -1)]
+        [DataRow("-1:-1:1", -1, -1, 1)]
+        [DataRow("1:-1:1", 1, -1, 1)]
+        [DataRow("24:-1:1", 24, -1, 1)]
+        [DataRow("24:1:1", 1, -1, 1)]
+        [DataRow("24:1:-1", 1, -1, 1)]
+        [DataRow("0:60:-1", 1, -1, 1)]
+        [DataRow("0:60:0", 1, -1, 1)]
+        [DataRow("0:60:60", 1, -1, 1)]
+        [DataRow("24:60:60", 1, -1, 1)]
+        [DataRow("-1:60:50", 1, -1, 1)]
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
+        public void ConstructorString_WhenGivenCorrectParameterButWrongTime_ArgumentOutOfRangeException(
+            string pattern)
+        {
+            Time time = new Time(pattern);
+        }
 
         #endregion
         #endregion

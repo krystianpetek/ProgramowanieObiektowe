@@ -73,7 +73,7 @@
         public Time(string timePattern)
         {
             string[] splitTime = timePattern.Split(":");
-            if (splitTime.Length < 2)
+            if (splitTime.Length != 3)
                 throw new FormatException("Wrong format data in argument");
 
             bool parseHours = byte.TryParse(splitTime[0], out byte hours);
