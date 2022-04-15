@@ -1,11 +1,10 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
 using Time_TimePeriod;
 
-namespace TimeTests
+namespace TimeTests.TimePeriodTests
 {
     [TestClass]
-    internal class TimeOperatorsTests
+    public class TimePeriodArithmeticTests
     {
     }
 }

@@ -1,9 +1,9 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace TimeTests
+namespace TimeTests.TimePeriodTests
 {
     [TestClass]
-    public class TimePeriodTests
+    public class TimePeriodConstructorTests
     {
         [TestMethod]
         public void X()

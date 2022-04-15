@@ -25,11 +25,18 @@ namespace ConsoleAppForTesting
             Console.WriteLine(czasAktualny + okresCzasu);
             Console.WriteLine(czasAktualny - okresCzasu);
 
+            Console.WriteLine("\n==========\nTimePeriod");
             TimePeriod period = new TimePeriod(47945); // 13:19:05
             Console.WriteLine(period);
             TimePeriod periodFull = new TimePeriod(23, 19, 18);
             Console.WriteLine(periodFull.NumberOfSeconds);
             Console.WriteLine(periodFull);
+
+            Console.WriteLine(new Time(20, 35, 00) + new TimePeriod(54302));
+
+            var t1 = new Time(0,0,0);
+            var t2 = new Time(23,59,59);
+            var timep = new TimePeriod(t1,t2);
         }
     }
 }

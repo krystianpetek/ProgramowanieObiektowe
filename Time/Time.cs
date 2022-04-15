@@ -318,12 +318,14 @@
         /// <returns>Zwraca obiekt typu Time odejmujący okres czasu typu TimePeriod od punkcie w czasie typu Time</returns>
         public static Time operator -(Time time, TimePeriod period)
         {
-            long sumOfSeconds = (time.Seconds + period.Seconds);
-            byte seconds = (byte)Math.Abs(sumOfSeconds % 60);
-            long sumOfMinutes = (sumOfSeconds / 60) + time.Minutes + period.Minutes;
-            byte minutes = (byte)Math.Abs(sumOfMinutes % 60);
-            long sumOfHours = (sumOfMinutes / 60) + time.Hours + period.Hours;
-            byte hours = (byte)Math.Abs(sumOfHours % 24);
+            long sumOfSeconds = (time.Seconds - period.Seconds) + 60;
+            byte seconds = (byte)(sumOfSeconds % 60);
+
+            long sumOfMinutes = time.Minutes - period.Minutes - ((time.Seconds - period.Seconds < 0) ? 1 : 0) + 60;
+            bool decyzja = time.Minutes - period.Minutes - ((time.Seconds - period.Seconds < 0) ? 1 : 0) < 0;
+            byte minutes = (byte)(sumOfMinutes % 60);
+            long sumOfHours = time.Hours - period.Hours - (decyzja ? 1 : 0) + 24;
+            byte hours = (byte)(sumOfHours % 24);
 
             return new Time(hours, minutes, seconds);
         }

@@ -2,12 +2,13 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using Time_TimePeriod;
 
-namespace TimeTests
+namespace TimeTests.TimeTests
 {
     [TestClass]
     public class TimeConstructorTests
     {
         #region ThreeParameters
+
         [DataTestMethod, TestCategory("Constructor")]
         [DataRow(0, 0, 0, 0, 0, 0)]
         [DataRow(8, 16, 59, 8, 16, 59)]
@@ -97,9 +98,11 @@ namespace TimeTests
         {
             Time time = new Time((byte)hours, (byte)minutes, (byte)seconds);
         }
-        #endregion
+
+        #endregion ThreeParameters
 
         #region TwoParameters
+
         [DataTestMethod, TestCategory("Constructor")]
         [DataRow(0, 0, 0, 0, 0)]
         [DataRow(8, 16, 8, 16, 0)]
@@ -175,15 +178,17 @@ namespace TimeTests
         {
             Time time = new Time((byte)hours, (byte)minutes);
         }
-        #endregion
+
+        #endregion TwoParameters
 
         #region OneParameter
+
         [DataTestMethod, TestCategory("Constructor")]
-        [DataRow(0, 0,0,0)]
-        [DataRow(16, 16,0,0)]
-        [DataRow(1, 1,0,0)]
-        [DataRow(23, 23,0,0)]
-        [DataRow(23, 23,0,0)]
+        [DataRow(0, 0, 0, 0)]
+        [DataRow(16, 16, 0, 0)]
+        [DataRow(1, 1, 0, 0)]
+        [DataRow(23, 23, 0, 0)]
+        [DataRow(23, 23, 0, 0)]
         public void ConstructorOneParameters_WhenGivenCorrectParameters_ShouldReturnAreEqualsTrue(
             int hours,
             int expectedHours, int expectedMinutes, int expectedSeconds)
@@ -195,10 +200,10 @@ namespace TimeTests
         }
 
         [DataTestMethod, TestCategory("Constructor")]
-        [DataRow(0, -1,0,0)]
-        [DataRow(1, -500,0,0)]
-        [DataRow(12, -1,0,0)]
-        [DataRow(23, 59,0,0)]
+        [DataRow(0, -1, 0, 0)]
+        [DataRow(1, -500, 0, 0)]
+        [DataRow(12, -1, 0, 0)]
+        [DataRow(23, 59, 0, 0)]
         public void ConstructorOneParameters_WhenGivenCorrectParametersAndExpectedWrongParameters_ShouldReturnAreNotEqualsTrue(
             int hours,
             int expectedHours, int expectedMinutes, int expectedSeconds)
@@ -212,7 +217,7 @@ namespace TimeTests
         [DataTestMethod, TestCategory("Constructor")]
         [DataRow(-1, -1, 0, 0)]
         [DataRow(-5000, -5000, 0, 0)]
-        [DataRow(501,300, 0, 0)]
+        [DataRow(501, 300, 0, 0)]
         [ExpectedException(typeof(ArgumentOutOfRangeException))]
         public void ConstructorOneParameters_WhenGivenWrongParametersAndExpectedSameParameters_ShouldThrowArgumentOutOfRangeException(
             int hours,
@@ -235,7 +240,8 @@ namespace TimeTests
         {
             Time time = new Time((byte)hours);
         }
-        #endregion
+
+        #endregion OneParameter
 
         [DataTestMethod, TestCategory("Constructor")]
         [DataRow(0, 0, 0)]
@@ -249,16 +255,17 @@ namespace TimeTests
         }
 
         #region StringParameter
+
         [DataTestMethod, TestCategory("Constructor")]
-        [DataRow("0:0:0",0, 0, 0)]
-        [DataRow("00:00:00",0, 0, 0)]
-        [DataRow("23:00:00",23, 0, 0)]
-        [DataRow("0:59:00",0, 59, 0)]
-        [DataRow("00:0:59",0, 0, 59)]
-        [DataRow("0:59:59",0, 59, 59)]
-        [DataRow("23:0:59",23, 0, 59)]
-        [DataRow("23:59:0",23, 59, 0)]
-        [DataRow("23:59:59",23, 59, 59)]
+        [DataRow("0:0:0", 0, 0, 0)]
+        [DataRow("00:00:00", 0, 0, 0)]
+        [DataRow("23:00:00", 23, 0, 0)]
+        [DataRow("0:59:00", 0, 59, 0)]
+        [DataRow("00:0:59", 0, 0, 59)]
+        [DataRow("0:59:59", 0, 59, 59)]
+        [DataRow("23:0:59", 23, 0, 59)]
+        [DataRow("23:59:0", 23, 59, 0)]
+        [DataRow("23:59:59", 23, 59, 59)]
         public void ConstructorString_WhenGivenCorrectParameter_ShouldReturnAreEqualsTrue(
             string pattern, int expectedHours, int expectedMinutes, int expectedSeconds)
         {
@@ -302,7 +309,7 @@ namespace TimeTests
         [DataRow("24:1:-1", 24, 1, -11)]
         [DataRow("0:60:-1", 0, 60, -1)]
         [DataRow("0:60:0", 0, 60, 60)]
-        [DataRow("0:60:60", 0,60,60)]
+        [DataRow("0:60:60", 0, 60, 60)]
         [DataRow("24:60:60", 24, 60, 60)]
         [DataRow("-1:60:50", -1, 60, 50)]
         [ExpectedException(typeof(ArgumentOutOfRangeException))]
@@ -316,13 +323,13 @@ namespace TimeTests
         }
 
         [DataTestMethod, TestCategory("Constructor")]
-        [DataRow("13:dwadwa:50", 13,22,50)]
-        [DataRow("13:d:50", 13,22,50)]
-        [DataRow("s:d:50", 13,22,50)]
-        [DataRow("13:d:a", 13,22,50)]
-        [DataRow("13:22:a", 13,22,50)]
-        [DataRow(" :22:a", 13,22,50)]
-        [DataRow(" : : ", 13,22,50)]
+        [DataRow("13:dwadwa:50", 13, 22, 50)]
+        [DataRow("13:d:50", 13, 22, 50)]
+        [DataRow("s:d:50", 13, 22, 50)]
+        [DataRow("13:d:a", 13, 22, 50)]
+        [DataRow("13:22:a", 13, 22, 50)]
+        [DataRow(" :22:a", 13, 22, 50)]
+        [DataRow(" : : ", 13, 22, 50)]
         [ExpectedException(typeof(ArgumentOutOfRangeException))]
         public void ConstructorString_WhenGivenCorrectFormatButWrongParameters_ArgumentOutOfRangeException(
             string pattern, int expectedHours, int expectedMinutes, int expectedSeconds)
@@ -333,6 +340,6 @@ namespace TimeTests
                 (time.Hours, time.Minutes, time.Seconds));
         }
 
-        #endregion
+        #endregion StringParameter
     }
 }

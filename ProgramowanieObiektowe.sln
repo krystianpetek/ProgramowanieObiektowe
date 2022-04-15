@@ -139,11 +139,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Konwersatorium03", "Konwers
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Time_TimePeriod", "Time_TimePeriod", "{92A31897-713A-4225-80E2-9DAFAF61942E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Time", "Time\Time.csproj", "{8CDC62A3-2DEB-4E9A-B1B7-F3CDBEC6E602}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Time_TimePeriod", "Time\Time_TimePeriod.csproj", "{8CDC62A3-2DEB-4E9A-B1B7-F3CDBEC6E602}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleAppForTesting", "ConsoleAppForTesting\ConsoleAppForTesting.csproj", "{5BF1C743-1DD7-4458-9B50-766466855EE5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleAppForTesting", "ConsoleAppForTesting\ConsoleAppForTesting.csproj", "{5BF1C743-1DD7-4458-9B50-766466855EE5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimeTests", "TimeTests\TimeTests.csproj", "{E94C7332-17B3-4617-8329-C590E0C88424}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TimeTests", "TimeTests\TimeTests.csproj", "{E94C7332-17B3-4617-8329-C590E0C88424}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
