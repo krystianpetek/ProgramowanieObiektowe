@@ -6,5 +6,6 @@ namespace TimeTests.TimePeriodTests
     [TestClass]
     public class TimePeriodArithmeticTests
     {
+        
     }
 }

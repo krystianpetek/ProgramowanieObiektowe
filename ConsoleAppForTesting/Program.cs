@@ -37,6 +37,32 @@ namespace ConsoleAppForTesting
             var t1 = new Time(0,0,0);
             var t2 = new Time(23,59,59);
             var timep = new TimePeriod(t1,t2);
+            timep = new TimePeriod(129, 58, 12);
+            Console.WriteLine(timep);
+            TimePeriod p1czas = new TimePeriod("23:06:55");
+            TimePeriod p2czas = new TimePeriod(23, 06, 54);
+            TimePeriod p3czas = new TimePeriod(23, 06, 55);
+            TimePeriod p4czas = new TimePeriod(23, 06, 56);
+
+            Console.WriteLine($"\n{p1czas}\t{p2czas}\t{p3czas}\t{p4czas}");
+            Console.WriteLine($"==\t\t{p1czas == p2czas}\t\t{p1czas == p3czas}\t\t{p1czas == p4czas}");
+            Console.WriteLine($"!=\t\t{p1czas != p2czas}\t\t{p1czas != p3czas}\t\t{p1czas != p4czas}");
+            Console.WriteLine($">\t\t{p1czas > p2czas}\t\t{p1czas > p3czas}\t\t{p1czas > p4czas}");
+            Console.WriteLine($">=\t\t{p1czas >= p2czas}\t\t{p1czas >= p3czas}\t\t{p1czas >= p4czas}");
+            Console.WriteLine($"<\t\t{p1czas < p2czas}\t\t{p1czas < p3czas}\t\t{p1czas < p4czas}");
+            Console.WriteLine($"<=\t\t{p1czas <= p2czas}\t\t{p1czas <= p3czas}\t\t{p1czas <= p4czas}");
+
+            Console.WriteLine(p2czas + p1czas);
+
+            timep = new TimePeriod(848974);
+            Console.WriteLine(timep);
+
+            Time x = new Time(1, 23, 0);
+            while(true)
+            {
+                x + new Time();
+            }
+
         }
     }
 }

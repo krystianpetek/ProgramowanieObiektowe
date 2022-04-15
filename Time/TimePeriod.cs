@@ -15,9 +15,9 @@
             NumberOfSeconds = (numOfHours * 3600) + (numOfMinutes * 60) + numOfSeconds;
         }
 
-        public TimePeriod(long numOfHours, long numOfMinutes) : this(numOfHours, numOfMinutes, 0)
-        {
-        }
+        public TimePeriod(long numOfHours, long numOfMinutes) : this(numOfHours, numOfMinutes, 0) { }
+
+        public TimePeriod() : this(0,0,0) { }
 
         public TimePeriod(long numberOfSeconds)
         {
@@ -44,15 +44,6 @@
                 seconds = t2.Seconds - t1.Seconds;
             }
 
-            //long sumOfSeconds = (t1.Seconds - t2.Seconds) + 60;
-            //byte seconds = (byte)(sumOfSeconds % 60);
-
-            //long sumOfMinutes = t1.Minutes - t2.Minutes - ((t1.Seconds - t2.Seconds < 0) ? 1 : 0) + 60;
-            //bool decyzja = t1.Minutes - t2.Minutes - ((t1.Seconds - t2.Seconds < 0) ? 1 : 0) < 0;
-            //byte minutes = (byte)(sumOfMinutes % 60);
-            //long sumOfHours = t1.Hours - t2.Hours - (decyzja ? 1 : 0) + 24;
-            //byte hours = (byte)(sumOfHours % 24);
-
             NumberOfSeconds = (hours * 3600) + (minutes * 60) + seconds;
         }
 
@@ -60,7 +51,7 @@
         {
             string[] splitTime = timePattern.Split(":");
             if (splitTime.Length != 3)
-                throw new ArgumentOutOfRangeException("Wrong format data in argument");
+                throw new ArgumentOutOfRangeException("Wrong data in argument");
 
             bool parseHours = byte.TryParse(splitTime[0], out byte hours);
             bool parseMinutes = byte.TryParse(splitTime[1], out byte minutes);
@@ -88,52 +79,69 @@
 
         public int CompareTo(TimePeriod other)
         {
-            throw new NotImplementedException();
+            if (this.NumberOfSeconds > other.NumberOfSeconds)
+                return 1;
+            else if (this.NumberOfSeconds < other.NumberOfSeconds)
+                return -1;
+            else 
+                return 0;
         }
 
         public bool Equals(TimePeriod other)
         {
-            throw new NotImplementedException();
+            if (this.NumberOfSeconds == other.NumberOfSeconds)
+                return true;
+            return false;
         }
 
         public override bool Equals(object? obj)
         {
-            return base.Equals(obj);
+            if (obj is TimePeriod)
+                return Equals(obj as TimePeriod?);
+            return false;
         }
 
         public override int GetHashCode()
         {
-            return base.GetHashCode();
+            return HashCode.Combine(Hours, Minutes, Seconds);
         }
 
-        public static TimePeriod operator ==(TimePeriod timePeriod1, TimePeriod timePeriod2)
+        public static bool operator ==(TimePeriod timePeriod1, TimePeriod timePeriod2)
         {
-            throw new NotImplementedException();
+            return timePeriod1.Equals(timePeriod2);
         }
 
-        public static TimePeriod operator !=(TimePeriod timePeriod1, TimePeriod timePeriod2)
+        public static bool operator !=(TimePeriod timePeriod1, TimePeriod timePeriod2)
         {
-            throw new NotImplementedException();
+            return !(timePeriod1 == timePeriod2);
         }
 
-        public static TimePeriod operator <(TimePeriod timePeriod1, TimePeriod timePeriod2)
+        public static bool operator <(TimePeriod timePeriod1, TimePeriod timePeriod2)
         {
-            throw new NotImplementedException();
+            if (timePeriod1.CompareTo(timePeriod2) < 0)
+                return true;
+            return false;
         }
 
-        public static TimePeriod operator >(TimePeriod timePeriod1, TimePeriod timePeriod2)
+        public static bool operator >(TimePeriod timePeriod1, TimePeriod timePeriod2)
         {
-            throw new NotImplementedException();
+            if (timePeriod1.CompareTo(timePeriod2) > 0)
+                return true;
+            return false;
         }
 
-        public static TimePeriod operator <=(TimePeriod timePeriod1, TimePeriod timePeriod2)
+        public static bool operator <=(TimePeriod timePeriod1, TimePeriod timePeriod2)
         {
-            throw new NotImplementedException();
+            if (timePeriod1.CompareTo(timePeriod2) <= 0)
+                return true;
+            return false;
         }
 
-        public static TimePeriod operator >=(TimePeriod timePeriod1, TimePeriod timePeriod2)
+        public static bool operator >=(TimePeriod timePeriod1, TimePeriod timePeriod2)
         {
-            throw new NotImplementedException();
+            if (timePeriod1.CompareTo(timePeriod2) >= 0)
+                return true;
+            return false;
         }
 
         public TimePeriod Plus(TimePeriod timePeriod)
@@ -158,14 +166,19 @@
 
         public static TimePeriod operator +(TimePeriod timePeriod1, TimePeriod timePeriod2)
         {
-            // implementancja
-            return new TimePeriod();
+            return new TimePeriod(timePeriod1.NumberOfSeconds + timePeriod2.NumberOfSeconds);
         }
 
         public static TimePeriod operator -(TimePeriod timePeriod1, TimePeriod timePeriod2)
         {
-            // implementacja
-            return new TimePeriod();
+            if (timePeriod1.NumberOfSeconds > timePeriod2.NumberOfSeconds)
+                return new TimePeriod(timePeriod1.NumberOfSeconds - timePeriod2.NumberOfSeconds);
+
+            else if (timePeriod1.NumberOfSeconds < timePeriod2.NumberOfSeconds)
+                return new TimePeriod(timePeriod2.NumberOfSeconds - timePeriod1.NumberOfSeconds);
+
+            else
+                return new TimePeriod();
         }
     }
 }
