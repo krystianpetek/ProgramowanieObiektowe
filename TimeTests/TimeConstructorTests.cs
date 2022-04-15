@@ -7,7 +7,6 @@ namespace TimeTests
     [TestClass]
     public class TimeConstructorTests
     {
-        #region Constructors
         #region ThreeParameters
         [DataTestMethod, TestCategory("Constructor")]
         [DataRow(0, 0, 0, 0, 0, 0)]
@@ -284,8 +283,8 @@ namespace TimeTests
         [DataRow(":d:a:q:w:e")]
         [DataRow("0:1:1:2")]
         [DataRow("0:1:1:3:4:6")]
-        [ExpectedException(typeof(FormatException))]
-        public void ConstructorString_WhenGivenWrongFormatParameter_ShouldThrowFormatException(
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
+        public void ConstructorString_WhenGivenWrongFormatParameter_ShouldThrowArgumentOutOfRangeException(
             string pattern)
         {
             Time time = new Time(pattern);
@@ -299,22 +298,41 @@ namespace TimeTests
         [DataRow("-1:-1:1", -1, -1, 1)]
         [DataRow("1:-1:1", 1, -1, 1)]
         [DataRow("24:-1:1", 24, -1, 1)]
-        [DataRow("24:1:1", 1, -1, 1)]
-        [DataRow("24:1:-1", 1, -1, 1)]
-        [DataRow("0:60:-1", 1, -1, 1)]
-        [DataRow("0:60:0", 1, -1, 1)]
-        [DataRow("0:60:60", 1, -1, 1)]
-        [DataRow("24:60:60", 1, -1, 1)]
-        [DataRow("-1:60:50", 1, -1, 1)]
+        [DataRow("24:1:1", 24, 1, 1)]
+        [DataRow("24:1:-1", 24, 1, -11)]
+        [DataRow("0:60:-1", 0, 60, -1)]
+        [DataRow("0:60:0", 0, 60, 60)]
+        [DataRow("0:60:60", 0,60,60)]
+        [DataRow("24:60:60", 24, 60, 60)]
+        [DataRow("-1:60:50", -1, 60, 50)]
         [ExpectedException(typeof(ArgumentOutOfRangeException))]
-        public void ConstructorString_WhenGivenCorrectParameterButWrongTime_ArgumentOutOfRangeException(
-            string pattern)
+        public void ConstructorString_WhenGivenCorrectParameterButWrongNumberInTime_ArgumentOutOfRangeException(
+            string pattern, int expectedHours, int expectedMinutes, int expectedSeconds)
         {
             Time time = new Time(pattern);
+            Assert.AreEqual(
+                ((byte)expectedHours, (byte)expectedMinutes, (byte)expectedSeconds),
+                (time.Hours, time.Minutes, time.Seconds));
+        }
+
+        [DataTestMethod, TestCategory("Constructor")]
+        [DataRow("13:dwadwa:50", 13,22,50)]
+        [DataRow("13:d:50", 13,22,50)]
+        [DataRow("s:d:50", 13,22,50)]
+        [DataRow("13:d:a", 13,22,50)]
+        [DataRow("13:22:a", 13,22,50)]
+        [DataRow(" :22:a", 13,22,50)]
+        [DataRow(" : : ", 13,22,50)]
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
+        public void ConstructorString_WhenGivenCorrectFormatButWrongParameters_ArgumentOutOfRangeException(
+            string pattern, int expectedHours, int expectedMinutes, int expectedSeconds)
+        {
+            Time time = new Time(pattern);
+            Assert.AreEqual(
+                ((byte)expectedHours, (byte)expectedMinutes, (byte)expectedSeconds),
+                (time.Hours, time.Minutes, time.Seconds));
         }
 
         #endregion
-        #endregion
-
     }
 }

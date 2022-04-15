@@ -74,14 +74,14 @@
         {
             string[] splitTime = timePattern.Split(":");
             if (splitTime.Length != 3)
-                throw new FormatException("Wrong format data in argument");
+                throw new ArgumentOutOfRangeException("Wrong format data in argument");
 
             bool parseHours = byte.TryParse(splitTime[0], out byte hours);
             bool parseMinutes = byte.TryParse(splitTime[1], out byte minutes);
             bool parseSeconds = byte.TryParse(splitTime[2], out byte seconds);
 
             if (!parseHours || !parseMinutes || !parseSeconds)
-                throw new FormatException("Invalid argument for parse to Time.");
+                throw new ArgumentOutOfRangeException("Invalid argument for parse to Time.");
 
             if (hours >= 24 || hours < 0)
                 throw new ArgumentOutOfRangeException("Wrong number of hour.");
