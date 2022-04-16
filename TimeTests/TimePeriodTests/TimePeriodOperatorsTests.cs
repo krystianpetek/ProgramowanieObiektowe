@@ -1,9 +1,4 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Time_TimePeriod;
 
 namespace TimeTests.TimePeriodTests
@@ -23,7 +18,6 @@ namespace TimeTests.TimePeriodTests
             TimePeriod t2 = new TimePeriod(t2Hours, t2Minutes, t2Seconds);
             Assert.IsTrue(t1 == t2);
         }
-
 
         [DataTestMethod, TestCategory("Operators")]
         [DataRow(0, 0, 0, 23, 0, 0)]
@@ -140,7 +134,7 @@ namespace TimeTests.TimePeriodTests
         {
             TimePeriod t1 = new TimePeriod(t1Hours, t1Minutes, t1Seconds);
             TimePeriod t2 = new TimePeriod(t2Hours, t2Minutes, t2Seconds);
-            Assert.IsTrue( (t1 + new TimePeriod(timePeriodInSeconds)) == t2 );
+            Assert.IsTrue((t1 + new TimePeriod(timePeriodInSeconds)) == t2);
         }
 
         [DataTestMethod, TestCategory("Operators")]
@@ -155,7 +149,7 @@ namespace TimeTests.TimePeriodTests
         {
             TimePeriod tp1 = new TimePeriod(tp1NumOfSeconds);
             TimePeriod tp2 = new TimePeriod(tp2NumOfSeconds);
-            Assert.IsTrue((tp1-tp2).NumberOfSeconds == sumOfAddedTimePeriods);
+            Assert.IsTrue((tp1 - tp2).NumberOfSeconds == sumOfAddedTimePeriods);
         }
     }
 }

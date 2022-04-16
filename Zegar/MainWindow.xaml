@@ -7,12 +7,12 @@
         mc:Ignorable="d"
         Title="Zegar" Height="250" Width="350">
     <Grid Initialized="Grid_Initialized">
-        <Label x:Name="godzinaLabel" 
-               FontSize="70" 
-               FontWeight="Bold" 
-               FontFamily="Segoe UI Variable Display Light" 
-               Content="" 
-               HorizontalAlignment="Center" 
-               VerticalAlignment="Center"/>
+        <Label x:Name="godzinaLabel"
+               FontSize="70"
+               FontWeight="Bold"
+               FontFamily="Segoe UI Variable Display Light"
+               Content=""
+               HorizontalAlignment="Center"
+               VerticalAlignment="Center" />
     </Grid>
 </Window>

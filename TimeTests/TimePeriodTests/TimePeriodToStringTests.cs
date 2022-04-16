@@ -1,9 +1,4 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Time_TimePeriod;
 
 namespace TimeTests.TimePeriodTests
@@ -11,7 +6,6 @@ namespace TimeTests.TimePeriodTests
     [TestClass]
     public class TimePeriodToStringTests
     {
-
         [DataTestMethod, TestCategory("ToString")]
         [DataRow(0, 0, 0, "00:00:00")]
         [DataRow(0, 00, 0, "00:00:00")]

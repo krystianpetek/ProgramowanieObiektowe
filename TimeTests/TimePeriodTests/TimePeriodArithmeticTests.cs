@@ -7,11 +7,11 @@ namespace TimeTests.TimePeriodTests
     public class TimePeriodArithmeticTests
     {
         [DataTestMethod, TestCategory("Arithmetic")]
-        [DataRow(3600,3600,7200)]
-        [DataRow(5600,9000,14600)]
-        [DataRow(86400,86400,172800)]
-        [DataRow(0,0,0)]
-        [DataRow(1,2,3)]
+        [DataRow(3600, 3600, 7200)]
+        [DataRow(5600, 9000, 14600)]
+        [DataRow(86400, 86400, 172800)]
+        [DataRow(0, 0, 0)]
+        [DataRow(1, 2, 3)]
         public void PlusTimePeriod_WhenAddedCorrectTimePeriods_ShouldReturnTrue(
             long tp1NumOfSeconds, long tp2NumOfSeconds, long sumOfAddedTimePeriods)
         {
@@ -31,7 +31,7 @@ namespace TimeTests.TimePeriodTests
         {
             TimePeriod tp1 = new TimePeriod(tp1NumOfSeconds);
             TimePeriod tp2 = new TimePeriod(tp2NumOfSeconds);
-            Assert.IsTrue((TimePeriod.Plus(tp1,tp2)).NumberOfSeconds == sumOfAddedTimePeriods);
+            Assert.IsTrue((TimePeriod.Plus(tp1, tp2)).NumberOfSeconds == sumOfAddedTimePeriods);
         }
 
         [DataTestMethod, TestCategory("Operators")]
@@ -61,7 +61,7 @@ namespace TimeTests.TimePeriodTests
         {
             TimePeriod tp1 = new TimePeriod(tp1NumOfSeconds);
             TimePeriod tp2 = new TimePeriod(tp2NumOfSeconds);
-            Assert.IsTrue((TimePeriod.Minus(tp1,tp2)).NumberOfSeconds == sumOfAddedTimePeriods);
+            Assert.IsTrue((TimePeriod.Minus(tp1, tp2)).NumberOfSeconds == sumOfAddedTimePeriods);
         }
     }
 }

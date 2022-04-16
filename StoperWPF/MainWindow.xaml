@@ -8,17 +8,17 @@
         Title="Stoper" Height="300" Width="400" WindowStyle="ThreeDBorderWindow" Background="#252525">
 
     <Window.Resources>
-        
+
         <Style x:Key="labelki" TargetType="Label">
             <Setter Property="Foreground" Value="White"></Setter>
             <Setter Property="FontFamily" Value="Segoe UI Variable Display Light"></Setter>
             <Setter Property="FontSize" Value="60"></Setter>
             <Setter Property="FontWeight" Value="Bold"></Setter>
-            
+
             <Setter Property="HorizontalAlignment" Value="Center"></Setter>
             <Setter Property="VerticalAlignment" Value="Center"></Setter>
         </Style>
-        
+
         <Style x:Key="buttonki" TargetType="Label">
             <Setter Property="Background" Value="#1e88e5"></Setter>
             <Setter Property="Foreground" Value="White"></Setter>
@@ -33,14 +33,12 @@
 
             <Setter Property="Width" Value="80"></Setter>
             <Setter Property="Height" Value="50"></Setter>
-            
+
             <Setter Property="HorizontalContentAlignment" Value="Center"></Setter>
             <Setter Property="VerticalContentAlignment" Value="Center"></Setter>
             <Setter Property="HorizontalAlignment" Value="Center"></Setter>
             <Setter Property="VerticalAlignment" Value="Top"></Setter>
         </Style>
-        
-        
 
         <!--<Style x:Key="TransparentStyle" TargetType="{x:Type Button}">
             <Setter Property="Template">
@@ -51,7 +49,7 @@
                                 <Style TargetType="{x:Type Border}">
                                     <Style.Triggers>
                                         <Trigger Property="IsMouseOver" Value="True">
-                                            <Setter Property="Background" Value="DarkGoldenrod"/>
+                                            <Setter Property="Background" Value="DarkGoldenrod" />
                                         </Trigger>
                                     </Style.Triggers>
                                 </Style>
@@ -64,11 +62,10 @@
                 </Setter.Value>
             </Setter>
         </Style>-->
-
     </Window.Resources>
-    
+
     <Grid MaxHeight="300" MaxWidth="500" MinHeight="200" MinWidth="350">
-        
+
         <Grid.RowDefinitions>
             <RowDefinition Height="5*"></RowDefinition>
             <RowDefinition Height="4*"></RowDefinition>
@@ -86,24 +83,23 @@
             </Grid.ColumnDefinitions>
 
             <Label x:Name="minutaLabel" Style="{StaticResource labelki}"
-                   Grid.Column="1" MouseEnter="minutaLabel_MouseEnter" MouseLeave="minutaLabel_MouseLeave"/>
+                   Grid.Column="1" MouseEnter="minutaLabel_MouseEnter" MouseLeave="minutaLabel_MouseLeave" />
 
             <Label x:Name="dwukropek1" Style="{StaticResource labelki}"
                    Grid.Column="2"
                    Content=":"></Label>
 
             <Label x:Name="sekundaLabel" Style="{StaticResource labelki}"
-                   Grid.Column="3" MouseLeave="sekundaLabel_MouseLeave" MouseEnter="sekundaLabel_MouseEnter"/>
+                   Grid.Column="3" MouseLeave="sekundaLabel_MouseLeave" MouseEnter="sekundaLabel_MouseEnter" />
 
             <Label x:Name="dwukropek2" Style="{StaticResource labelki}"
                    Grid.Column="4"
                    Content=":"></Label>
 
             <Label x:Name="miliSekundaLabel" Style="{StaticResource labelki}"
-                   Grid.Column="5" MouseLeave="miliSekundaLabel_MouseLeave" MouseEnter="miliSekundaLabel_MouseEnter"/>
-
+                   Grid.Column="5" MouseLeave="miliSekundaLabel_MouseLeave" MouseEnter="miliSekundaLabel_MouseEnter" />
         </Grid>
-        
+
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition></ColumnDefinition>
@@ -112,17 +108,15 @@
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
 
-            <Label x:Name="btnStartStop" 
+            <Label x:Name="btnStartStop"
                     Style="{StaticResource buttonki}"
                     Grid.Column="1"
                     Content="START"
                     MouseDown="btnStartStop_MouseDown"
                     MouseEnter="btnStartStop_MouseEnter"
-                    MouseLeave="btnStartStop_MouseLeave"
-                    />
+                    MouseLeave="btnStartStop_MouseLeave" />
 
-
-            <Label x:Name="btnReset" 
+            <Label x:Name="btnReset"
                    Style="{StaticResource buttonki}"
                    Grid.Column="2"
                    Content="RESET"
@@ -130,7 +124,6 @@
                    MouseEnter="btnReset_MouseEnter"
                    MouseLeave="btnReset_MouseLeave">
             </Label>
-            
         </Grid>
     </Grid>
 </Window>

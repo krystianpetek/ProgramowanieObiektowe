@@ -144,7 +144,7 @@ namespace TimeTests.TimeTests
         [DataRow(11, 40, 02, 54302, 20, 35, 00)]
         [DataRow(23, 59, 59, 86400, 23, 59, 59)]
         [DataRow(23, 59, 59, 86400, 23, 59, 59)]
-        [DataRow(12, 0, 0, 86399,12,0,1)]
+        [DataRow(12, 0, 0, 86399, 12, 0, 1)]
         public void SubtractionOperator_WhenSubtractedCorrectTimePeriodToTime_ShouldReturnTrue(
             int hours, int minutes, int seconds,
             long timePeriodInSeconds,

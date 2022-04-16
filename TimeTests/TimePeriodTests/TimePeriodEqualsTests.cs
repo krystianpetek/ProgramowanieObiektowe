@@ -19,7 +19,7 @@ namespace TimeTests.TimePeriodTests
             TimePeriod t2 = new TimePeriod(t2Hours, t2Minutes, t2Seconds);
             Assert.IsTrue(t1.Equals(t2));
         }
-        
+
         [DataTestMethod, TestCategory("Equals")]
         [DataRow(0, 0, 0, 0)]
         [DataRow(23, 0, 23, 0)]
@@ -88,6 +88,5 @@ namespace TimeTests.TimePeriodTests
             TimePeriod t2 = new TimePeriod(t2Hours, t2Minutes, t2Seconds);
             Assert.IsFalse(t1.Equals(t2));
         }
-
     }
 }

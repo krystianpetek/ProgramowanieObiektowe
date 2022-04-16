@@ -1,17 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using Time_TimePeriod;
 
 namespace StoperWPF
@@ -21,14 +11,16 @@ namespace StoperWPF
     /// </summary>
     public partial class MainWindow : Window
     {
-        static TimePeriod milisekunda = new TimePeriod(0, 0, 1);
-        TimePeriod stoperek = new TimePeriod(0, 0, 0);
-        bool isClicked;
+        private static TimePeriod milisekunda = new TimePeriod(0, 0, 1);
+        private TimePeriod stoperek = new TimePeriod(0, 0, 0);
+        private bool isClicked;
+
         public MainWindow()
         {
             InitializeComponent();
             init();
         }
+
         private void init()
         {
             isClicked = false;
@@ -39,6 +31,7 @@ namespace StoperWPF
         }
 
         #region LABEL
+
         private void minutaLabel_MouseEnter(object sender, MouseEventArgs e)
         {
             Color backColor = Color.FromRgb(75, 159, 234);
@@ -83,7 +76,8 @@ namespace StoperWPF
             SolidColorBrush brush = new SolidColorBrush(backColor);
             miliSekundaLabel.Foreground = brush;
         }
-        #endregion
+
+        #endregion LABEL
 
         private void btnReset_MouseDown(object sender, MouseButtonEventArgs e)
         {

@@ -9,14 +9,17 @@
         /// Reprezentuje godzinę w sekundach, pole jest tylko do odczytu.
         /// </summary>
         public long NumberOfSeconds { get; init; }
+
         /// <summary>
         /// Reprezentuje liczbę godzin w czasie, pole jest tylko do odczytu.
         /// </summary>
         public long Hours => (NumberOfSeconds / 60) / 60;
+
         /// <summary>
         /// Reprezentuje liczbę minut w czasie, pole jest tylko do odczytu.
         /// </summary>
         public long Minutes => (NumberOfSeconds / 60) % 60;
+
         /// <summary>
         /// Reprezentuje liczbę sekund w czasie, pole jest tylko do odczytu.
         /// </summary>
@@ -78,7 +81,6 @@
             }
             else if (t1.CompareTo(t2) < 0)
             {
-
                 hours = t2.Hours - t1.Hours;
                 minutes = t2.Minutes - t1.Minutes;
                 seconds = t2.Seconds - t1.Seconds;
@@ -317,10 +319,8 @@
         {
             if (timePeriod1.NumberOfSeconds > timePeriod2.NumberOfSeconds)
                 return new TimePeriod(timePeriod1.NumberOfSeconds - timePeriod2.NumberOfSeconds);
-
             else if (timePeriod1.NumberOfSeconds < timePeriod2.NumberOfSeconds)
                 return new TimePeriod(timePeriod2.NumberOfSeconds - timePeriod1.NumberOfSeconds);
-
             else
                 return new TimePeriod();
         }
