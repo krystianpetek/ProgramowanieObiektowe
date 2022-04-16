@@ -244,8 +244,9 @@ namespace TimeTests.TimePeriodTests
         {
             TimePeriod time = new TimePeriod();
             Assert.AreEqual(
-                ((byte)expectedHours, (byte)expectedMinutes, (byte)expectedSeconds),
+                (expectedHours, expectedMinutes, expectedSeconds),
                 (time.Hours, time.Minutes, time.Seconds));
+
         }
 
         #region StringParameter
@@ -265,7 +266,7 @@ namespace TimeTests.TimePeriodTests
         {
             TimePeriod time = new TimePeriod(pattern);
             Assert.AreEqual(
-                ((byte)expectedHours, (byte)expectedMinutes, (byte)expectedSeconds),
+                (expectedHours, expectedMinutes, expectedSeconds),
                 (time.Hours, time.Minutes, time.Seconds));
         }
 
@@ -311,7 +312,7 @@ namespace TimeTests.TimePeriodTests
         {
             TimePeriod time = new TimePeriod(pattern);
             Assert.AreEqual(
-                ((byte)expectedHours, (byte)expectedMinutes, (byte)expectedSeconds),
+                (expectedHours, expectedMinutes, expectedSeconds),
                 (time.Hours, time.Minutes, time.Seconds));
         }
 
@@ -329,10 +330,25 @@ namespace TimeTests.TimePeriodTests
         {
             TimePeriod time = new TimePeriod(pattern);
             Assert.AreEqual(
-                ((byte)expectedHours, (byte)expectedMinutes, (byte)expectedSeconds),
+                (expectedHours, expectedMinutes, expectedSeconds),
                 (time.Hours, time.Minutes, time.Seconds));
         }
 
         #endregion StringParameter
+
+        [DataTestMethod, TestCategory("Constructor")]
+        [DataRow(new int[] { 15, 10, 0 }, new int[] { 8, 45, 30 }, new int[] {6, 24, 30})]
+        [DataRow(new int[] { 0, 0, 0 }, new int[] { 23, 59, 59 }, new int[] {23,59,59})]
+        [DataRow(new int[] { 0, 0, 1 }, new int[] { 23, 59, 59 }, new int[] {23,59,58})]
+        [DataRow(new int[] { 23,59,59 }, new int[] { 0,0,0 }, new int[] {23,59,59})]
+        public void ConstructorTwoTime_WhenGivenCorrectTwoTimeParameters_ShouldReturnTimePeriodBetweenTimes(
+            int[] time1, int[] time2, int[] time3)
+        {
+            Time t1 = new Time((byte)time1[0], (byte)time1[1], (byte)time1[2]);
+            Time t2 = new Time((byte)time2[0], (byte)time2[1], (byte)time2[2]);
+            TimePeriod t3 = new TimePeriod(t1,t2);
+            TimePeriod t4 = new TimePeriod(time3[0], time3[1], time3[2]);
+            Assert.IsTrue(t3 == t4);
+        }
     }
 }

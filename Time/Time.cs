@@ -25,7 +25,7 @@
         /// </summary>
         /// <param name="hours">Parametr hours reprezentuje liczbę godzin w punkcie czasu</param>
         /// <param name="minutes">Parametr minutes reprezentuje liczbę minut w punkcie czasu</param>
-        /// <param name="seconds">Parametr seconds reprezentuje liczbę godzin w punkcie czasu</param>
+        /// <param name="seconds">Parametr seconds reprezentuje liczbę sekund w punkcie czasu</param>
         /// <exception cref="ArgumentOutOfRangeException">Wyrzuca wyjątek w przypadku złych wartości godziny, z poza zakresu</exception>
         public Time(byte hours, byte minutes, byte seconds)
         {
@@ -58,14 +58,14 @@
         }
 
         /// <summary>
-        /// Konstruktor przyjmuje domyślny reprezentacji czasu, przyjmuje wszystkie wartości default.
+        /// Konstruktor domyślny reprezentacji czasu, przyjmuje wszystkie wartości default.
         /// </summary>
         public Time() : this(0, 0, 0)
         {
         }
 
         /// <summary>
-        /// Metoda parsująca czas ze <c>String'a</c>
+        /// Konstruktor tworzy obiekt Time parsując argument czas ze <c>String</c>'a
         /// </summary>
         /// <param name="timePattern">Parametr timePattern reprezentuje czas, lecz w formie string'a</param>
         /// <exception cref="FormatException">Wyrzuca wyjątek w momencie wprowadzenia złych danych, niemożliwych do Parsowania</exception>
@@ -97,7 +97,7 @@
         }
 
         /// <summary>
-        /// Tekstowa reprezentacja czasu Time, zwraca zewnętrzną reprezentacje czasu w formie string'a
+        /// Tekstowa reprezentacja punktu w czasie Time, zwraca zewnętrzną reprezentacje czasu w formie string'a
         /// </summary>
         /// <returns>Zwraca zewnętrzną reprezentacje Time</returns>
         public override string ToString()
@@ -238,7 +238,7 @@
         }
 
         /// <summary>
-        /// Sprawdza czy obiekt Time t1 jest większy bądź róny Time t2
+        /// Sprawdza czy obiekt Time t1 jest większy bądź równy Time t2
         /// </summary>
         /// <param name="time1">obiekt typu Time time1, reprezentuje punkt w czasie</param>
         /// <param name="time2">obiekt typu Time time2, reprezentuje punkt w czasie</param>

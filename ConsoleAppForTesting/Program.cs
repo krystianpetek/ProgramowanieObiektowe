@@ -34,9 +34,9 @@ namespace ConsoleAppForTesting
 
             Console.WriteLine(new Time(20, 35, 00) + new TimePeriod(54302));
 
-            var t1 = new Time(0,0,0);
-            var t2 = new Time(23,59,59);
-            var timep = new TimePeriod(t1,t2);
+            var t1 = new Time(0, 0, 0);
+            var t2 = new Time(23, 59, 59);
+            var timep = new TimePeriod(t1, t2);
             timep = new TimePeriod(129, 58, 12);
             Console.WriteLine(timep);
             TimePeriod p1czas = new TimePeriod("23:06:55");
@@ -57,12 +57,18 @@ namespace ConsoleAppForTesting
             timep = new TimePeriod(848974);
             Console.WriteLine(timep);
 
-            Time x = new Time(1, 23, 0);
-            while(true)
-            {
-                x + new Time();
-            }
+            Console.WriteLine(new TimePeriod(54302));
+            var czasTeraz = DateTime.Now;
+            Time x = new Time((byte)czasTeraz.Hour, (byte)czasTeraz.Minute, (byte)czasTeraz.Second);
 
+            while (true)
+            {
+                TimePeriod sekunda = new TimePeriod(0, 0, 1);
+                var g = x.Plus(sekunda);
+                Console.WriteLine(g);
+                x = new Time(g.Hours, g.Minutes, g.Seconds);
+                Thread.Sleep(1000);
+            }
         }
     }
 }
