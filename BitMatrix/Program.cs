@@ -1,116 +1,68 @@
-﻿using BitMatrixImplementation;
+﻿// operator ^
+// poprawne dane
+using BitMatrixImplementation;
 
-var m = new BitMatrix(4, 3);
-Console.WriteLine(m.ToString());
+var m1 = new BitMatrix(2, 3, 1, 0, 1, 0, 1, 0);
+var m2 = new BitMatrix(2, 3, 0, 1, 0, 0, 1, 0);
+//czy ^ jest symetryczny
+if ((m1 ^ m2).Equals(m2 ^ m1))
+    Console.WriteLine("Correct data, symmetry: Pass");
 
-m = new BitMatrix(3, 4, 1);
-Console.WriteLine(m);
+//czy wykonany poprawnie ^
+var expected = new BitMatrix(2, 3, 1, 1, 1, 0, 0, 0);
+var m3 = m1 ^ m2;
+if (expected.Equals(m3))
+    Console.WriteLine("Correct data: Pass");
 
-// konstruktor BitMatrix(int, int, params int[])
-// macierz 2x2, komplet danych w tablicy
-m = new BitMatrix(2, 2, new int[] { 1, 0, 0, 1 });
-Console.WriteLine(m);
+//czy wynik jest niezależną kopią
+if (!ReferenceEquals(m1, m3) && !ReferenceEquals(m2, m3))
+    Console.WriteLine("Correct data, ReferenceEquals: Pass");
+m1[1, 2] = 1; Console.WriteLine(m1[1, 2] != m3[1, 2]);
 
-m = new BitMatrix(2, 2, 1, 0, 0, 0);
-Console.WriteLine(m);
+// argument `null ^ null`
+try
+{
+    var m = (BitMatrix)null ^ (BitMatrix)null;
+    Console.WriteLine(m);
+    Console.WriteLine("Arguments null: Fail");
+}
+catch (ArgumentNullException)
+{
+    Console.WriteLine("Arguments null: Pass");
+}
 
-// konstruktor BitMatrix(int, int, params int[])
-// macierz 2x2, za dużo danych w tablicy
-m = new BitMatrix(2, 2, 1, 0, 0, 1, 1, 1, 0);
-Console.WriteLine(m);
+// right argument `null`
+try
+{
+    var m = (BitMatrix)null ^ new BitMatrix(2, 2);
+    Console.WriteLine(m);
+    Console.WriteLine("Right argument null: Fail");
+}
+catch (ArgumentNullException)
+{
+    Console.WriteLine("Right argument null: Pass");
+}
 
-// macierz 3x2, za mało danych w tablicy
-m = new BitMatrix(3, 2, 1, 0, 0, 1, 1);
-Console.WriteLine(m);
+// left argument `null`
+try
+{
+    var m = new BitMatrix(2, 2) ^ (BitMatrix)null;
+    Console.WriteLine(m);
+    Console.WriteLine("Left argument null: Fail");
+}
+catch (ArgumentNullException)
+{
+    Console.WriteLine("Left argument null: Pass");
+}
 
-
-// konstruktor BitMatrix(int[,])
-int[,] arr = new int[,] { { 1, 0, 1 }, { 0, 1, 1 } };
-m = new BitMatrix(arr);
-Console.WriteLine(arr.GetLength(0) == m.NumberOfRows);
-Console.WriteLine(arr.GetLength(1) == m.NumberOfColumns);
-Console.Write(m.ToString());
-
-
-
-
-// konstruktor BitMatrix(int, int, params int[])
-// macierz 2x2, tablica null
-m = new BitMatrix(2, 2, null);
-Console.WriteLine(m);
-
-// macierz 4x3, tablica zerowej długości
-m = new BitMatrix(4, 3, new int[0]);
-Console.WriteLine(m);
-
-
-
-
-// `Equals` różne wartości komórek
-var m1 = new BitMatrix(2, 3, 1, 1, 1, 0, 0, 0);
-var m2 = new BitMatrix(2, 3, 0, 0, 0, 1, 1, 1);
-Console.WriteLine(m1.Equals(m2));
-m1 = new BitMatrix(1, 1, 0);
-m2 = new BitMatrix(1, 1, 1);
-Console.WriteLine(m1.Equals(m2));
-
-
-// `Equals` te same wartości
-m1 = new BitMatrix(2, 3, 1, 1, 1, 0, 0, 0);
-m2 = new BitMatrix(2, 3, 1, 1, 1, 0, 0, 0);
-Console.WriteLine(m1.Equals(m2));
-m1 = new BitMatrix(1, 1, 0);
-m2 = new BitMatrix(1, 1, 0);
-Console.WriteLine(m1.Equals(m2));
-
-
-// operator `==`, `!=`
-// zgodne wartości
-m1 = new BitMatrix(2, 3, 1, 1, 1, 0, 0, 0);
-m2 = new BitMatrix(2, 3, 1, 1, 1, 0, 0, 0);
-Console.WriteLine(m1 != m2);
-Console.WriteLine(m1 == m2);
-Console.WriteLine(m2 != m1);
-Console.WriteLine(m2 == m1);
-
-m1 = new BitMatrix(1, 1, 1);
-m2 = new BitMatrix(1, 1, 1);
-Console.WriteLine(m1 == m2);
-Console.WriteLine(m1 != m2);
-
-
-
-// Equals dla parametru `null`
-m1 = new BitMatrix(1, 1);
-Console.WriteLine(m1.Equals(null));
-
-
-
-
-// `Equals(object)` dla innego typu
-m1 = new BitMatrix(1, 1);
-double[,] temp = new double[1, 1];
-Console.WriteLine(m1.Equals(temp));
-
-
-
-
-// operator `==`, `!=`
-// dwa `null`
-m1 = null;
-m2 = null;
-Console.WriteLine(m1 == m2);
-Console.WriteLine(m1 != m2);
-//BitMatrix matrix = new BitMatrix(4);
-//Console.WriteLine(matrix);
-
-//var x = matrix[1, 2];
-
-//matrix[1, 2] = true;
-
-//Console.WriteLine(matrix);
-
-//foreach(var index in matrix)
-//{
-
-//}
+// incorrect dimensions
+try
+{
+    var m = new BitMatrix(2, 3) ^ new BitMatrix(2, 2);
+    Console.WriteLine(m);
+    Console.WriteLine("Incorrect dimensions: Fail");
+}
+catch (ArgumentException)
+{
+    Console.WriteLine("Incorrect dimensions: Pass");
+}

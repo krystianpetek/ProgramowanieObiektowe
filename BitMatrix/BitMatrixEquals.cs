@@ -18,18 +18,7 @@ namespace BitMatrixImplementation
 
         public bool Equals(BitMatrix other)
         {
-            if ((object)other == null || (object)this == null) return false;
-            if (this.NumberOfColumns != other.NumberOfColumns)
-                return false;
-            if (this.NumberOfRows != other.NumberOfRows)
-                return false;
-
-            for (int i = 0; i < this.data.Length; i++)
-            {
-                if (this.data[i] != other.data[i])
-                    return false;
-            }
-            return true;
+            return this == other;
         }
 
         public override int GetHashCode()
@@ -39,18 +28,26 @@ namespace BitMatrixImplementation
 
         public static bool operator ==(BitMatrix matrix1, BitMatrix matrix2)
         {
-            if (matrix1 is null && matrix2 is null) return true;
-            if ((object)matrix1 == null || (object)matrix2 == null) return false;
+            if ((object)matrix1 == null && (object)matrix2 == null)
+                return true;
+            if ((object)matrix1 == null || (object)matrix2 == null)
+                return false;
+            if (matrix1.NumberOfColumns != matrix2.NumberOfColumns)
+                return false;
+            if (matrix1.NumberOfRows != matrix2.NumberOfRows)
+                return false;
 
-            return matrix1.Equals(matrix2);
+            for (int i = 0; i < matrix1.data.Length; i++)
+            {
+                if (matrix1.data[i] != matrix2.data[i])
+                    return false;
+            }
+            return true;
         }
 
         public static bool operator !=(BitMatrix matrix1, BitMatrix matrix2)
         {
-            if (matrix1 is null || matrix2 is null) return true;
-            if ((object)matrix1 == null || (object)matrix2 == null) return false;
-         
-            return !(matrix1.Equals(matrix2));
+            return !(matrix1 == matrix2);
         }
     }
 }
