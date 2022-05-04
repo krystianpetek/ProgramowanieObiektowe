@@ -161,17 +161,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Iterator", "Iterator", "{C2
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BitMatrix", "BitMatrix", "{3BB5844A-CA11-4890-A42C-9F73AEE8B280}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BitMatrix", "BitMatrix\BitMatrix.csproj", "{00640AEB-027E-4689-B1F1-A21933540ECF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BitMatrixImplementation", "BitMatrix\BitMatrixImplementation.csproj", "{00640AEB-027E-4689-B1F1-A21933540ECF}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Indexer", "Indexer\Indexer.csproj", "{BEAED875-1093-41BB-835F-E0B7811D63BE}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Iterator", "Iterator\Iterator.csproj", "{75A1F2B3-DAF8-4C7C-B849-4B80DE132DF9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DayOfTheWeek", "DayOfTheWeek\DayOfTheWeek.csproj", "{067AE368-F541-4972-A89A-A8D1F298CE22}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DayOfTheWeek", "DayOfTheWeek\DayOfTheWeek.csproj", "{067AE368-F541-4972-A89A-A8D1F298CE22}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnimalsInZoo", "AnimalsInZoo\AnimalsInZoo.csproj", "{9B002D33-6AC8-4CDE-8448-DB40F4DD92E1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AnimalsInZoo", "AnimalsInZoo\AnimalsInZoo.csproj", "{9B002D33-6AC8-4CDE-8448-DB40F4DD92E1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StackGeneric", "StackGeneric\StackGeneric.csproj", "{B829859B-2595-4978-BEFE-E72C49335D37}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StackGeneric", "StackGeneric\StackGeneric.csproj", "{B829859B-2595-4978-BEFE-E72C49335D37}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
