@@ -173,6 +173,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AnimalsInZoo", "AnimalsInZo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StackGeneric", "StackGeneric\StackGeneric.csproj", "{B829859B-2595-4978-BEFE-E72C49335D37}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Laboratorium04", "Laboratorium04", "{217BA41D-A4C9-48EA-95EA-435CE773B805}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
