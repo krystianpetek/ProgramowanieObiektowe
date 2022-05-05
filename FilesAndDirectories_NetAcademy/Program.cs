@@ -105,4 +105,116 @@ using(var fileStream = new FileStream($".\\Actors.txt",FileMode.Create))
 }
 
 
-// https://dotnetcademy.net/Learn/2050/Pages/13
+File.WriteAllText(@".\Movies.txt", "Star Wars\nThe Empire Strikes Back\nReturn Of The Jedi\n");
+
+using (var file = new FileStream(@".\Movies.txt", FileMode.Open))
+{
+    using (var reader = new StreamReader(file))
+    {
+        while (!reader.EndOfStream)
+        {
+            string movie = reader.ReadLine();
+            Console.WriteLine(movie);
+        }
+    }
+}
+
+using (var file = new FileStream(@".\Actors.txt", FileMode.Create))
+{
+    using (var writer = new StreamWriter(file))
+    {
+        foreach (string actor in actors)
+        {
+            writer.WriteLine(actor);
+        }
+    }
+}
+
+
+actors = new List<string>()
+        {
+            "Mark Hamill",
+            "Harrison Ford",
+            "Carrie Fisher"
+        };
+
+using (var file = new FileStream(@".\Actors.txt", FileMode.Create))
+{
+    using (StreamWriter writer = new StreamWriter(file))
+    {
+        foreach (string actor in actors)
+        {
+            writer.WriteLine(actor);
+        }
+    }
+}
+
+
+Console.WriteLine("\nUtility types - file info");
+// utility types
+const string DirectoryPath = @".\";
+const string FilePath = @".\HelloWorld.txt";
+
+Directory.CreateDirectory(Path.Combine(DirectoryPath, "sub-dir"));
+Directory.CreateDirectory(Path.Combine(DirectoryPath, "sub-dir2"));
+
+File.WriteAllText(FilePath, "Hello world!");
+
+FileInfo fileInfo = new FileInfo(FilePath);
+Console.WriteLine(fileInfo.Exists);
+Console.WriteLine(fileInfo.Name);
+Console.WriteLine(fileInfo.LastWriteTime);
+
+string directoryPath = Path.GetDirectoryName(FilePath);
+DirectoryInfo directoryInfo = new DirectoryInfo(directoryPath);
+Console.WriteLine(directoryInfo.Exists);
+Console.WriteLine(directoryInfo.LastWriteTime);
+
+foreach( string childDirectory in Directory.GetDirectories(directoryPath,"*",SearchOption.AllDirectories))
+    Console.WriteLine(childDirectory);
+
+// operacje z plikami
+
+Console.WriteLine("\n");
+FileInfo fileinfo2 = new FileInfo(@"C:\Windows\Notepad.exe");
+fileinfo2 = new FileInfo(@"C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe");
+if(fileinfo2.Exists)
+    Console.WriteLine($"The file {fileinfo2.Name} exists on disk, and was last accessed on {fileinfo2.LastAccessTime}");
+
+//fileinfo2.CopyTo($"C:\\Users\\kryst\\Desktop\\powershell.exe");
+
+
+// directory
+string directory = @"C:\Windows";
+if (Directory.Exists(directory))
+{
+    Console.WriteLine("The directory {0} exists", directory);
+}
+foreach (string childDirectory in Directory.GetDirectories(directory))
+    Console.WriteLine(childDirectory);
+
+
+// PATH
+Console.WriteLine("\nPath");
+string filePath = $@"c:\windows\notepad.exe";
+string fileDirectory = Path.GetDirectoryName(filePath);
+string fileName = Path.GetFileName(filePath);
+Console.WriteLine($"filePath: {filePath}");
+Console.WriteLine($"fileDirectory: {fileDirectory}");
+Console.WriteLine($"fileName: {fileName}");
+
+string path = Path.Combine("C:", "Windows", "Notepad.exe");
+Console.WriteLine(path);
+
+
+Directory.CreateDirectory(@".\sub-dir1");
+Directory.CreateDirectory(@".\sub-dir2");
+Directory.CreateDirectory(@".\sub-dir3");
+
+DirectoryInfo directory2 = new DirectoryInfo(@".\");
+var children = directory2.GetDirectories();
+
+foreach (var item in children)
+{
+    Console.WriteLine(item);
+}
