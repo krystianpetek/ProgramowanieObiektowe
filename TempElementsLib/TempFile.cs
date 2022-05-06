@@ -48,7 +48,7 @@ namespace TempElementsLib
         public void AddText(string value)
         {
             byte[] info = new UTF8Encoding(true).GetBytes(value);
-            fileStream.Write(info, 0, info.Length);
+                fileStream.Write(info, 0, info.Length);
             fileStream.Flush();
         }
     }

@@ -107,7 +107,7 @@ using(var fileStream = new FileStream($".\\Actors.txt",FileMode.Create))
 
 File.WriteAllText(@".\Movies.txt", "Star Wars\nThe Empire Strikes Back\nReturn Of The Jedi\n");
 
-using (var file = new FileStream(@".\Movies.txt", FileMode.Open))
+using (var file = new FileStream(@".\Movies.txt", FileMode.Open,FileAccess.ReadWrite))
 {
     using (var reader = new StreamReader(file))
     {
