@@ -9,6 +9,7 @@ namespace TempElementsLib
     public class TempElementsList : ITempElements
     {
         private readonly List<ITempElement> elements;
+
         public bool IsEmpty => elements.Count == 0;
 
         public IReadOnlyCollection<ITempElement> Elements => elements;
@@ -17,46 +18,78 @@ namespace TempElementsLib
         {
             elements = new List<ITempElement>();
         }
-        
-        public void AddElement<T>() where T : new()
+
+        public void Dispose(bool disposing)
         {
-            //elements.Add( );
+            if (disposing)
+            {
+                foreach (var element in elements)
+                {
+                    DeleteElement(element);
+                    elements.Remove(element);
+                }
+            }
         }
 
-        public void Dispose()
+        public T AddElement<T>() where T : ITempElement, new()
         {
-            
+            var temp = new T();
+            elements.Add(temp);
+            return temp;
         }
 
         public void RemoveDestroyed()
         {
-            foreach(var item in elements)
+            foreach (var element in elements)
             {
-
+                if(!element.IsDestroyed)
+                    element.Dispose();
             }
         }
-        public void MoveElementTo<T>(T element, string newPath)
-        {
 
+        public void MoveElementTo<T>(T element, string newPath) where T : ITempElement, new()
+        {
+            switch (element)
+            {
+                case TempDir tempDir:
+                {
+                    DirectoryInfo directoryInfo = new DirectoryInfo(tempDir.DirPath);
+                    if (directoryInfo.Exists)
+                    {
+                        Directory.Move(directoryInfo.FullName,newPath);
+                    }
+
+                    break;
+                }
+                case TempFile tempFile:
+                {
+                    FileInfo fileInfo = new FileInfo(tempFile.FilePath);
+                    if (fileInfo.Exists)
+                    {
+                        File.Move(fileInfo.FullName,newPath);
+                    }
+
+                    break;
+                }
+            }
         }
+
+        public void Dispose()
+        {
+            // Do not change this code. Put cleanup code in 'Dispose(bool disposing)' method
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
         ~TempElementsList()
         {
             Dispose();
         }
-        public void DeleteElement<T>(T element)
+
+        public void DeleteElement<T>(T element) where T : ITempElement
         {
-            if (element is TempDir tempDir)
-            {
-                DirectoryInfo directoryInfo = new DirectoryInfo (tempDir.DirPath);
-                if(directoryInfo.Exists)
-                    directoryInfo.Delete(true);
-            }
-            if (element is TempFile tempFile)
-            {
-                FileInfo fileInfo = new FileInfo(tempFile.FilePath);
-                if (fileInfo.Exists)
-                    fileInfo.Delete();
-            }
+            elements.Remove(element);
+            element.Dispose();
         }
 
     }

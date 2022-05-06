@@ -8,7 +8,7 @@ namespace TempElementsLib
 {
     public interface ITempElements : IDisposable
     {
-        public void AddElement<T>() where T : new();
+        public T AddElement<T>() where T : ITempElement, new();
         public void RemoveDestroyed();
         public bool IsEmpty { get; }
         public IReadOnlyCollection<ITempElement> Elements { get; }

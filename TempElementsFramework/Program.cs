@@ -30,5 +30,3 @@ using (TempDir tempDir = new TempDir())
 TempElementsList tempElements = new TempElementsList();
 tempElements.AddElement<TempDir>();
 
-
-
