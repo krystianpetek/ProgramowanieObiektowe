@@ -31,23 +31,25 @@ using (TempElementsList tempElements = new TempElementsList())
 {
     tempElements.AddElement<TempDir>();
     tempElements.AddElement<TempFile>();
+    tempElements.AddElement<TempTextFile>();
+    tempElements.AddElement<TempDir>();
+    tempElements.AddElement<TempFile>();
+    tempElements.AddElement<TempTextFile>();
     tempElements.AddElement<TempDir>();
     tempElements.AddElement<TempFile>();
     tempElements.AddElement<TempDir>();
-    tempElements.AddElement<TempFile>();
     tempElements.AddElement<TempDir>();
-    tempElements.AddElement<TempDir>();
+    tempElements.AddElement<TempTextFile>();
     tempElements.AddElement<TempFile>();
-    tempElements.AddElement<TempFile>();
-    tempElements.AddElement<TempDir>();
     tempElements.AddElement<TempFile>();
     tempElements.AddElement<TempDir>();
     tempElements.AddElement<TempFile>();
+    tempElements.AddElement<TempTextFile>();
     tempElements.AddElement<TempDir>();
     tempElements.AddElement<TempFile>();
-
-    foreach (var item in tempElements.Elements)
-        Console.WriteLine(item.IsDestroyed);
+    tempElements.AddElement<TempDir>();
+    tempElements.AddElement<TempTextFile>();
+    tempElements.AddElement<TempFile>();
 }
 
 Console.WriteLine();
