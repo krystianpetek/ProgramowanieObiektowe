@@ -11,6 +11,7 @@ namespace TempElementsLib
         private readonly List<ITempElement> elements;
 
         public bool IsEmpty => elements.Count == 0;
+        private bool disposed;
 
         public IReadOnlyCollection<ITempElement> Elements => elements;
 
@@ -21,13 +22,16 @@ namespace TempElementsLib
 
         public void Dispose(bool disposing)
         {
-            if (disposing)
+            if (!disposed)
             {
-                foreach (var element in elements)
+                if (disposing)
                 {
-                    DeleteElement(element);
-                    elements.Remove(element);
+                    foreach (var element in elements)
+                    {
+                        DeleteElement(element);
+                    }
                 }
+                disposed = true;
             }
         }
 
@@ -42,8 +46,8 @@ namespace TempElementsLib
         {
             foreach (var element in elements)
             {
-                if(!element.IsDestroyed)
-                    element.Dispose();
+                if (!element.IsDestroyed)
+                    DeleteElement(element);
             }
         }
 
@@ -88,7 +92,6 @@ namespace TempElementsLib
 
         public void DeleteElement<T>(T element) where T : ITempElement
         {
-            elements.Remove(element);
             element.Dispose();
         }
 

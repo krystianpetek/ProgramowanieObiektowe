@@ -27,6 +27,27 @@ using (TempDir tempDir = new TempDir())
     Console.WriteLine(tempDir.DirPath);
 }
 
-TempElementsList tempElements = new TempElementsList();
-tempElements.AddElement<TempDir>();
+using (TempElementsList tempElements = new TempElementsList())
+{
+    tempElements.AddElement<TempDir>();
+    tempElements.AddElement<TempFile>();
+    tempElements.AddElement<TempDir>();
+    tempElements.AddElement<TempFile>();
+    tempElements.AddElement<TempDir>();
+    tempElements.AddElement<TempFile>();
+    tempElements.AddElement<TempDir>();
+    tempElements.AddElement<TempDir>();
+    tempElements.AddElement<TempFile>();
+    tempElements.AddElement<TempFile>();
+    tempElements.AddElement<TempDir>();
+    tempElements.AddElement<TempFile>();
+    tempElements.AddElement<TempDir>();
+    tempElements.AddElement<TempFile>();
+    tempElements.AddElement<TempDir>();
+    tempElements.AddElement<TempFile>();
 
+    foreach (var item in tempElements.Elements)
+        Console.WriteLine(item.IsDestroyed);
+}
+
+Console.WriteLine();
