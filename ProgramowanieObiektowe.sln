@@ -193,6 +193,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LinqToObject_PlytaCD", "Lin
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinqToObject_WynikiBiegacza", "LinqToObject_WynikiBiegacza\LinqToObject_WynikiBiegacza.csproj", "{65A4C579-50C6-429E-8560-5935A63370BA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinqToObject_FrekwencjaZnakow", "LinqToObject_FrekwencjaZnakow\LinqToObject_FrekwencjaZnakow.csproj", "{A1771875-5157-448F-BB16-C44D1E7910FC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -495,6 +497,10 @@ Global
 		{65A4C579-50C6-429E-8560-5935A63370BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{65A4C579-50C6-429E-8560-5935A63370BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{65A4C579-50C6-429E-8560-5935A63370BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A1771875-5157-448F-BB16-C44D1E7910FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1771875-5157-448F-BB16-C44D1E7910FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1771875-5157-448F-BB16-C44D1E7910FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1771875-5157-448F-BB16-C44D1E7910FC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -586,6 +592,7 @@ Global
 		{BB0B9C07-4679-491D-A5B7-301C71A6D0A0} = {F379681D-004F-42A6-BEB4-15B6D473286A}
 		{4E5D342D-2E69-420F-94BD-909DD55CE3C5} = {F379681D-004F-42A6-BEB4-15B6D473286A}
 		{65A4C579-50C6-429E-8560-5935A63370BA} = {F379681D-004F-42A6-BEB4-15B6D473286A}
+		{A1771875-5157-448F-BB16-C44D1E7910FC} = {F379681D-004F-42A6-BEB4-15B6D473286A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {EAC54410-D0C2-487C-A700-DCBF09D723CC}
