@@ -191,9 +191,17 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zadanie2_Inicjaly", "Zadani
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LinqToObject_PlytaCD", "LinqToObject_PlytaCD\LinqToObject_PlytaCD.csproj", "{4E5D342D-2E69-420F-94BD-909DD55CE3C5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinqToObject_WynikiBiegacza", "LinqToObject_WynikiBiegacza\LinqToObject_WynikiBiegacza.csproj", "{65A4C579-50C6-429E-8560-5935A63370BA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LinqToObject_WynikiBiegacza", "LinqToObject_WynikiBiegacza\LinqToObject_WynikiBiegacza.csproj", "{65A4C579-50C6-429E-8560-5935A63370BA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinqToObject_FrekwencjaZnakow", "LinqToObject_FrekwencjaZnakow\LinqToObject_FrekwencjaZnakow.csproj", "{A1771875-5157-448F-BB16-C44D1E7910FC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LinqToObject_FrekwencjaZnakow", "LinqToObject_FrekwencjaZnakow\LinqToObject_FrekwencjaZnakow.csproj", "{A1771875-5157-448F-BB16-C44D1E7910FC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Laboratorium06", "Laboratorium06", "{2C09C4BE-F161-46C9-B738-9EB3EF18EF36}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinqToXMLIntroduction", "LinqToXMLIntroduction\LinqToXMLIntroduction.csproj", "{8DFEA737-0E83-4E21-953C-7D2C9BCFB2FC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinqXMLZadanie1", "LinqXMLZadanie1\LinqXMLZadanie1.csproj", "{E2E6E162-250E-4094-973A-99227C4B863D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MigracjaDanychViaXML_LinqToXML", "MigracjaDanychViaXML_LinqToXML\MigracjaDanychViaXML_LinqToXML.csproj", "{5A407A2E-4316-4542-B9EF-35B84EF3E3C9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -501,6 +509,18 @@ Global
 		{A1771875-5157-448F-BB16-C44D1E7910FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A1771875-5157-448F-BB16-C44D1E7910FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A1771875-5157-448F-BB16-C44D1E7910FC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8DFEA737-0E83-4E21-953C-7D2C9BCFB2FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8DFEA737-0E83-4E21-953C-7D2C9BCFB2FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8DFEA737-0E83-4E21-953C-7D2C9BCFB2FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8DFEA737-0E83-4E21-953C-7D2C9BCFB2FC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E2E6E162-250E-4094-973A-99227C4B863D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E2E6E162-250E-4094-973A-99227C4B863D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E2E6E162-250E-4094-973A-99227C4B863D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E2E6E162-250E-4094-973A-99227C4B863D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A407A2E-4316-4542-B9EF-35B84EF3E3C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A407A2E-4316-4542-B9EF-35B84EF3E3C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A407A2E-4316-4542-B9EF-35B84EF3E3C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A407A2E-4316-4542-B9EF-35B84EF3E3C9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -593,6 +613,9 @@ Global
 		{4E5D342D-2E69-420F-94BD-909DD55CE3C5} = {F379681D-004F-42A6-BEB4-15B6D473286A}
 		{65A4C579-50C6-429E-8560-5935A63370BA} = {F379681D-004F-42A6-BEB4-15B6D473286A}
 		{A1771875-5157-448F-BB16-C44D1E7910FC} = {F379681D-004F-42A6-BEB4-15B6D473286A}
+		{8DFEA737-0E83-4E21-953C-7D2C9BCFB2FC} = {2C09C4BE-F161-46C9-B738-9EB3EF18EF36}
+		{E2E6E162-250E-4094-973A-99227C4B863D} = {2C09C4BE-F161-46C9-B738-9EB3EF18EF36}
+		{5A407A2E-4316-4542-B9EF-35B84EF3E3C9} = {2C09C4BE-F161-46C9-B738-9EB3EF18EF36}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {EAC54410-D0C2-487C-A700-DCBF09D723CC}
