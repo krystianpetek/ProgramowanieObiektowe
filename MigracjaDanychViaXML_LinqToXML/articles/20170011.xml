@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<article xmlns:ns="http://pkp.sfu.ca" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pkp.sfu.ca native.xsd" locale="en_US" date_submitted="2017-06-26" stage="production" date_published="2017-07-26" section_ref="ART" seq="1" access_status="0">
+  <id advice="ignore" type="internal">20170011</id>
+  <title locale="en_US">to Pollution Problems of Oil </title>
+  <prefix locale="en_US">Solutions</prefix>
+  <abstract locale="en_US">The purpose of the research is to improve the processes of conservation indicators of quality petroleum products (POL). As a hypothesis, it was assumed that the quality of fuel depends on its main quality parameters that most strongly vary during storage and transportation. The methods were applied which are used at the theoretical level of research, such as abstraction, deduction, analysis and synthesis, etc. We presented the main problems of pollution of oil. Moreover, we provided indicators of physical and chemical properties of diesel fuel and motor oil, which characterize their performance and the list of used additives. We analysed the scientific and patent work. We provided solutions to the problem. Correct storage and use of fuel will help maintain its quality parameters and ensure safety and durability of machinery.</abstract>
+  <licenseUrl>http://creativecommons.org/licenses/by-nc-nd/4.0</licenseUrl>
+  <keywords locale="en_US">
+    <keyword>coefficient of filterability</keyword>
+    <keyword>the chemical composition of hydrocarbons</keyword>
+    <keyword>additives for diesel fuel</keyword>
+    <keyword>the process of desublimation</keyword>
+  </keywords>
+  <authors xsi:schemaLocation="http://pkp.sfu.ca native.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <author primary_contact="true" user_group_ref="Author" include_in_browse="true">
+      <givenname locale="en_US">Barbara</givenname>
+      <familyname locale="en_US">Krzysztofik</familyname>
+      <affiliation locale="en_US">Institute of Machinery Management, Ergonomics and Production Processes, University of Agriculture in Krakow</affiliation>
+      <country>PL</country>
+      <email>Barbara.Krzysztofik@ur.krakow.pl</email>
+    </author>
+  </authors>
+  <article_galley xsi:schemaLocation="http://pkp.sfu.ca native.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" approved="false">
+    <id advice="ignore" type="internal">1</id>
+    <name locale="en_US">HTML</name>
+    <seq>0</seq>
+    <remote src="https://doi.org/10.1515/agriceng-2017-0011" />
+  </article_galley>
+  <issue_identification>
+    <volume>21</volume>
+    <number>2(162)</number>
+    <year>2017</year>
+  </issue_identification>
+  <pages>5-14</pages>
+</article>

@@ -13,9 +13,6 @@ namespace MigracjaDanychViaXML_LinqToXML
         {
             XDocument documentIssue = XDocument.Load("../../../issues.xml");
             XElement issueCurrent = documentIssue.Element("issues").Element("issue");
-            XElement volume = issueCurrent.Element("volume");
-            XElement number = issueCurrent.Element("number");
-            XElement year = issueCurrent.Element("year");
 
             var articles = issueCurrent.Element("section").Elements("article");
 
@@ -63,7 +60,7 @@ namespace MigracjaDanychViaXML_LinqToXML
 
                         new XElement("authors",
                             new XAttribute(xsi + "schemaLocation", "http://pkp.sfu.ca native.xsd"),
-                            new XAttribute(XNamespace.Xmlns + "xsi", "http://www.w3.org/2001/XMLSchema-instance")),
+                            new XAttribute(XNamespace.Xmlns + "xsi", "http://www.w3.org/2001/XMLSchema-instance"),
                             new XElement("author",
                                 article.Elements("author").Attributes(),
                                 new XAttribute("user_group_ref","Author"),
@@ -81,15 +78,34 @@ namespace MigracjaDanychViaXML_LinqToXML
                                     article.Element("author").Element("affiliation").Value),
                                 new XElement("country", article.Element("author").Element("country")?.Value),
                                 new XElement("email", article.Element("author").Element("email")?.Value)
-                            ),
+                            )),
                             new XElement("article_galley",
-                                new XAttribute(""
+                                new XAttribute(xsi + "schemaLocation", "http://pkp.sfu.ca native.xsd"),
+                                new XAttribute(XNamespace.Xmlns + "xsi", "http://www.w3.org/2001/XMLSchema-instance"),
+                                new XAttribute("approved", "false"),
+                                new XElement("id",
+                                    new XAttribute("advice", "ignore"),
+                                    new XAttribute("type", "internal"),
+                                    "1"),
+                                new XElement("name",
+                                    new XAttribute("locale",article.Element("galley").Attribute("locale").Value),
+                                    article.Element("galley").Element("label").Value),
+                                new XElement("seq", "0"),
+                                new XElement("remote",
+                                    new XAttribute("src", article.Element("galley").Element("file").Element("remote").Attribute("src").Value))
+                                ),
+                            new XElement("issue_identification",
+                                new XElement("volume", issueCurrent.Element("volume").Value),
+                                new XElement("number", issueCurrent.Element("number").Value),
+                                new XElement("year", issueCurrent.Element("year").Value)
+                            ),
+                            new XElement("pages",article.Element("pages").Value)
                         )
                     );
                 var file = article.Element("galley").Element("file").Element("remote").Attribute("src").Value.Split("-");
 ;
                 Console.WriteLine(output);
-                output.Save($"{string.Join("", file[1], file[2])}.xml");
+                output.Save($"../../../articles/{string.Join("", file[1], file[2])}.xml");
             }
         }
     }

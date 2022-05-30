@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<article xmlns:ns="http://pkp.sfu.ca" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pkp.sfu.ca native.xsd" locale="en_US" date_submitted="2017-06-26" stage="production" date_published="2017-07-26" section_ref="ART" seq="1" access_status="0">
+  <id advice="ignore" type="internal">20170012</id>
+  <title locale="en_US">Developments of Solar Energy Utilization in the Aspect of EU Directives </title>
+  <prefix locale="en_US">New</prefix>
+  <abstract locale="en_US">Photovoltaic systems are very efficient concerning proper utilization of solar radiation. However, the nanotechnology solution can replace the photovoltaic by the use of new production technology to lower the price of solar cells to one tenth. Sun provides nearly unlimited energy resource, but existing solar energy harvesting technologies are quite expensive and cannot compete with fossil fuels. The central part of Poland, which represents about 50 percent of the area, gives solar radiation at the level of 1000 kWh·m&lt;sup&gt;-2&lt;/sup&gt;/year. Other new developments, which can help improve existing efficiency of solar systems are: diatoms utilization, artificial photosynthesis, nanoleaves and rotation solar towers.</abstract>
+  <licenseUrl>http://creativecommons.org/licenses/by-nc-nd/4.0</licenseUrl>
+  <keywords locale="en_US">
+    <keyword>solar energy</keyword>
+    <keyword>solar collectors</keyword>
+    <keyword>nanotechnology</keyword>
+    <keyword>artificial photosynthesis</keyword>
+    <keyword>solar towers</keyword>
+  </keywords>
+  <authors xsi:schemaLocation="http://pkp.sfu.ca native.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <author primary_contact="true" user_group_ref="Author" include_in_browse="true">
+      <givenname locale="en_US">Jan</givenname>
+      <familyname locale="en_US">Barwicki</familyname>
+      <affiliation locale="en_US">Institute of Technology and Life Sciences in Falenty, Warsaw Branch</affiliation>
+      <country>PL</country>
+      <email>j.barwicki@itp.edu.pl</email>
+    </author>
+  </authors>
+  <article_galley xsi:schemaLocation="http://pkp.sfu.ca native.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" approved="false">
+    <id advice="ignore" type="internal">1</id>
+    <name locale="en_US">HTML</name>
+    <seq>0</seq>
+    <remote src=" https://doi.org/10.1515/agriceng-2017-0012" />
+  </article_galley>
+  <issue_identification>
+    <volume>21</volume>
+    <number>2(162)</number>
+    <year>2017</year>
+  </issue_identification>
+  <pages>15-24</pages>
+</article>
