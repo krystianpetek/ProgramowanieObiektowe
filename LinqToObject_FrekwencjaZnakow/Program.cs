@@ -10,117 +10,118 @@ namespace LinqToObject_FrekwencjaZnakow
     {
         public static void Main()
         {
-            var petla = int.Parse(Console.ReadLine());
-            for (int i = 0; i < petla; i++)
+            var t = int.Parse(Console.ReadLine());
+            for (int i = 0; i < t; i++)
             {
-                var napisKonsola = Console.ReadLine(); //"Ala ma 2 koty, As to Ali pies!";
+                var input = Console.ReadLine(); //"Ala ma 2 koty, As to Ali pies!";
+                var inputFormat = Console.ReadLine(); // "first 3 byfreq asc byletter asc";
+
+                if (input == null || inputFormat == null)
+                    return;
+
+                var inputSplit = inputFormat.Split(" ",StringSplitOptions.RemoveEmptyEntries);
                 
-                var queryFormat = Console.ReadLine(); // "first 3 byfreq asc byletter asc";
-                var querySplitted= queryFormat.Split(" ",StringSplitOptions.RemoveEmptyEntries);
+                var order = inputSplit[0] == nameof(Program.Order.first) ? 1 : 2;
+                var n = inputSplit[1];
+                var frequencyFirst = inputSplit[2] == nameof(Program.Frequency.byfreq) ? 1 : 2;
+                var sortFirst = inputSplit[3] == nameof(Program.Sort.asc) ? 1 : 2;
+                var frequencySecond = 0;
+                var sortSecond = 0;
                 
-                var kolejnosc = querySplitted[0] == nameof(Program.kolejnosc.first) ? 1 : 2;
-                var n = querySplitted[1];
-                var czestosc1 = querySplitted[2] == nameof(Program.czestosc.byfreq) ? 1 : 2;
-                var czestoscSort = querySplitted[3] == nameof(Program.sortowanie.asc) ? 1 : 2;
-                var czestosc2 = 0;
-                var czestosc2Sort = 0;
-                
-                if (querySplitted.Length > 4)
+                if (inputSplit.Length > 4)
                 {
-                    czestosc2 = querySplitted[4] == nameof(Program.czestosc.byfreq) ? 1 : 2;
-                    czestosc2Sort = querySplitted[5] == nameof(Program.sortowanie.asc) ? 1 : 2;
+                    frequencySecond = inputSplit[4] == nameof(Program.Frequency.byfreq) ? 1 : 2;
+                    sortSecond = inputSplit[5] == nameof(Program.Sort.asc) ? 1 : 2;
                 }
 
-                var query1 = napisKonsola
-                    .Where(q => char.IsLetter(q))
-                    .Select(q => char.ToLower(q))
-                    .ToList().GroupBy(c => c)
+                var result = input
+                    .Where(query => char.IsLetter(query))
+                    .Select(query => char.ToLower(query))
+                    .ToList().GroupBy(query => query)
                     .Select(group => new
                     {
-                        litera = group.Key, licznik = group.Count()
-                    }).OrderBy(q => q.litera);
-
-                var wynik = query1;
-                
-                
-                if (czestosc1 == 1)
+                        key = group.Key, value = group.Count()
+                    })
+                    .OrderBy(q => q.key);
+                                
+                if (frequencyFirst == 1)
                 {
-                    switch (czestoscSort)
+                    switch (sortFirst)
                     {
                         case 1:
-                            wynik = wynik.OrderBy(q => q.licznik);
+                            result = result.OrderBy(query => query.value);
                             break;
                         case 2:
-                            wynik = wynik.OrderByDescending(q => q.licznik);
+                            result = result.OrderByDescending(query => query.value);
                             break;
                     }
                 }
                 
-                if (czestosc1 == 2)
+                if (frequencyFirst == 2)
                 {
-                    switch (czestoscSort)
+                    switch (sortFirst)
                     {
                         case 1:
-                            wynik = wynik.OrderBy(q => q.litera);
+                            result = result.OrderBy(query => query.key);
                             break;
                         case 2:
-                            wynik = wynik.OrderByDescending(q => q.litera);
+                            result = result.OrderByDescending(query => query.key);
                             break;
                     }
                 }
                 
-                if (czestosc2 == 1)
+                if (frequencySecond == 1)
                 {
-                    switch (czestosc2Sort)
+                    switch (sortSecond)
                     {
                         case 1:
-                            wynik = wynik.ThenBy(q => q.licznik);
+                            result = result.ThenBy(query => query.value);
                             break;
                         case 2:
-                            wynik = wynik.ThenByDescending(q => q.licznik);
+                            result = result.ThenByDescending(query => query.value);
                             break;
                     }
                 }
                 
-                if (czestosc2 == 2)
+                if (frequencySecond == 2)
                 {
-                    switch (czestosc2Sort)
+                    switch (sortSecond)
                     {
                         case 1:
-                            wynik = wynik.ThenBy(q => q.litera);
+                            result = result.ThenBy(query => query.key);
                             break;
                         case 2:
-                            wynik = wynik.ThenByDescending(q => q.litera);
+                            result = result.ThenByDescending(query => query.key);
                             break;
                     }
                 }
 
-                if (kolejnosc == 1)
+                if (order == 1)
                 {
-                    foreach (var q in wynik.Take(int.Parse(n)))
-                        Console.WriteLine(q.litera + " " + q.licznik);
+                    foreach (var query in result.Take(int.Parse(n)))
+                        Console.WriteLine(query.key + " " + query.value);
                 }
 
-                if (kolejnosc == 2)
+                if (order == 2)
                 {
-                   foreach (var q in wynik.TakeLast(int.Parse(n)))
-                       Console.WriteLine(q.litera + " " + q.licznik);
+                   foreach (var query in result.TakeLast(int.Parse(n)))
+                       Console.WriteLine(query.key + " " + query.value);
                 }
             Console.WriteLine();
             }
 
         }
 
-        public enum kolejnosc {
+        public enum Order {
             first = 1,last = 2
         }
 
-        public enum czestosc
+        public enum Frequency
         {
             byfreq = 1, byletter = 2
         }
 
-        public enum sortowanie
+        public enum Sort
         {
             asc = 1, desc = 2 
         }
