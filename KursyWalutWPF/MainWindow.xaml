@@ -1,0 +1,86 @@
+﻿<Window
+    x:Class="KursyWalutWPF.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:KursyWalutWPF"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="clr-namespace:KursyWalutWPF"
+    Title="MainWindow"
+    Width="800"
+    Height="450"
+    mc:Ignorable="d">
+    <Grid Margin="50">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <TextBlock
+            Grid.Row="0"
+            Grid.Column="1"
+            Text="SELL" />
+        <TextBlock
+            Grid.Row="0"
+            Grid.Column="2"
+            Text="BUY" />
+
+        <TextBlock Grid.Row="1" Text="AVERAGE RATE" />
+        <TextBlock
+            Name="BuyAverage"
+            Grid.Row="1"
+            Grid.Column="1" />
+        <TextBlock
+            Name="SellAverage"
+            Grid.Row="1"
+            Grid.Column="2" />
+
+        <TextBlock Grid.Row="2" Text="MINIMUM RATE" />
+        <TextBlock
+            Name="BuyMinimum"
+            Grid.Row="2"
+            Grid.Column="1" />
+        <TextBlock
+            Name="SellMinimum"
+            Grid.Row="2"
+            Grid.Column="2" />
+
+        <TextBlock Grid.Row="3" Text="MAXIMUM RATE" />
+        <TextBlock
+            Name="BuyMaximum"
+            Grid.Row="3"
+            Grid.Column="1" />
+        <TextBlock
+            Name="SellMaximum"
+            Grid.Row="3"
+            Grid.Column="2" />
+
+        <TextBlock Grid.Row="4" Text="STANDARD DEVIATION" />
+        <TextBlock
+            Name="BuyDeviation"
+            Grid.Row="4"
+            Grid.Column="1" />
+        <TextBlock
+            Name="SellDeviation"
+            Grid.Row="4"
+            Grid.Column="2" />
+
+        <TextBlock Grid.Row="5" Text="HIGHEST DIFFERENCE" />
+        <TextBlock
+            Name="HighestDiff"
+            Grid.Row="5"
+            Grid.Column="2" />
+        <TextBlock
+            Name="HighestDate"
+            Grid.Row="5"
+            Grid.Column="1" />
+    </Grid>
+</Window>

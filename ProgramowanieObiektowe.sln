@@ -203,11 +203,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LinqXMLZadanie1", "LinqXMLZ
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MigracjaDanychViaXML_LinqToXML", "MigracjaDanychViaXML_LinqToXML\MigracjaDanychViaXML_LinqToXML.csproj", "{5A407A2E-4316-4542-B9EF-35B84EF3E3C9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KursyWalutLibrary", "KursyWalutZNBP\KursyWalutLibrary.csproj", "{08ACF630-1197-4E09-BD05-0EC1A15B27FA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KursyWalutLibrary", "KursyWalutZNBP\KursyWalutLibrary.csproj", "{08ACF630-1197-4E09-BD05-0EC1A15B27FA}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "KursyWalutZNBP", "KursyWalutZNBP", "{231AB162-3E75-4406-B7DF-C68044D0F199}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KursyWalutConsole", "KursWalutConsole\KursyWalutConsole.csproj", "{D674B659-C676-4EC2-9ADD-3D689997B059}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KursyWalutConsole", "KursWalutConsole\KursyWalutConsole.csproj", "{D674B659-C676-4EC2-9ADD-3D689997B059}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KursyWalutWPF", "KursyWalutWPF\KursyWalutWPF.csproj", "{610408FC-86C4-4C1A-8789-CBB8E1757B23}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -535,6 +537,10 @@ Global
 		{D674B659-C676-4EC2-9ADD-3D689997B059}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D674B659-C676-4EC2-9ADD-3D689997B059}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D674B659-C676-4EC2-9ADD-3D689997B059}.Release|Any CPU.Build.0 = Release|Any CPU
+		{610408FC-86C4-4C1A-8789-CBB8E1757B23}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{610408FC-86C4-4C1A-8789-CBB8E1757B23}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{610408FC-86C4-4C1A-8789-CBB8E1757B23}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{610408FC-86C4-4C1A-8789-CBB8E1757B23}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -633,6 +639,7 @@ Global
 		{08ACF630-1197-4E09-BD05-0EC1A15B27FA} = {231AB162-3E75-4406-B7DF-C68044D0F199}
 		{231AB162-3E75-4406-B7DF-C68044D0F199} = {2C09C4BE-F161-46C9-B738-9EB3EF18EF36}
 		{D674B659-C676-4EC2-9ADD-3D689997B059} = {231AB162-3E75-4406-B7DF-C68044D0F199}
+		{610408FC-86C4-4C1A-8789-CBB8E1757B23} = {231AB162-3E75-4406-B7DF-C68044D0F199}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {EAC54410-D0C2-487C-A700-DCBF09D723CC}

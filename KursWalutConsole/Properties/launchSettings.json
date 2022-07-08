@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "KursyWalutConsole": {
+      "commandName": "Project",
+      "commandLineArgs": "EUR 2018-09-01 2022-07-08"
+    }
+  }
+}
